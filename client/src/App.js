@@ -45,17 +45,10 @@ if (!user) return (
 )
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar user={user} handleLogOutClick={handleLogOutClick} />
+      
+      <img src="https://media0.giphy.com/media/638KU8suvbVGo/giphy.gif?cid=ecf05e47jh7y1s5ni4utwk0xqe3mfcj1umdb694qwioagiio&rid=giphy.gif&ct=g" alt="logo" />
+      
     </div>
   );
 }
