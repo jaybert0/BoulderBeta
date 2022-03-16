@@ -1,7 +1,7 @@
 import { useState } from "react";
-import LoginForm from './components/LoginForm';
-import SignUpForm from "./components/SignUpForm";
-import ResetPasswordForm from './components/ResetPasswordForm';
+import LoginForm from './LoginForm';
+import SignUpForm from "./SignUpForm";
+import ResetPasswordForm from './ResetPasswordForm';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 
