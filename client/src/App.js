@@ -4,6 +4,7 @@ import { Alert } from '@mui/material';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Container from '@mui/material/Container';
 import Login from './components/Login'
+import NavBar from './components/NavBar'
 
 
 
