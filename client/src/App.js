@@ -5,6 +5,8 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Container from '@mui/material/Container';
 import Login from './components/Login'
 import NavBar from './components/NavBar'
+import Technique from './components/Technique'
+import Home from './components/Home'
 
 
 
@@ -48,7 +50,10 @@ if (!user) return (
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       
       <img src="https://media0.giphy.com/media/638KU8suvbVGo/giphy.gif?cid=ecf05e47jh7y1s5ni4utwk0xqe3mfcj1umdb694qwioagiio&rid=giphy.gif&ct=g" alt="logo" />
-      
+      <Routes>
+      <Route path="/tech" element={<Technique/>}></Route>
+      <Route path="/" element={<Home/>}></Route>
+      </Routes>
     </div>
   );
 }
