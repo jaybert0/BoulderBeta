@@ -1,4 +1,3 @@
 class TechSerializer < ActiveModel::Serializer
-  attributes :id, :handholds, :description
-  has_one :problem
+  attributes :id, :handholds, :hold_description
 end

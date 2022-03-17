@@ -1,4 +1,5 @@
 class ProblemSerializer < ActiveModel::Serializer
-  attributes :id, :difficulty, :grip_color, :end_date
-  has_one :user
+  attributes :id, :grip_color, :end_date, :problem_description, :difficulty, :rating
+  has_one :tech
+  has_one :location
 end
