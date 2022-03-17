@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :locations
+  resources :teches
+  resources :problems
+  resources :climbproblems
   resources :users
 
   post "/signup", to: "users#create"

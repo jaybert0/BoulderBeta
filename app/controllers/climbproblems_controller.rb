@@ -1,0 +1,2 @@
+class ClimbproblemsController < ApplicationController
+end
