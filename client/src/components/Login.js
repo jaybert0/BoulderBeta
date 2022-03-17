@@ -14,6 +14,7 @@ function Login({ onLogin }){
         { showLogin ? (
             <>
                 <LoginForm onLogin={onLogin} />
+                <br></br>
                 <div>Don't have an account? &nbsp;
                     <Button variant="contained" onClick={() => setShowLogin(false)}>
                         Sign Up
