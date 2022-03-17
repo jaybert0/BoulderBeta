@@ -1,0 +1,2 @@
+class Climbproblem < ApplicationRecord
+end
