@@ -1,4 +1,4 @@
 class Tech < ApplicationRecord
     has_many :problems
-    has_many :location, through: :problems
+    has_many :locations, through: :problems
 end
