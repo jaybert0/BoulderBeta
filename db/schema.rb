@@ -10,10 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_16_175541) do
+ActiveRecord::Schema.define(version: 2022_03_17_163527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "climbproblems", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "problem_id", null: false
+    t.boolean "favorite"
+    t.boolean "in_progress"
+    t.string "feedback"
+    t.float "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["problem_id"], name: "index_climbproblems_on_problem_id"
+    t.index ["user_id"], name: "index_climbproblems_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer "location"
+    t.string "loc_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "problems", force: :cascade do |t|
+    t.bigint "tech_id", null: false
+    t.bigint "location_id", null: false
+    t.string "grip_color"
+    t.date "end_date"
+    t.string "problem_description"
+    t.integer "difficulty"
+    t.float "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_problems_on_location_id"
+    t.index ["tech_id"], name: "index_problems_on_tech_id"
+  end
+
+  create_table "teches", force: :cascade do |t|
+    t.string "handholds"
+    t.string "hold_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -24,4 +65,8 @@ ActiveRecord::Schema.define(version: 2022_03_16_175541) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "climbproblems", "problems"
+  add_foreign_key "climbproblems", "users"
+  add_foreign_key "problems", "locations"
+  add_foreign_key "problems", "teches"
 end
