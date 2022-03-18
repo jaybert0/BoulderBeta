@@ -7,12 +7,16 @@ import Login from './Features/Authorization/Login'
 import NavBar from './components/NavBar'
 import Technique from './Features/Maker/Technique'
 import Home from './components/Home'
+import MakerHome from './Features/Maker/MakerHome'
 
 
 
 function App() {
 
   const [user, setUser] = useState(null);
+  const [problem, setProblem] = useState([]);
+  const [climbproblem, setClimbproblem] = useState([]);
+
 
   const navigate = useNavigate()
 
@@ -37,7 +41,23 @@ function App() {
     navigate("/");
 }
 
-const [techData, setTechData] = useState([])
+useEffect(() => {
+  fetch('/climbproblems')
+  .then((r) => r.json())
+  // .then((data) => console.log(data))
+  .then((data) => setClimbproblem(data))
+}, []);
+console.log("climbProblem:")
+console.log(climbproblem)
+useEffect(() => {
+  fetch('/problems')
+  .then((r) => r.json())
+  // .then((data) => console.log(data))
+  .then((data) => setProblem(data))
+}, []);
+console.log("Problem:")
+  console.log(problem)
+// const [techData, setTechData] = useState([])
 // Wikitext
 // useEffect(() => {
 //     fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=wikitext&section=9&sectionpreview=1&formatversion=2&origin=*")
@@ -47,13 +67,13 @@ const [techData, setTechData] = useState([])
 //   }, []);
 
 // Regular text for wiki fetch
-  useEffect(() => {
-    fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=text&section=9&sectionpreview=1&formatversion=2&origin=*")
-      .then((r) => r.json())
-      .then((data)=>setTechData(data))
-      // .then((data) => setBGData(data));
-  }, []);
-
+  
+// useEffect(() => {
+//   fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=text&section=9&sectionpreview=1&formatversion=2&origin=*")
+//     .then((r) => r.json())
+//     .then((data)=>setTechData(data))
+//     // .then((data) => setBGData(data));
+// }, []);
 
 if (!user) return (
   <>
@@ -67,9 +87,13 @@ if (!user) return (
     <div className="App">
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       
-      <img src="https://media0.giphy.com/media/638KU8suvbVGo/giphy.gif?cid=ecf05e47jh7y1s5ni4utwk0xqe3mfcj1umdb694qwioagiio&rid=giphy.gif&ct=g" alt="logo" />
       <Routes>
-      <Route path="/tech" element={<Technique techData={techData} />}></Route>
+      <Route path="/boltmonkey" 
+      // element={<MakerHome />} 
+      ></Route>
+      <Route path="/tech" element={<Technique 
+      // techData={techData} 
+      />}></Route>
       <Route path="/" element={<Home/>}></Route>
       </Routes>
     </div>
