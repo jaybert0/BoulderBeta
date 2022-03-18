@@ -16,6 +16,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [problem, setProblem] = useState([]);
   const [climbproblem, setClimbproblem] = useState([]);
+  const [maker, setMaker] = useState([])
 
 
   const navigate = useNavigate()
@@ -49,6 +50,7 @@ useEffect(() => {
 }, []);
 console.log("climbProblem:")
 console.log(climbproblem)
+
 useEffect(() => {
   fetch('/problems')
   .then((r) => r.json())
@@ -57,6 +59,15 @@ useEffect(() => {
 }, []);
 console.log("Problem:")
   console.log(problem)
+
+  // useEffect(() => {
+  //   fetch('/makerproblem')
+  //   .then((r) => r.json())
+  //   // .then((data) => console.log(data))
+  //   .then((data) => setMaker(data))
+  // }, []);
+  // console.log("Maker:")
+  // console.log(maker)
 // const [techData, setTechData] = useState([])
 // Wikitext
 // useEffect(() => {
