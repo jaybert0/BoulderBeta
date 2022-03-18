@@ -3,9 +3,9 @@ import './App.css';
 import { Alert } from '@mui/material';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Container from '@mui/material/Container';
-import Login from './components/Login'
+import Login from './Features/Authorization/Login'
 import NavBar from './components/NavBar'
-import Technique from './components/Technique'
+import Technique from './Features/Maker/Technique'
 import Home from './components/Home'
 
 
