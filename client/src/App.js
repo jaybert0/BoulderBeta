@@ -100,7 +100,7 @@ if (!user) return (
       
       <Routes>
       <Route path="/boltmonkey" 
-      // element={<MakerHome />} 
+      element={<MakerHome problem={problem} climbproblem={climbproblem} />} 
       ></Route>
       <Route path="/tech" element={<Technique 
       // techData={techData} 

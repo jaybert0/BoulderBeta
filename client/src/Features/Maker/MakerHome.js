@@ -23,10 +23,10 @@ function MakerHome({problem, climbproblem}){
         difficulty: "",
         grip_color: "",
         technique: "",
-        location: "",
+        loc_id: "",
+        tech_id: "",
         end_date: "",
         problem_description: "",
-        maker_id: 1,
     })
     return(
         <div>
@@ -45,7 +45,7 @@ function MakerHome({problem, climbproblem}){
                 id={problem.id} 
                 problem={problem}
                 difficulty={problem.difficulty}
-                location={problem.location}
+                location={problem.location.location}
                 technique={problem.technique}
                 grip_color={problem.grip_color}
                 end_date={problem.end_date}
