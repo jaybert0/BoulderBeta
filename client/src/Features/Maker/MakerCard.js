@@ -65,24 +65,28 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="delete">
-            <DeleteIcon onClick={() => deleteCard()}/>
+            <DeleteIcon />
+            {/* <DeleteIcon onClick={() => deleteCard()}/> */}
           </IconButton>
-          <IconButton sx={{zIndex: 0}} aria-label="edit" onClick= {() => {
-            if (problem.id === id) {
-                setFormProblem({
-                    id: id,
-                    difficulty: difficulty,
-                    grip_color: grip_color,
-                    technique: technique,
-                    location: location,
-                    end_date: end_date,
-                    problem_description: problem_description,
-                    maker_id: 1,
-            }
-                )
-            }
+          <IconButton sx={{zIndex: 0}} aria-label="edit" 
+          // onClick= {() => {
+          //   if (problem.id === id) {
+          //       setFormProblem({
+          //           id: id,
+          //           difficulty: difficulty,
+          //           grip_color: grip_color,
+          //           technique: technique,
+          //           location: location,
+          //           end_date: end_date,
+          //           problem_description: problem_description,
+          //           maker_id: 1,
+          //   }
+          //       )
+          //   }
             
-          } }>
+          // } 
+          // }
+          >
           <EditIcon   />
           </IconButton>
       </CardActions>
