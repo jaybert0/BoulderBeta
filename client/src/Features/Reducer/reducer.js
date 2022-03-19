@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 // import reducers here
-import problemReducer from "./problemsSlice"
+import problemsReducer from "./problemsSlice"
 const rootReducer = combineReducers({
     problems: problemsReducer,
 });

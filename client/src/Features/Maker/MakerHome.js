@@ -1,7 +1,11 @@
 import ProblemForm from './ProblemForm';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import MakerCard from './MakerCard'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {fetchProblems} from '../Reducer/problemsSlice'
+
 
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -10,6 +14,12 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 function MakerHome({problem, climbproblem}){
+    const probs = useSelector((state) => state.entities);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchProblems());
+    }, []);
+    console.log(probs)
 // console.log(problem)
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,

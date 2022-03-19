@@ -4,24 +4,24 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 # comment back in below for auth
-  # before_action :authorize
+  before_action :authorize
   
-  # def current_user
-  #   User.find_by(id: session[:user_id])
-  # end
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
   
-  # def authorize
-  #   render json: { errors: ["Not authorized"] }, status: :unauthorized unless current_user
-  # end
+  def authorize
+    render json: { errors: ["Not authorized"] }, status: :unauthorized unless current_user
+  end
 
-  # private
+  private
 
-  # def render_invalid_response(invalid)
-  #   render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-  # end
+  def render_invalid_response(invalid)
+    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+  end
 
-  # def render_not_found_response(error)
-  #   render json: { error: "#{error.model} not found" }, status: :not_found
-  # end
+  def render_not_found_response(error)
+    render json: { error: "#{error.model} not found" }, status: :not_found
+  end
 
 end

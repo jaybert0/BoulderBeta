@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchCats = createAsyncThunk("problems/fetchProblems", () => {
+const initialState = {
+  entities: [], // array of cats
+  status: "idle", // loading state
+};
+
+export const fetchProblems = createAsyncThunk("problems/fetchProblems", () => {
   // return a Promise containing the data we want
   return fetch("/problems")
     .then((response) => response.json())
@@ -34,6 +39,6 @@ export const fetchCats = createAsyncThunk("problems/fetchProblems", () => {
     },
   });
 // change exported actions
-  export const { catAdded, catUpdated } = catsSlice.actions;
+  // export const { catAdded, catUpdated } = catsSlice.actions;
 
   export default problemSlice.reducer;
