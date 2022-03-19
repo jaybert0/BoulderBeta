@@ -113,7 +113,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           labelId="grip-hold-highlight-required-label"
           id="grip-hold-highlight-required"
           label="Grip Hold Highlight"
-          value={formProblem.technique}
+          // value={formProblem.technique}
           // onChange={(e) => handleSetProblem('technique',e.target.value)}
           // value={formProblem.technique}
         >
@@ -137,7 +137,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           id="location-required"
           label="Location *"
           // onChange={(e) => handleSetProblem('location',e.target.value)}
-          value={formProblem.location}
+          // value={formProblem.location}
         >
          {locs.map((loc) => (
           <MenuItem 

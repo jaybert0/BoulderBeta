@@ -14,14 +14,15 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 function MakerHome({problem, climbproblem}){
-    const probs = useSelector((state) => state);
+    const probData = useSelector(state => state.problem.entities);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        // fetchProblems()
         dispatch(fetchProblems());
-        fetchProblems();
+        // console.log(fetchProblems());
     }, [dispatch]);
-    console.log(probs)
+    console.log(probData)
 // console.log(problem)
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
