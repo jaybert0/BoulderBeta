@@ -7,18 +7,20 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import rootReducer from './Features/Reducer/reducer';
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
 const store = createStore(rootReducer, composedEnhancer);
 
 ReactDOM.render(
-  <BrowserRouter>
-  <Provider store={store}></Provider>
-    <App />
-  <Provider />
-  </BrowserRouter>,
+  <Router>
+    <Provider store={store}>
+   <React.StrictMode>
+        <App />
+      </React.StrictMode>
+  </Provider>
+  </Router>,
   document.getElementById('root')
 );
 
