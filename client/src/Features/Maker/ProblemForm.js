@@ -31,7 +31,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
     .then((data) => setLoc(data))
   }, []);
 
-console.log(tech)
+// console.log(tech)
     const initholds = tech.map((prob) => prob.handholds);
     const holds = [...new Set(initholds)];
     const initlocs = loc.map((loc) => loc.location);

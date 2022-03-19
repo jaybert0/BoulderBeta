@@ -1,15 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  entities: [], // array of cats
+  entities: {}, // array of cats
   status: "idle", // loading state
 };
 
-export const fetchProblems = createAsyncThunk("problems/fetchProblems", () => {
+export const fetchProblems = createAsyncThunk("problems/fetchProblems", async () => {
   // return a Promise containing the data we want
   return fetch("/problems")
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => console.log(data))
+    .then((data) => data)
+    ;
 });
 
   const problemSlice = createSlice({
@@ -34,7 +36,7 @@ export const fetchProblems = createAsyncThunk("problems/fetchProblems", () => {
       },
       [fetchProblems.fulfilled](state, action) {
         state.entities = action.payload;
-        state.status = "idle";
+        state.status = "completed";
       },
     },
   });
