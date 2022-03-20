@@ -7,7 +7,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Grid from "@material-ui/core/Grid";
+import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import ReactStars from 'react-stars';
 import Checkbox from '@mui/material/Checkbox';
@@ -17,12 +17,12 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
 import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
 import PendingIcon from '@mui/icons-material/Pending';
-import '../styles/ProblemCard.css'
+import '../../Styles/ProblemCard.css'
   
   function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem}) {
     const [routeRating, setRouteRatingState] = useState(2.5)
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
-    const CPF = `http://localhost:9292/climbproblems/${id}`
+    // const CPF = `http://localhost:9292/climbproblems/${id}`
 
     function setRouteRating(e){
       setRouteRatingState(e)

@@ -1,11 +1,11 @@
 import React from "react";
 import wall from "./wall.png"
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import grips from './grips.jpg'
 
 import { maxHeight, maxWidth, positions } from '@mui/system'
-import "../styles/WallMap.css"
+import "../../Styles/WallMap.css"
 
 function WallMap () {
     return (

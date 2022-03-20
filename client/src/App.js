@@ -8,6 +8,7 @@ import NavBar from './components/NavBar'
 import Technique from './Features/Maker/Technique'
 import Home from './components/Home'
 import MakerHome from './Features/Maker/MakerHome'
+import ClimberHome from './Features/Climber/ClimberHome'
 
 
 
@@ -105,6 +106,9 @@ if (!user) return (
       <Route path="/tech" element={<Technique 
       // techData={techData} 
       />}></Route>
+      <Route path="/climber" 
+      element={<ClimberHome problem={problem} climbproblem={climbproblem} />} 
+      ></Route>
       <Route path="/" element={<Home/>}></Route>
       </Routes>
     </div>
