@@ -69,7 +69,7 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
         .then((data) => console.log(data));
       console.log("edit button");
     }
-    window.location.reload();
+    // window.location.reload();
   }
 
   return (
@@ -132,7 +132,7 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
               labelId="location-required-label"
               id="location-required"
               label="Location *"
-              onChange={(e) => handleSetProblem("loc_id", e.target.value)}
+              onChange={(e) => handleSetProblem("location_id", e.target.value)}
               value={formProblem.location}
             >
               {locs.map((loc) => (

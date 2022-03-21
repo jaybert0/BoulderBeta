@@ -31,7 +31,7 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
     setFavAdd(countfav)
     setinProgAdd(countinp)
     setCompAdd(countcomp)
-    setRating(subproblem[0].route_rating)
+    setRating(subproblem.route_rating)
   }, [])
   
   // function deleteCard(){

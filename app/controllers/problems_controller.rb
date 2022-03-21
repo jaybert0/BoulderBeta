@@ -32,6 +32,6 @@ class ProblemsController < ApplicationController
     
       private
         def problem_params
-            params.permit(:tech_id, :location_id, :grip_color, :end_date, :problem_description, :difficulty, :rating)
+            params.permit(:tech_id, :location_id, :grip_color, :end_date, :problem_description, :difficulty, :rating, :id)
         end
 end
