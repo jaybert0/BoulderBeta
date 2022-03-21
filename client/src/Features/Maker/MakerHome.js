@@ -57,7 +57,7 @@ function MakerHome({problem, climbproblem}){
                 id={problem.id} 
                 problem={problem}
                 difficulty={problem.difficulty}
-                location={problem.location.location}
+                // location={problem.location.location}
                 technique={problem.technique}
                 grip_color={problem.grip_color}
                 end_date={problem.end_date}

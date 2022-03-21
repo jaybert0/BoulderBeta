@@ -22,7 +22,7 @@ import '../../Styles/ProblemCard.css'
   function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem}) {
     const [routeRating, setRouteRatingState] = useState(2.5)
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
-    // const CPF = `http://localhost:9292/climbproblems/${id}`
+    const CPF = `/climbproblems/${id}`
 
     function setRouteRating(e){
       setRouteRatingState(e)
@@ -56,18 +56,17 @@ import '../../Styles/ProblemCard.css'
       handleSetProblem("in_progress", !inProg)
       // console.log(inProg)
     }
-    const [complete, setCompletedState] = useState(false)
-    function setCompleted(){
-      setCompletedState(!complete)
-      handleSetProblem("completed", !complete)
-      // console.log(complete)
-    }
+    // const [complete, setCompletedState] = useState(false)
+    // function setCompleted(){
+    //   setCompletedState(!complete)
+    //   handleSetProblem("completed", !complete)
+    //   // console.log(complete)
+    // }
     const [submitter, setSubmitter] = useState({
-      in_progress: true,
+      in_progress: false,
       favorite: false,
-      completed: false,
       climber_feedback: "climberFeedback",
-      route_rating: 2.5
+      route_rating: 0
   })
     const [canRun, setCanRun]= useState(false)
     climbproblem.map((climbproblem) => {
@@ -79,16 +78,16 @@ import '../../Styles/ProblemCard.css'
           // handleSetProblem("in_progress", climbproblem.in_progress)
           // handleSetProblem("completed", climbproblem.completed)
           // handleSetProblem("route_rating", climbproblem.route_rating)
-          setClimberFeedbackState(climbproblem.climber_feedback)
+          setClimberFeedbackState(climbproblem.feedback)
           setInProgressState(climbproblem.in_progress)
-          setCompletedState(climbproblem.completed)
-          setRouteRatingState(climbproblem.route_rating)
+          // setCompletedState(climbproblem.completed)
+          setRouteRatingState(climbproblem.rating)
           setSubmitter({
             in_progress: climbproblem.in_progress,
             favorite: climbproblem.favorite,
-            completed: climbproblem.completed,
-            climber_feedback: climbproblem.climber_feedback,
-            route_rating: climbproblem.route_rating})
+            // completed: climbproblem.completed,
+            feedback: climbproblem.feedback,
+            rating: climbproblem.rating})
           setCanRun(true)
         }else{
           console.log("already mounted")
@@ -105,7 +104,9 @@ import '../../Styles/ProblemCard.css'
     
   useEffect(() => {
     postFeedback()
-  },[submitter, fav, inProg, complete, routeRating])
+  }, [submitter, fav, inProg, 
+    // complete,
+     routeRating])
 
   function postFeedback(){
     const config = {
@@ -191,8 +192,8 @@ import '../../Styles/ProblemCard.css'
           }} onClick={setFavorite} {...label} checked={fav} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
         In progress:
         <Checkbox name="in progress" onClick={setInProgress} {...label}  checked={inProg} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
-        Completed:
-        <Checkbox name="completed" onClick={setCompleted} {...label}  checked={complete} icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/>
+        {/* Completed:
+        <Checkbox name="completed" onClick={setCompleted} {...label}  checked={complete} icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/> */}
         </Typography>
       </Grid>
     </React.Fragment>

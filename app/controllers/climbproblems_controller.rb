@@ -11,7 +11,7 @@ class ClimbproblemsController < ApplicationController
     
       def update
         climbproblem = Climbproblem.find(params[:id])
-        Climbproblem.update!(climbproblem_params)
+        Climbproblem.update(climbproblem_params)
         render json: climbproblem, status: :ok
       end
     
