@@ -38,39 +38,39 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
     const locs = [...new Set(initlocs)];
     // console.log(holds)
     // console.log(formProblem)
-    // const CLIMBFORMPROBLEMSUBMITTER = `http://localhost:9292/problems`
-    // const CLIMBFORMPROBLEMUPDATER = `http://localhost:9292/problems/${formProblem.id}`
+    const CLIMBFORMPROBLEMSUBMITTER = '/problems'
+    const CLIMBFORMPROBLEMUPDATER = `/problems/${formProblem.id}`
 
     function handleSetProblem(att, input) {
-        // setFormProblem({...formProblem, [att]: input});
+        setFormProblem({...formProblem, [att]: input});
       };
       function amISubmission(){
-        // if(formProblem.id === ''){
-        //   const config = {
-        //     headers: {"Content-Type": "application/json"},
-        //     method: "POST",
-        //     body: JSON.stringify(formProblem)
-        //   }
-        //   fetch(CLIMBFORMPROBLEMSUBMITTER, config)
-        //   .then(r => r.json())
-        //   .then((data) => console.log(data))
-        //   console.log(formProblem)
-        //   console.log("submit button")
+        if(formProblem.id === ''){
+          const config = {
+            headers: {"Content-Type": "application/json"},
+            method: "POST",
+            body: JSON.stringify(formProblem)
+          }
+          fetch(CLIMBFORMPROBLEMSUBMITTER, config)
+          .then(r => r.json())
+          .then((data) => console.log(data))
+          console.log(formProblem)
+          console.log("submit button")
          
   
-        // }else{
-        //   const config = {
-        //     headers: {"Content-Type": "application/json"},
-        //     method: "PATCH",
-        //     body: JSON.stringify(formProblem)
-        //   }
-        //   fetch(CLIMBFORMPROBLEMUPDATER, config)
-        //   .then(r => r.json())
-        //   .then((data) => console.log(data))
-        //   console.log("edit button")
+        }else{
+          const config = {
+            headers: {"Content-Type": "application/json"},
+            method: "PATCH",
+            body: JSON.stringify(formProblem)
+          }
+          fetch(CLIMBFORMPROBLEMUPDATER, config)
+          .then(r => r.json())
+          .then((data) => console.log(data))
+          console.log("edit button")
   
-        // }
-        // window.location.reload()
+        }
+        window.location.reload()
       }
       
     return (
@@ -91,9 +91,8 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         <TextField
           sx={{maxWidth:'20%'}}
           required
-          // onChange={(input) => handleSetProblem('difficulty',input)}
           value={formProblem.difficulty}
-          // onChange={(e) => handleSetProblem('difficulty', e.target.value)}
+          onChange={(e) => handleSetProblem('difficulty', e.target.value)}
           id="filled-required"
           label="Difficulty - V"
           variant="filled"
@@ -101,7 +100,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
         <TextField
         sx={{maxWidth:'20%'}}
           required
-          // onChange={(e) => handleSetProblem('grip_color', e.target.value)}
+          onChange={(e) => handleSetProblem('grip_color', e.target.value)}
           value={formProblem.grip_color}
           id="filled-required"
           label="Grip Color"
@@ -113,9 +112,9 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           labelId="grip-hold-highlight-required-label"
           id="grip-hold-highlight-required"
           label="Grip Hold Highlight"
-          // value={formProblem.technique}
-          // onChange={(e) => handleSetProblem('technique',e.target.value)}
-          // value={formProblem.technique}
+          value={formProblem.technique}
+          onChange={(e) => handleSetProblem('technique',e.target.value)}
+
         >
           {holds.map((hold) => (
           <MenuItem 
@@ -136,8 +135,8 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           labelId="location-required-label"
           id="location-required"
           label="Location *"
-          // onChange={(e) => handleSetProblem('location',e.target.value)}
-          // value={formProblem.location}
+          onChange={(e) => handleSetProblem('location',e.target.value)}
+          value={formProblem.location}
         >
          {locs.map((loc) => (
           <MenuItem 
@@ -166,8 +165,8 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           label="End Date*"
           value={formProblem.end_date}
           format="dd-MM-yyyy"
-          // onChange={(e) => {
-          //   handleSetProblem('end_date',e)}}
+          onChange={(e) => {
+            handleSetProblem('end_date',e)}}
           renderInput={(params) => <TextField {...params} helperText={"mm/dd/yyyy"}/>}
         />
         
@@ -182,7 +181,7 @@ function ProblemForm({problem, climbproblem, formProblem, setFormProblem}) {
           id="filled-required"
           label="Route Description"
           variant="filled"
-          // onChange={(e) => handleSetProblem('problem_description',e.target.value)}
+          onChange={(e) => handleSetProblem('problem_description',e.target.value)}
           value={formProblem.problem_description}
         />
       </div>
