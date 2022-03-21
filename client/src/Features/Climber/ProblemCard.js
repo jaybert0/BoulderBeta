@@ -23,7 +23,7 @@ import '../../Styles/ProblemCard.css'
     const [routeRating, setRouteRatingState] = useState(2.5)
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
     const CPF = `/climbproblems/${id}`
-
+console.log(technique)
     function setRouteRating(e){
       setRouteRatingState(e)
       handleSetProblem("route_rating", e)

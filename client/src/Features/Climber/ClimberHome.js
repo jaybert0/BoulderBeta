@@ -19,7 +19,7 @@ function ClimberHome({
     // console.log(problem[0])
     // console.log(climbproblem)
 
- 
+ console.log(problem)
 
     const delay = ms => new Promise(res => setTimeout(res, ms))
     const [technique, setTechnique] = useState('');
@@ -73,7 +73,7 @@ function ClimberHome({
                 id={problem.id} 
                 difficulty={problem.difficulty}
                 location={problem.location.location}
-                technique={problem.technique}
+                technique={problem.tech.handholds}
                 grip_color={problem.grip_color}
                 end_date={problem.end_date}
                 problem_description={problem.problem_description}

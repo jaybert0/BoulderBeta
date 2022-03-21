@@ -26,12 +26,12 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
   const countfav = subproblem.filter(x => x.favorite ===true).length
   const countinp = subproblem.filter(x => x.in_progress ===true).length
   const countcomp = subproblem.filter(x => x.completed ===true).length
-
+console.log(subproblem[0])
   useEffect(() => {
     setFavAdd(countfav)
     setinProgAdd(countinp)
-    setCompAdd(countcomp)
-    setRating(subproblem.route_rating)
+    // setCompAdd(countcomp)
+    setRating(subproblem.rating)
   }, [])
   
   // function deleteCard(){
@@ -59,7 +59,7 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
             Completed: console.log({climbproblems.completed})<br /> */}
             Favorites: {favAdd}<br />
             In-Progress: {inprogAdd}<br />
-            Completed: {compAdd}<br />
+            {/* Completed: {compAdd}<br /> */}
             Rating: {rating}<br />
           </Typography>
         </CardContent>
