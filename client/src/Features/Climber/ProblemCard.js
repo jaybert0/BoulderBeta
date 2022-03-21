@@ -28,21 +28,15 @@ import '../../Styles/ProblemCard.css'
       setRouteRatingState(e)
       handleSetProblem("route_rating", e)
     }
-
-
-
   
   function handleSetProblem(att, input) {
     setSubmitter({...submitter, [att]: input});
   };
 
-
- 
-
     const [climberFeedback, setClimberFeedbackState] = useState("")
     function setClimberFeedback(e){
       setClimberFeedbackState(e.target.value)
-      handleSetProblem("climber_feedback", e.target.value)
+      handleSetProblem("feedback", e.target.value)
     }
     const [fav, setFavState] = useState(false)
     function setFavorite(){
@@ -50,18 +44,13 @@ import '../../Styles/ProblemCard.css'
       handleSetProblem("favorite", !fav)
       // console.log(fav)
     }
-    const [inProg, setInProgressState] = useState(true)
+    const [inProg, setInProgressState] = useState(false)
     function setInProgress(){
       setInProgressState(!inProg)
       handleSetProblem("in_progress", !inProg)
       // console.log(inProg)
     }
-    // const [complete, setCompletedState] = useState(false)
-    // function setCompleted(){
-    //   setCompletedState(!complete)
-    //   handleSetProblem("completed", !complete)
-    //   // console.log(complete)
-    // }
+
     const [submitter, setSubmitter] = useState({
       in_progress: false,
       favorite: false,
