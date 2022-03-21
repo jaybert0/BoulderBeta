@@ -34,14 +34,14 @@ console.log(subproblem[0])
     setRating(subproblem.rating)
   }, [])
   
-  // function deleteCard(){
-  //   console.log(id)
-  //   const config = {method: "DELETE"}
-  //   fetch(`http://localhost:9292/problems/${id}`, config)
-  //   .then((r) => r.json())
-  //   .then((data) => console.log(data))
-  //   window.location.reload()
-  // }
+  function deleteCard(){
+    console.log(id)
+    const config = {method: "DELETE"}
+    fetch(`problems/${id}`, config)
+    .then((r) => r.json())
+    .then((data) => console.log(data))
+    window.location.reload()
+  }
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardContent>
@@ -65,8 +65,8 @@ console.log(subproblem[0])
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="delete">
-            <DeleteIcon />
-            {/* <DeleteIcon onClick={() => deleteCard()}/> */}
+            {/* <DeleteIcon /> */}
+            <DeleteIcon onClick={() => deleteCard()}/>
           </IconButton>
           <IconButton sx={{zIndex: 0}} aria-label="edit" 
           // onClick= {() => {

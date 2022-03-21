@@ -30,7 +30,7 @@ import '../../Styles/ProblemCard.css'
     }
     const cp = climbproblem
     // console.log(cp[0])
-    {climbproblem[0] ? console.log(climbproblem[0].favorite) : console.log("FUCK YOU")}
+    // {climbproblem[0] ? climbproblem[0].favorite : }
   function handleSetProblem(att, input) {
     setSubmitter({...submitter, [att]: input});
   };
@@ -55,10 +55,10 @@ import '../../Styles/ProblemCard.css'
     }
 
     const [submitter, setSubmitter] = useState({
-      in_progress: "",
-      favorite: '',
-      feedback: "",
-      rating: 0
+      in_progress: (climbproblem ? climbproblem.in_progress : false),
+      favorite: (climbproblem ? climbproblem.favorite : false),
+      feedback: (climbproblem ? climbproblem.feedback : ""),
+      rating: (climbproblem ? climbproblem.rating : 0)
   })
 
   console.log(climbproblem)
@@ -156,7 +156,7 @@ import '../../Styles/ProblemCard.css'
       <TextField
       sx={{zIndex: 0}}
       name="climber feedback" 
-      value={climbproblem.feedback}
+      value={submitter.feedback}
       onChange={(e) => {
         handleSetProblem("feedback", e.target.value)
         // setClimberFeedback(e)
@@ -181,7 +181,10 @@ import '../../Styles/ProblemCard.css'
       <ReactStars
         name="route rating" 
         count={5}
-        value={climbproblem.rating}
+        value={
+          // (climbproblem[0] ? climbproblem[0].rating : 0)
+          submitter.rating
+        }
         onChange={(e) => handleSetProblem("rating", e)}
         size={24}
         color2={'#ffd700'} />
@@ -189,9 +192,15 @@ import '../../Styles/ProblemCard.css'
     <Grid container justifyContent="center">
       <Typography variant="body2">
         Favorite:
-        <Checkbox name="favorite" onChange={setFavorite} {...label} checked={climbproblem.favorite} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
+        <Checkbox name="favorite" onChange={setFavorite} {...label} checked={
+          // (climbproblem[0] ? climbproblem[0].favorite : false)
+          submitter.favorite
+          } icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
         In progress:
-        <Checkbox name="in progress" onChange={setInProgress} {...label}  checked={climbproblem.in_progress} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
+        <Checkbox name="in progress" onChange={setInProgress} {...label}  checked={
+          // (climbproblem[0] ? climbproblem[0].in_progress : 0)
+          submitter.in_progress
+          } icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
         <Button variant='contained' onClick={()=>postFeedback()}>Submit</Button>
         {/* Completed:
         <Checkbox name="completed" onClick={setCompleted} {...label}  checked={complete} icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/> */}
