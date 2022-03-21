@@ -69,7 +69,7 @@ function ClimberHome({
                     setTechnique("")
                 }}>Sort Ascending Difficulty</Button> */}
             {problem.map(problem => (
-                <ProblemCard climbproblem={climbproblem} alignItems="center" justifyContent="center" id="problemcard"
+                <ProblemCard problem={problem} climbproblem={climbproblem} alignItems="center" justifyContent="center" id="problemcard"
                 id={problem.id} 
                 difficulty={problem.difficulty}
                 location={problem.location.location}

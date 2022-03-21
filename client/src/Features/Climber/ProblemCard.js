@@ -19,15 +19,16 @@ import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
 import PendingIcon from '@mui/icons-material/Pending';
 import '../../Styles/ProblemCard.css'
   
-  function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem}) {
-    const [routeRating, setRouteRatingState] = useState(2.5)
+  function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem, problem}) {
+    const [routeRating, setRouteRatingState] = useState("")
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
     const CPF = `/climbproblems/${id}`
-console.log(climbproblem)
+
     function setRouteRating(e){
       setRouteRatingState(e)
-      handleSetProblem("route_rating", e)
+      handleSetProblem("rating", e)
     }
+    console.log(routeRating)
   
   function handleSetProblem(att, input) {
     setSubmitter({...submitter, [att]: input});
@@ -35,69 +36,75 @@ console.log(climbproblem)
 
     const [climberFeedback, setClimberFeedbackState] = useState("")
     function setClimberFeedback(e){
-      setClimberFeedbackState(e.target.value)
+      // setClimberFeedbackState(e.target.value)
       handleSetProblem("feedback", e.target.value)
     }
     const [fav, setFavState] = useState(false)
     function setFavorite(){
       setFavState(!fav)
-      handleSetProblem("favorite", !fav)
+      handleSetProblem("favorite", fav)
       // console.log(fav)
     }
+    console.log(fav)
     const [inProg, setInProgressState] = useState(false)
     function setInProgress(){
       setInProgressState(!inProg)
-      handleSetProblem("in_progress", !inProg)
+      handleSetProblem("in_progress", inProg)
       // console.log(inProg)
     }
 
     const [submitter, setSubmitter] = useState({
       in_progress: false,
       favorite: false,
-      climber_feedback: "climberFeedback",
-      route_rating: 0
+      feedback: "DEFAULT",
+      rating: 0
   })
-    const [canRun, setCanRun]= useState(false)
-    climbproblem.map((climbproblem) => {
-      if(climbproblem.problem_id === id){
-        if(canRun === false){
-          setFavState(climbproblem.favorite)
-          // handleSetProblem("favorite", climbproblem.favorite)
-          // handleSetProblem("climber_feedback", climbproblem.climber_feedback)
-          // handleSetProblem("in_progress", climbproblem.in_progress)
-          // handleSetProblem("completed", climbproblem.completed)
-          // handleSetProblem("route_rating", climbproblem.route_rating)
-          setClimberFeedbackState(climbproblem.feedback)
-          setInProgressState(climbproblem.in_progress)
-          // setCompletedState(climbproblem.completed)
-          setRouteRatingState(climbproblem.rating)
-          setSubmitter({
-            in_progress: climbproblem.in_progress,
-            favorite: climbproblem.favorite,
-            // completed: climbproblem.completed,
-            feedback: climbproblem.feedback,
-            rating: climbproblem.rating})
-          setCanRun(true)
-        }else{
-          console.log("already mounted")
-        }
-        // console.log(climbproblem.problem_id)
-        // console.log(climbproblem.favorite)
-        // console.log(climbproblem.in_progress)
-        // console.log(climbproblem.completed)
-        // console.log(climbproblem.route_rating)
-      }else{
-        console.log("not the droid you are looking for")
-      }
-    })
+
+  console.log(submitter)
+    // const [canRun, setCanRun]= useState(false)
+    // climbproblem.map((climbproblem) => {
+    //   if(climbproblem.problem_id === id){
+    //     if(canRun === false){
+    //       setFavState(climbproblem.favorite)
+    //       // handleSetProblem("favorite", climbproblem.favorite)
+    //       // handleSetProblem("climber_feedback", climbproblem.climber_feedback)
+    //       // handleSetProblem("in_progress", climbproblem.in_progress)
+    //       // handleSetProblem("completed", climbproblem.completed)
+    //       // handleSetProblem("route_rating", climbproblem.route_rating)
+    //       setClimberFeedbackState(climbproblem.feedback)
+    //       setInProgressState(climbproblem.in_progress)
+    //       // setCompletedState(climbproblem.completed)
+    //       setRouteRatingState(climbproblem.rating)
+    //       setSubmitter({
+    //         in_progress: climbproblem.in_progress,
+    //         favorite: climbproblem.favorite,
+    //         // completed: climbproblem.completed,
+    //         feedback: climbproblem.feedback,
+    //         rating: climbproblem.rating})
+    //       setCanRun(true)
+    //     }else{
+    //       console.log("already mounted")
+    //     }
+    //     // console.log(climbproblem.problem_id)
+    //     // console.log(climbproblem.favorite)
+    //     // console.log(climbproblem.in_progress)
+    //     // console.log(climbproblem.completed)
+    //     // console.log(climbproblem.route_rating)
+    //   }else{
+    //     console.log("not the droid you are looking for")
+    //   }
+    // })
     
   useEffect(() => {
-    postFeedback()
-  }, [submitter, fav, inProg, 
+    // postFeedback()
+  }, [
+    // submitter, fav, inProg, 
     // complete,
-     routeRating])
+    //  routeRating
+    ])
 
-  function postFeedback(){
+  function postFeedback(e){
+    e.preventDefault()
     const config = {
       headers: {"Content-Type": "application/json"},
       method: "PATCH",
@@ -105,7 +112,7 @@ console.log(climbproblem)
     }
     fetch(CPF, config)
     .then(r => r.json())
-    // .then((data) => console.log(data))
+    .then((data) => console.log(data))
     // console.log(submitter)
   };
 
@@ -113,7 +120,10 @@ console.log(climbproblem)
       <Box class="box" sx={{ 
           minWidth: 275,
           backgroundColor: '#2A9CBF',
-        }}>
+          
+        }}
+        onSubmit={postFeedback}
+        >
         <Card variant="outlined">
         <React.Fragment>
       <CardContent>
@@ -140,14 +150,16 @@ console.log(climbproblem)
       noValidate
       autoComplete="off"
     >
+      
       <TextField
       sx={{zIndex: 0}}
       name="climber feedback" 
-      value={climberFeedback}
+      value={submitter.feedback}
       onChange={(e) => {
-        setClimberFeedback(e)
+        handleSetProblem("feedback", e.target.value)
+        // setClimberFeedback(e)
         // handleSubmissionChange(e)
-        console.log(submitter)
+        // console.log(submitter)
         // handleSetProblem("climber_feedback", e.target.value)
         // postFeedback()
       }}
@@ -167,8 +179,8 @@ console.log(climbproblem)
       <ReactStars
         name="route rating" 
         count={5}
-        value={routeRating}
-        onChange={(e) => setRouteRating(e)}
+        value={submitter.rating}
+        onChange={(e) => handleSetProblem("rating", e)}
         size={24}
         color2={'#ffd700'} />
         </Grid>
@@ -177,10 +189,11 @@ console.log(climbproblem)
         Favorite:
         <Checkbox name="favorite" onChange={(e) => {
           // handleSubmissionChange(e)
-          console.log(submitter)
-          }} onClick={setFavorite} {...label} checked={fav} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
+          console.log(e.target.value)
+          }} onClick={setFavorite} {...label} checked={submitter.favorite} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
         In progress:
-        <Checkbox name="in progress" onClick={setInProgress} {...label}  checked={inProg} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
+        <Checkbox name="in progress" onClick={setInProgress} {...label}  checked={submitter.in_progress} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
+        <Button variant='contained' onClick={()=>postFeedback()}>Submit</Button>
         {/* Completed:
         <Checkbox name="completed" onClick={setCompleted} {...label}  checked={complete} icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/> */}
         </Typography>
