@@ -28,8 +28,9 @@ import '../../Styles/ProblemCard.css'
       setRouteRatingState(e)
       handleSetProblem("rating", e)
     }
-    console.log(routeRating)
-  
+    const cp = climbproblem
+    // console.log(cp[0])
+    {climbproblem[0] ? console.log(climbproblem[0].favorite) : console.log("FUCK YOU")}
   function handleSetProblem(att, input) {
     setSubmitter({...submitter, [att]: input});
   };
@@ -54,13 +55,14 @@ import '../../Styles/ProblemCard.css'
     }
 
     const [submitter, setSubmitter] = useState({
-      in_progress: false,
-      favorite: false,
-      feedback: "DEFAULT",
+      in_progress: "",
+      favorite: '',
+      feedback: "",
       rating: 0
   })
 
-  console.log(submitter)
+  console.log(climbproblem)
+  console.log()
     // const [canRun, setCanRun]= useState(false)
     // climbproblem.map((climbproblem) => {
     //   if(climbproblem.problem_id === id){
@@ -134,7 +136,7 @@ import '../../Styles/ProblemCard.css'
         Difficulty: V{difficulty}
         </Typography>
         <Typography variant="body2">
-        Location {location}<br />
+        Location: {location}<br />
         Grip Color: {grip_color}<br />
         Grip Hold Highlight: {technique}<br />
         End Date: {end_date}
@@ -154,7 +156,7 @@ import '../../Styles/ProblemCard.css'
       <TextField
       sx={{zIndex: 0}}
       name="climber feedback" 
-      value={submitter.feedback}
+      value={climbproblem.feedback}
       onChange={(e) => {
         handleSetProblem("feedback", e.target.value)
         // setClimberFeedback(e)
@@ -179,7 +181,7 @@ import '../../Styles/ProblemCard.css'
       <ReactStars
         name="route rating" 
         count={5}
-        value={submitter.rating}
+        value={climbproblem.rating}
         onChange={(e) => handleSetProblem("rating", e)}
         size={24}
         color2={'#ffd700'} />
@@ -187,12 +189,9 @@ import '../../Styles/ProblemCard.css'
     <Grid container justifyContent="center">
       <Typography variant="body2">
         Favorite:
-        <Checkbox name="favorite" onChange={(e) => {
-          // handleSubmissionChange(e)
-          console.log(e.target.value)
-          }} onClick={setFavorite} {...label} checked={submitter.favorite} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
+        <Checkbox name="favorite" onChange={setFavorite} {...label} checked={climbproblem.favorite} icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
         In progress:
-        <Checkbox name="in progress" onClick={setInProgress} {...label}  checked={submitter.in_progress} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
+        <Checkbox name="in progress" onChange={setInProgress} {...label}  checked={climbproblem.in_progress} icon={<PendingOutlinedIcon />} checkedIcon={<PendingIcon />} label="In Progress"/>
         <Button variant='contained' onClick={()=>postFeedback()}>Submit</Button>
         {/* Completed:
         <Checkbox name="completed" onClick={setCompleted} {...label}  checked={complete} icon={<AssignmentTurnedInOutlinedIcon />} checkedIcon={<AssignmentTurnedInIcon />} label="Completed"/> */}
