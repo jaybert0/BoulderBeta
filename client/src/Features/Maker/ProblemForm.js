@@ -115,7 +115,7 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
               id="grip-hold-highlight-required"
               label="Grip Hold Highlight"
               value={formProblem.technique}
-              onChange={(e) => handleSetProblem("technique", e.target.value)}
+              onChange={(e) => handleSetProblem("tech_id", e.target.value)}
             >
               {holds.map((hold) => (
                 <MenuItem key={hold.id} value={hold.id}>

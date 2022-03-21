@@ -36,7 +36,7 @@ function MakerHome({problem, climbproblem}){
         grip_color: "",
         // technique: "",
         loc_id: "",
-        // tech_id: "",
+        tech_id: "",
         end_date: "",
         problem_description: "",
     })
