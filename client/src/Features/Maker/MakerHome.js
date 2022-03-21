@@ -21,7 +21,7 @@ function MakerHome({problem, climbproblem}){
         dispatch(fetchProblems());
         // console.log(fetchProblems());
     }, [dispatch]);
-    console.log(probData)
+    // console.log(probData)
 // console.log(problem)
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
