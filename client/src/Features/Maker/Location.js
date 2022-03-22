@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 
-function Tech() {
+function Location() {
     const [locationData, setLocationData] = useState([])
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,

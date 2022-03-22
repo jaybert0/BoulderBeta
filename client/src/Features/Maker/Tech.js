@@ -1,15 +1,15 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import LocationForm from "./LocationForm";
-import LocationCard from "./LocationCard";
+import TechForm from "./TechForm";
+import TechCard from "./TechCard";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 
-function Location() {
-    const [locationData, setLocationData] = useState([])
+function Tech() {
+    const [techData, setTechData] = useState([])
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
         padding: theme.spacing(2),
@@ -17,9 +17,9 @@ function Location() {
         color: theme.palette.text.secondary,
       }));
   useEffect(() => {
-    fetch("/locations")
+    fetch("/teches")
       .then((r) => r.json())
-      .then((data) => setLocationData(data));
+      .then((data) => setTechData(data));
   }, []);
 
   return (
@@ -35,19 +35,19 @@ function Location() {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {locationData.map((loc) => (
+          {techData.map((tech) => (
             <Grid
               item
               xs={2}
               sm={4}
               md={4}
-              key={loc.id}
+              key={tech.id}
               sx={{ boxShadow: 3 }}
             >
               <Item>
-                <LocationCard id={loc.id} 
-                location={loc.location} 
-                description={loc.loc_description}  
+                <TechCard id={tech.id} 
+                location={tech.location} 
+                description={tech.loc_description}  
                 />
               </Item>
             </Grid>
