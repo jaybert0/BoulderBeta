@@ -35,6 +35,8 @@ import '../../Styles/ProblemCard.css'
     setSubmitter({...submitter, [att]: input});
   };
 
+  console.log(problem.climbproblems[0].rating)
+
     const [climberFeedback, setClimberFeedbackState] = useState("")
     function setClimberFeedback(e){
       // setClimberFeedbackState(e.target.value)
@@ -55,11 +57,12 @@ import '../../Styles/ProblemCard.css'
     }
 
     const [submitter, setSubmitter] = useState({
-      in_progress: (climbproblem ? climbproblem.in_progress : false),
-      favorite: (climbproblem ? climbproblem.favorite : false),
-      feedback: (climbproblem ? climbproblem.feedback : ""),
-      rating: (climbproblem ? climbproblem.rating : 0)
+      in_progress: (problem.climbproblems[0] ? problem.climbproblems[0].in_progress : false),
+      favorite: (problem.climbproblems[0] ? problem.climbproblems[0].favorite : false),
+      feedback: (problem.climbproblems[0] ? problem.climbproblems[0].feedback : ""),
+      rating: (problem.climbproblems[0] ? problem.climbproblems[0].rating : 0)
   })
+  console.log(submitter)
 
   console.log(climbproblem)
   console.log()
@@ -192,10 +195,12 @@ import '../../Styles/ProblemCard.css'
     <Grid container justifyContent="center">
       <Typography variant="body2">
         Favorite:
-        <Checkbox name="favorite" onChange={setFavorite} {...label} checked={
-          // (climbproblem[0] ? climbproblem[0].favorite : false)
-          submitter.favorite
-          } icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
+        <Checkbox name="favorite" onChange={setFavorite} {...label} checked="true"
+        // {
+        //   // (climbproblem[0] ? climbproblem[0].favorite : false)
+        //   submitter.favorite
+        //   } 
+          icon={<FavoriteBorder />} checkedIcon={<Favorite />} label="Favorite" sx={{transform: 'scale(1.5'}}/>
         In progress:
         <Checkbox name="in progress" onChange={setInProgress} {...label}  checked={
           // (climbproblem[0] ? climbproblem[0].in_progress : 0)

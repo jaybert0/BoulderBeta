@@ -82,9 +82,9 @@ function LoginForm({onLogin}) {
               onChange={(e) => setPassword(e.target.value)}
             />
              <Button variant="contained" type="submit">{isLoading ? "Loading..." : "Login"}</Button>
-                {errors.map(error => (
-                    <Alert className="mt-3" severity="error" key={error}>{error}</Alert>
-                ))}
+                {/* {errors.map(error => (
+                    // <Alert className="mt-3" severity="error" key={error}>{error}</Alert>
+                ))} */}
           </Box>
         </Box>
       </Container>
