@@ -128,7 +128,6 @@ console.log(problem.climbproblems)
 // (problem.climbproblems[0] ? "Yes" : 'Does not exist')
   function postFeedback(e){
     // e.preventDefault();
-    if(climbproblem[0].id === id){
     fetch(`/climbproblems/${id}`, {
       method: "PATCH",
       headers: {"Content-Type": "application/json"},
@@ -137,15 +136,7 @@ console.log(problem.climbproblems)
     .then(r => r.json())
     .then((data) => console.log(data))
     // console.log(submitter)
-  }else{
-    fetch('/climbproblems', {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(submitter)
-    })
-    .then(r => r.json())
-
-  }};
+  };
 
     return (
       <Box class="box" sx={{ 
@@ -221,7 +212,7 @@ console.log(problem.climbproblems)
     <Grid container justifyContent="center">
       <Typography variant="body2">
         Favorite:
-        <Checkbox name="favorite" onChange={setFavorite} {...label} checked="true"
+        <Checkbox name="favorite" onChange={setFavorite} {...label} checked={submitter.favorite}
         // {
         //   // (climbproblem[0] ? climbproblem[0].favorite : false)
         //   submitter.favorite
