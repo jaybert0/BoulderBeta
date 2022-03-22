@@ -9,6 +9,7 @@ import Technique from './Features/Maker/Technique'
 import Home from './components/Home'
 import MakerHome from './Features/Maker/MakerHome'
 import ClimberHome from './Features/Climber/ClimberHome'
+import Location from './Features/Maker/Location'
 
 
 
@@ -104,6 +105,9 @@ if (!user) return (
       element={<MakerHome problem={problem} climbproblem={climbproblem} user={user}/>} 
       ></Route>
       <Route path="/tech" element={<Technique 
+      // techData={techData} 
+      />}></Route>
+      <Route path="/location" element={<Location 
       // techData={techData} 
       />}></Route>
       <Route path="/climber" 
