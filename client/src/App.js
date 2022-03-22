@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import Login from './Features/Authorization/Login'
 import NavBar from './components/NavBar'
 import Tech from './Features/Maker/Tech'
+import TechInfo from './components/TechInfo'
 import Home from './components/Home'
 import MakerHome from './Features/Maker/MakerHome'
 import ClimberHome from './Features/Climber/ClimberHome'
@@ -103,6 +104,8 @@ if (!user) return (
       element={<MakerHome problem={problem} climbproblem={climbproblem} user={user}/>} 
       ></Route>
       <Route path="/tech" element={<Tech 
+      />}></Route>
+      <Route path="/techinfo" element={<TechInfo 
       />}></Route>
       <Route path="/location" element={<Location 
       />}></Route>
