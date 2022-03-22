@@ -50,8 +50,7 @@ useEffect(() => {
   // .then((data) => console.log(data))
   .then((data) => setClimbproblem(data))
 }, []);
-console.log("climbProblem:")
-console.log(climbproblem)
+
 
 useEffect(() => {
   fetch('/problems')
@@ -59,8 +58,7 @@ useEffect(() => {
   // .then((data) => console.log(data))
   .then((data) => setProblem(data))
 }, []);
-console.log("Problem:")
-  console.log(problem)
+
 
   // useEffect(() => {
   //   fetch('/makerproblem')
@@ -105,10 +103,8 @@ if (!user) return (
       element={<MakerHome problem={problem} climbproblem={climbproblem} user={user}/>} 
       ></Route>
       <Route path="/tech" element={<Tech 
-      // techData={techData} 
       />}></Route>
       <Route path="/location" element={<Location 
-      // techData={techData} 
       />}></Route>
       <Route path="/climber" 
       element={<ClimberHome problem={problem} climbproblem={climbproblem} user={user}/>} 

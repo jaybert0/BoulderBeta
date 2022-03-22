@@ -24,7 +24,7 @@ function Tech() {
 
   return (
     <div>
-      <LocationForm
+      <TechForm
         sx={{ position: "sticky", top: 0 }}
       />
       <Box sx={{ justifyContent: "flex-start" }}>
@@ -46,8 +46,8 @@ function Tech() {
             >
               <Item>
                 <TechCard id={tech.id} 
-                location={tech.location} 
-                description={tech.loc_description}  
+                handholds={tech.handholds} 
+                description={tech.hold_description}  
                 />
               </Item>
             </Grid>
@@ -58,4 +58,4 @@ function Tech() {
   );
 }
 
-export default Location;
+export default Tech;

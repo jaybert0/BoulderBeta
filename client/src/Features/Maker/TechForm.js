@@ -9,43 +9,43 @@ import FormControl from "@mui/material/FormControl";
 import * as React from "react";
 import { useState, useEffect } from "react";
 
-function LocationForm() {
-    const [locationForm, setLocationForm] = useState({
-        id: "",
-        location: "",
-        loc_description: "",
-    })
-    console.log("locationForm:")
-    console.log(locationForm)
-function handleSetLocation(att, input) {
-    setLocationForm({...locationForm, [att]: input})
-}
-function amISubmission() {
-    if (locationForm.id === "") {
+function TechForm() {
+  const [techForm, setTechForm] = useState({
+    id: "",
+    handholds: "",
+    hold_description: "",
+  });
+  console.log("techForm:");
+  console.log(techForm);
+  function handleSetTech(att, input) {
+    setTechForm({ ...techForm, [att]: input });
+  }
+  function amISubmission() {
+    if (techForm.id === "") {
       const config = {
         headers: { "Content-Type": "application/json" },
         method: "POST",
-        body: JSON.stringify(locationForm),
+        body: JSON.stringify(techForm),
       };
-      fetch('/locations', config)
+      fetch("/teches", config)
         .then((r) => r.json())
         .then((data) => console.log(data));
-      
+
       console.log("submit button");
     } else {
       const config = {
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
-        body: JSON.stringify(locationForm),
+        body: JSON.stringify(techForm),
       };
-      fetch(`/locations/${locationForm.id}`, config)
+      fetch(`/teches/${techForm.id}`, config)
         .then((r) => r.json())
         .then((data) => console.log(data));
       console.log("edit button");
     }
     // window.location.reload();
   }
-return(
+  return (
     <Box
       maxWidth
       component="form"
@@ -64,17 +64,19 @@ return(
           <TextField
             sx={{ maxWidth: "20%" }}
             required
-            value={locationForm.location}
-            onChange={(e) => handleSetLocation("location", e.target.value)}
+            value={techForm.handholds}
+            onChange={(e) => handleSetTech("handholds", e.target.value)}
             id="filled-required"
-            label="Location"
+            label="Handhold Highlight"
             variant="filled"
           />
           <TextField
             sx={{ maxWidth: "80%" }}
             required
-            onChange={(e) => handleSetLocation("loc_description", e.target.value)}
-            value={locationForm.description}
+            onChange={(e) =>
+              handleSetTech("hold_description", e.target.value)
+            }
+            value={techForm.hold_description}
             id="filled-required"
             label="Description"
             variant="filled"
@@ -88,8 +90,6 @@ return(
       </div>
     </Box>
   );
-
-
 }
 
-export default LocationForm;
+export default TechForm;

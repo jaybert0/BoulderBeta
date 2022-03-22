@@ -15,7 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ProblemForm from './ProblemForm'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-function LocationCard({id, location, description}) {
+function TechCard({id, handholds, description}) {
     function deleteCard(){
         console.log(id)
         const config = {method: "DELETE"}
@@ -29,7 +29,7 @@ function LocationCard({id, location, description}) {
           <CardContent>
           <Typography variant="body1" color="text.primary">
               ID: {id} <br />           
-              Location: {location} <br />   
+              Handholds: {handholds} <br />   
               Description: {description} <br />   
               </Typography> 
           </CardContent>
@@ -47,4 +47,4 @@ function LocationCard({id, location, description}) {
 
 }
 
-export default LocationCard
+export default TechCard
