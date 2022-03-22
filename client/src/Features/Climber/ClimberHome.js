@@ -13,7 +13,7 @@ import { render } from 'react-dom';
 
 function ClimberHome({
     // setSearch, 
-    problem, getProblems, climbproblem, getClimbproblems
+    problem, getProblems, climbproblem, getClimbproblems, user
 }){
     // console.log(problem[0].difficulty)
     // console.log(problem[0])
@@ -69,7 +69,7 @@ function ClimberHome({
                     setTechnique("")
                 }}>Sort Ascending Difficulty</Button> */}
             {problem.map(problem => (
-                <ProblemCard problem={problem} climbproblem={problem.climbproblems} alignItems="center" justifyContent="center" id="problemcard"
+                <ProblemCard problem={problem} user={user} climbproblem={problem.climbproblems} alignItems="center" justifyContent="center" id="problemcard"
                 id={problem.id} 
                 difficulty={problem.difficulty}
                 location={problem.location.location}

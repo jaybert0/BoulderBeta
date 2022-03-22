@@ -17,7 +17,7 @@ import ProblemForm from './ProblemForm'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
   
-function MakerCard({difficulty, location, technique, grip_color, end_date, problem_description, id, problem, formProblem, setFormProblem, climbproblem, subproblem}) {
+function MakerCard({difficulty, user, location, technique, grip_color, end_date, problem_description, id, problem, formProblem, setFormProblem, climbproblem, subproblem}) {
   const [favAdd, setFavAdd] = useState(0)
   const [inprogAdd, setinProgAdd] = useState(0)
   const [compAdd, setCompAdd] = useState(0)
@@ -26,7 +26,8 @@ function MakerCard({difficulty, location, technique, grip_color, end_date, probl
   const countfav = subproblem.filter(x => x.favorite ===true).length
   const countinp = subproblem.filter(x => x.in_progress ===true).length
   const countcomp = subproblem.filter(x => x.completed ===true).length
-console.log(subproblem[0])
+
+ 
   useEffect(() => {
     setFavAdd(countfav)
     setinProgAdd(countinp)

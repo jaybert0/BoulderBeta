@@ -12,10 +12,12 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import React from 'react';
 
-function MakerHome({problem, climbproblem}){
+function MakerHome({problem, climbproblem, user}){
     const probData = useSelector(state => state.problem.entities);
     const dispatch = useDispatch();
+console.log(user.id)
 
+console.log(problem)
     useEffect(() => {
         // fetchProblems()
         dispatch(fetchProblems());

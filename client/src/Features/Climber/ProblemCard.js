@@ -19,11 +19,19 @@ import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
 import PendingIcon from '@mui/icons-material/Pending';
 import '../../Styles/ProblemCard.css'
   
-  function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem, problem}) {
+  function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem, problem, user}) {
     const [routeRating, setRouteRatingState] = useState("")
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
     const CPF = `/climbproblems/${id}`
-
+    const cppost = {
+      user_id: user.id,
+      problem_id: id,
+      favorite: false,
+      in_progress: false,
+      rating: 0,
+      feedback: ""
+  }
+  console.log(cppost)
     function setRouteRating(e){
       setRouteRatingState(e)
       handleSetProblem("rating", e)
