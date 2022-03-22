@@ -28,10 +28,6 @@ Location.create(
     loc_description: "End of the cave"
 )
 Location.create(
-    location: 1,
-    loc_description: "End of the cave"
-)
-Location.create(
     location: 2,
     loc_description: "End of the cave"
 )
