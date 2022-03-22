@@ -10,7 +10,12 @@ import { styled } from "@mui/material/styles";
 
 function Location() {
     const [locationData, setLocationData] = useState([])
-
+    const Item = styled(Paper)(({ theme }) => ({
+        ...theme.typography.body2,
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      }));
   useEffect(() => {
     fetch("/locations")
       .then((r) => r.json())
@@ -40,9 +45,9 @@ function Location() {
               sx={{ boxShadow: 3 }}
             >
               <Item>
-                <LocationCard id={id} 
-                location={location} 
-                description={loc_description}  
+                <LocationCard id={loc.id} 
+                location={loc.location} 
+                description={loc.loc_description}  
                 />
               </Item>
             </Grid>
