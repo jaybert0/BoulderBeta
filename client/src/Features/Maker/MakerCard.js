@@ -15,7 +15,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ProblemForm from './ProblemForm'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+// fetch("/climbproblems", {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   // body: JSON.stringify(libraryForm),
+// });
   
 function MakerCard({difficulty, user, location, technique, grip_color, end_date, problem_description, id, problem, formProblem, setFormProblem, climbproblem, subproblem}) {
   const [favAdd, setFavAdd] = useState(0)

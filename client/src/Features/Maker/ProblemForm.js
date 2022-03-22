@@ -56,13 +56,13 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
       fetch(CLIMBFORMPROBLEMSUBMITTER, config)
         .then((r) => r.json())
         .then((data) => console.log(data));
-      fetch("/climbproblems", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // body: JSON.stringify(libraryForm),
-        });
+      // fetch("/climbproblems", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // body: JSON.stringify(libraryForm),
+      //   });
       console.log(formProblem);
       console.log("submit button");
     } else {

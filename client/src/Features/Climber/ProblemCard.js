@@ -31,6 +31,19 @@ import '../../Styles/ProblemCard.css'
       rating: 0,
       feedback: ""
   }
+  useEffect(() => {
+    if(problem.climbproblems[0] === undefined){
+     fetch('/climbproblems', {
+       method: "POST",
+       headers: {"Content-Type": "application/json"},
+       body: JSON.stringify(cppost)
+     })
+     .then(r => r.json())
+     .then((data) => console.log(data))
+    
+    }
+    
+  },[])
   console.log(cppost)
     function setRouteRating(e){
       setRouteRatingState(e)
@@ -43,7 +56,7 @@ import '../../Styles/ProblemCard.css'
     setSubmitter({...submitter, [att]: input});
   };
 
-  console.log(problem.climbproblems[0].rating)
+  // console.log(problem.climbproblems[0].rating)
 
     const [climberFeedback, setClimberFeedbackState] = useState("")
     function setClimberFeedback(e){
@@ -108,26 +121,31 @@ import '../../Styles/ProblemCard.css'
     //   }
     // })
     
-  useEffect(() => {
-    // postFeedback()
-  }, [
-    // submitter, fav, inProg, 
-    // complete,
-    //  routeRating
-    ])
-
+ 
+// console.log(climbproblem[0].id)
+console.log(problem)
+console.log(problem.climbproblems)
+// (problem.climbproblems[0] ? "Yes" : 'Does not exist')
   function postFeedback(e){
-    e.preventDefault()
-    const config = {
-      headers: {"Content-Type": "application/json"},
+    // e.preventDefault();
+    if(climbproblem[0].id === id){
+    fetch(`/climbproblems/${id}`, {
       method: "PATCH",
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify(submitter)
-    }
-    fetch(CPF, config)
+    })
     .then(r => r.json())
     .then((data) => console.log(data))
     // console.log(submitter)
-  };
+  }else{
+    fetch('/climbproblems', {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(submitter)
+    })
+    .then(r => r.json())
+
+  }};
 
     return (
       <Box class="box" sx={{ 
