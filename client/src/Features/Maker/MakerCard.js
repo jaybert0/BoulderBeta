@@ -49,6 +49,7 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
     .then((data) => console.log(data))
     window.location.reload()
   }
+  console.log(technique)
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardContent>
@@ -76,23 +77,23 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
             <DeleteIcon onClick={() => deleteCard()}/>
           </IconButton>
           <IconButton sx={{zIndex: 0}} aria-label="edit" 
-          // onClick= {() => {
-          //   if (problem.id === id) {
-          //       setFormProblem({
-          //           id: id,
-          //           difficulty: difficulty,
-          //           grip_color: grip_color,
-          //           technique: technique,
-          //           location: location,
-          //           end_date: end_date,
-          //           problem_description: problem_description,
-          //           maker_id: 1,
-          //   }
-          //       )
-          //   }
+          onClick= {() => {
+            if (problem.id === id) {
+                setFormProblem({
+                    id: id,
+                    difficulty: difficulty,
+                    grip_color: grip_color,
+                    tech_id: problem.tech_id,
+                    loc_id: problem.loc_id,
+                    end_date: end_date,
+                    problem_description: problem_description,
+                    // maker_id: 1,
+            }
+                )
+            }
             
-          // } 
-          // }
+          } 
+          }
           >
           <EditIcon   />
           </IconButton>
