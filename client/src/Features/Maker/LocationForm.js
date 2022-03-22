@@ -11,7 +11,11 @@ import { useState, useEffect } from "react";
 
 function LocationForm() {
 
-
+return(
+    <div>
+        <p>YO</p>
+    </div>
+)
 
 }
 
