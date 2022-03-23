@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
-import rootReducer from "./Features/Reducer/reducer";
+// import rootReducer from "./Features/Reducer/reducer";
 import store from "./Store/store"
 
 

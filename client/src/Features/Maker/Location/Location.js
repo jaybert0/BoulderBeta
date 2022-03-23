@@ -6,10 +6,20 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+import { useDispatch, useSelector } from "react-redux";
+import {fetchLocation} from '../../Reducer/locationsSlice'
+
 
 
 function Location() {
+    const locSliceData = useSelector(state => state.locations.entities)
     const [locationData, setLocationData] = useState([])
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(fetchLocation());
+  }, [dispatch]);
+  console.log(locSliceData)
     const [locationForm, setLocationForm] = useState({
         id: "",
         location: "",

@@ -19,7 +19,7 @@ function LocationCard({id, location, description, locationForm, setLocationForm,
         .then((data) => console.log(data))
         window.location.reload()
       }
-      console.log(description)
+      // console.log(description)
     return (
         <Card sx={{ maxWidth: 345 }}>
           <CardContent>
