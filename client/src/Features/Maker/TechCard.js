@@ -15,11 +15,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ProblemForm from './ProblemForm'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-function TechCard({id, handholds, description}) {
+function TechCard({id, handholds, description, techForm, setTechForm, tech}) {
     function deleteCard(){
         console.log(id)
         const config = {method: "DELETE"}
-        fetch(`locations/${id}`, config)
+        fetch(`teches/${id}`, config)
         .then((r) => r.json())
         .then((data) => console.log(data))
         window.location.reload()
@@ -34,11 +34,22 @@ function TechCard({id, handholds, description}) {
               </Typography> 
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="delete">
-              <DeleteIcon onClick={() => deleteCard()}/>
+            <IconButton aria-label="delete" onClick={() => deleteCard()}>
+              <DeleteIcon />
             </IconButton>
             <IconButton sx={{zIndex: 0}} aria-label="edit" 
-            >
+            onClick= {() => {
+              if (tech.id === id) {
+                  setTechForm({
+                      id: id,
+                      handholds: tech.handholds,
+                      hold_description: tech.hold_description
+              }
+                  )
+              }
+              
+            } 
+            } >
             <EditIcon   />
             </IconButton>
         </CardActions>

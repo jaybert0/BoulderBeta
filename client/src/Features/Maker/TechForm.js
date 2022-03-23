@@ -9,12 +9,8 @@ import FormControl from "@mui/material/FormControl";
 import * as React from "react";
 import { useState, useEffect } from "react";
 
-function TechForm() {
-  const [techForm, setTechForm] = useState({
-    id: "",
-    handholds: "",
-    hold_description: "",
-  });
+function TechForm({techForm, setTechForm}) {
+ 
   console.log("techForm:");
   console.log(techForm);
   function handleSetTech(att, input) {

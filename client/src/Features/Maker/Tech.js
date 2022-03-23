@@ -50,9 +50,13 @@ function Tech() {
               sx={{ boxShadow: 3 }}
             >
               <Item>
-                <TechCard id={tech.id} 
+                <TechCard 
+                tech={tech}
+                id={tech.id} 
                 handholds={tech.handholds} 
                 description={tech.hold_description}  
+                techForm={techForm}
+                setTechForm={setTechForm}
                 />
               </Item>
             </Grid>
