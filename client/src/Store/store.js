@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 // import reducers here
-import problemsReducer from '../Features/Reducer/problemsSlice';
+// import problemsReducer from '../Features/Reducer/problemsSlice';
+import locationReducer from '../Features/Maker/Location/locationSlice'
 const store = configureStore({
   reducer: {
-    problem: problemsReducer,
+    // problem: problemsReducer,
+    locations: locationReducer,
 },
 });
 

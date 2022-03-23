@@ -58,7 +58,7 @@ useEffect(() => {
   // .then((data) => console.log(data))
   .then((data) => setProblem(data))
 }, []);
-// console.log(problem)
+// console.log(user.admin)
 
 
   // useEffect(() => {
