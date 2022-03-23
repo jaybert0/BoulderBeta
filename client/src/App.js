@@ -19,7 +19,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [problem, setProblem] = useState([]);
   const [climbproblem, setClimbproblem] = useState([]);
-  const [maker, setMaker] = useState([])
 
 
   const navigate = useNavigate()
