@@ -4,11 +4,14 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router';
+
 
 function LocationForm({ locationForm, setLocationForm}) {
-    
-    console.log("locationForm:")
-    console.log(locationForm)
+  let navigate = useNavigate();
+
+    // console.log("locationForm:")
+    // console.log(locationForm)
 function handleSetLocation(att, input) {
     setLocationForm({...locationForm, [att]: input})
 }
@@ -35,6 +38,7 @@ function amISubmission() {
         .then((data) => console.log(data));
       console.log("edit button");
     }
+    navigate('/boltmonkey')
     window.location.reload();
   }
 return(

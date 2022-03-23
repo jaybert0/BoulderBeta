@@ -8,11 +8,12 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router';
 
 function TechForm({techForm, setTechForm}) {
- 
-  console.log("techForm:");
-  console.log(techForm);
+  let navigate = useNavigate();
+  // console.log("techForm:");
+  // console.log(techForm);
   function handleSetTech(att, input) {
     setTechForm({ ...techForm, [att]: input });
   }
@@ -26,7 +27,6 @@ function TechForm({techForm, setTechForm}) {
       fetch("/teches", config)
         .then((r) => r.json())
         .then((data) => console.log(data));
-
       console.log("submit button");
     } else {
       const config = {
@@ -39,6 +39,7 @@ function TechForm({techForm, setTechForm}) {
         .then((data) => console.log(data));
       console.log("edit button");
     }
+    navigate('/boltmonkey')
     window.location.reload();
   }
   return (
