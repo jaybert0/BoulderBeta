@@ -15,7 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ProblemForm from './ProblemForm'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-function LocationCard({id, location, description}) {
+function LocationCard({id, location, description, locationForm, setLocationForm, loc}) {
     function deleteCard(){
         console.log(id)
         const config = {method: "DELETE"}
@@ -24,6 +24,7 @@ function LocationCard({id, location, description}) {
         .then((data) => console.log(data))
         window.location.reload()
       }
+      console.log(description)
     return (
         <Card sx={{ maxWidth: 345 }}>
           <CardContent>
@@ -37,7 +38,19 @@ function LocationCard({id, location, description}) {
             <IconButton aria-label="delete">
               <DeleteIcon onClick={() => deleteCard()}/>
             </IconButton>
-            <IconButton sx={{zIndex: 0}} aria-label="edit" 
+            <IconButton sx={{zIndex: 0}} aria-label="edit"
+            onClick= {() => {
+                if (loc.id === id) {
+                    setLocationForm({
+                        id: id,
+                        location: location,
+                        loc_description: loc.loc_description
+                }
+                    )
+                }
+                
+              } 
+              } 
             >
             <EditIcon   />
             </IconButton>

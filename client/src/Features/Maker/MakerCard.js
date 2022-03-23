@@ -73,7 +73,7 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" onClick={() => deleteCard()}>
             {/* <DeleteIcon /> */}
             <DeleteIcon onClick={() => deleteCard()}/>
           </IconButton>

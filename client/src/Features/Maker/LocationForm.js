@@ -9,12 +9,8 @@ import FormControl from "@mui/material/FormControl";
 import * as React from "react";
 import { useState, useEffect } from "react";
 
-function LocationForm() {
-    const [locationForm, setLocationForm] = useState({
-        id: "",
-        location: "",
-        loc_description: "",
-    })
+function LocationForm({ locationForm, setLocationForm}) {
+    
     console.log("locationForm:")
     console.log(locationForm)
 function handleSetLocation(att, input) {
@@ -74,7 +70,7 @@ return(
             sx={{ maxWidth: "80%" }}
             required
             onChange={(e) => handleSetLocation("loc_description", e.target.value)}
-            value={locationForm.description}
+            value={locationForm.loc_description}
             id="filled-required"
             label="Description"
             variant="filled"

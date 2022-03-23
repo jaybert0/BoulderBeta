@@ -10,6 +10,11 @@ import { styled } from "@mui/material/styles";
 
 function Location() {
     const [locationData, setLocationData] = useState([])
+    const [locationForm, setLocationForm] = useState({
+        id: "",
+        location: "",
+        loc_description: "",
+    })
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
         padding: theme.spacing(2),
@@ -25,7 +30,7 @@ function Location() {
   return (
     <div>
       <LocationForm
-        sx={{ position: "sticky", top: 0 }}
+        sx={{ position: "sticky", top: 0 }} locationForm={locationForm} setLocationForm={setLocationForm}
       />
       <Box sx={{ justifyContent: "flex-start" }}>
         <br />
@@ -46,8 +51,11 @@ function Location() {
             >
               <Item>
                 <LocationCard id={loc.id} 
+                loc={loc}
                 location={loc.location} 
                 description={loc.loc_description}  
+                locationForm={locationForm} 
+                setLocationForm={setLocationForm}
                 />
               </Item>
             </Grid>
