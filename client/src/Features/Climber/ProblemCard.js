@@ -116,9 +116,9 @@ import '../../Styles/ProblemCard.css'
     
  
 
-console.log(problem)
-console.log(problem.problem_description)
-console.log(problem.climbproblems[0])
+// console.log(problem)
+// console.log(problem.problem_description)
+// console.log(problem.climbproblems[0])
 
   function postFeedback(e){
     // e.preventDefault();

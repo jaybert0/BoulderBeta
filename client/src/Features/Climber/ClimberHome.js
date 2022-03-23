@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProblemCard from './ProblemCard'
 import WallMap from './WallMap'
 import Box from '@mui/material/Box';
@@ -15,7 +15,21 @@ function ClimberHome({
     // setSearch, 
     problem, getProblems, climbproblem, getClimbproblems, user
 }){
-    console.log(problem)
+    const [tech, setTech] = useState([]);
+    const [loc, setLoc] = useState([]);
+    useEffect(() => {
+        fetch("/teches")
+          .then((r) => r.json())
+          // .then((data) => console.log(data))
+          .then((data) => setTech(data));
+      }, []);
+    
+      useEffect(() => {
+        fetch("/locations")
+          .then((r) => r.json())
+          // .then((data) => console.log(data))
+          .then((data) => setLoc(data));
+      }, []);
 
     // const delay = ms => new Promise(res => setTimeout(res, ms))
     // const [technique, setTechnique] = useState('');
