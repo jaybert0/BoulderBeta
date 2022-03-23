@@ -25,13 +25,14 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
   const countfav = subproblem.filter(x => x.favorite ===true).length
   const countinp = subproblem.filter(x => x.in_progress ===true).length
   const countcomp = subproblem.filter(x => x.completed ===true).length
+  const crating = subproblem.map(x => x.rating)
+  const avgRating = crating.reduce((a,b) => a+b, 0)/crating.length
 
-//  console.log(problem.end_date)
   useEffect(() => {
     setFavAdd(countfav)
     setinProgAdd(countinp)
     // setCompAdd(countcomp)
-    setRating(subproblem.rating)
+    setRating(avgRating)
   }, [])
   
   function deleteCard(){
@@ -54,7 +55,7 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
           <Typography variant="body2" color="text.secondary">
             Difficulty: V{difficulty}<br />
             Grip Color: {grip_color}<br />
-            Grip Hold Highlight: {technique}<br />
+            Grip Hold Highlight: {problem.tech.handholds}<br />
             End Date: {end_date}<br />
             Favorites: {favAdd}<br />
             In-Progress: {inprogAdd}<br />
