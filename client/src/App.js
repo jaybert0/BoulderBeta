@@ -110,7 +110,9 @@ if (!user) return (
       <Route path="/location" element={<Location 
       />}></Route>
       <Route path="/climber" 
-      element={<ClimberHome problem={problem} climbproblem={climbproblem} user={user}/>} 
+      element={<ClimberHome 
+        problem={problem} 
+      climbproblem={climbproblem} user={user}/>} 
       ></Route>
       <Route path="/" element={<Home/>}></Route>
       </Routes>

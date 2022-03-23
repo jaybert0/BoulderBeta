@@ -15,8 +15,9 @@ import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
 import PendingIcon from '@mui/icons-material/Pending';
 import '../../Styles/ProblemCard.css'
   
-  function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem, problem, user}) {
+  function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, problem, user}) {
     const [routeRating, setRouteRatingState] = useState("")
+
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
     const cppost = {
       user_id: user.id,
@@ -44,13 +45,11 @@ import '../../Styles/ProblemCard.css'
       setRouteRatingState(e)
       handleSetProblem("rating", e)
     }
-    const cp = climbproblem
+
   
   function handleSetProblem(att, input) {
     setSubmitter({...submitter, [att]: input});
   };
-
-  // console.log(problem.climbproblems[0].rating)
 
     const [climberFeedback, setClimberFeedbackState] = useState("")
     function setClimberFeedback(e){
@@ -63,7 +62,7 @@ import '../../Styles/ProblemCard.css'
       handleSetProblem("favorite", fav)
       // console.log(fav)
     }
-    console.log(fav)
+    
     const [inProg, setInProgressState] = useState(false)
     function setInProgress(){
       setInProgressState(!inProg)
@@ -79,8 +78,8 @@ import '../../Styles/ProblemCard.css'
   })
   console.log(submitter)
 
-  console.log(climbproblem)
-  console.log()
+ 
+
     // const [canRun, setCanRun]= useState(false)
     // climbproblem.map((climbproblem) => {
     //   if(climbproblem.problem_id === id){
@@ -118,7 +117,8 @@ import '../../Styles/ProblemCard.css'
  
 
 console.log(problem)
-console.log(problem.climbproblems)
+console.log(problem.problem_description)
+console.log(problem.climbproblems[0])
 
   function postFeedback(e){
     // e.preventDefault();
@@ -130,7 +130,7 @@ console.log(problem.climbproblems)
     .then(r => r.json())
     .then((data) => console.log(data))
   };
-  console.log(problem)
+
 
     return (
       <Box class="box" sx={{ 
@@ -144,16 +144,16 @@ console.log(problem.climbproblems)
         <React.Fragment>
       <CardContent>
         <Typography variant="h5" component="div">
-        {problem_description}
+        {problem.problem_description}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        Difficulty: V{difficulty}
+        Difficulty: V{problem.difficulty}
         </Typography>
         <Typography variant="body2">
-        Location: {location}<br />
-        Grip Color: {grip_color}<br />
-        Grip Hold Highlight: {technique}<br />
-        End Date: {end_date}
+        Location: {problem.location.location}<br />
+        Grip Color: {problem.grip_color}<br />
+        Grip Hold Highlight: {problem.tech.handholds}<br />
+        End Date: {problem.end_date}
         </Typography>
       </CardContent>
       <Box
