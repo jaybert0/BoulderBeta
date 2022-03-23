@@ -9,26 +9,43 @@ import FormControl from "@mui/material/FormControl";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router';
+import {createTech, updateTech} from '../../Reducer/techesSlice'
+import { useDispatch } from "react-redux";
 
 function TechForm({techForm, setTechForm}) {
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   // console.log("techForm:");
   // console.log(techForm);
   function handleSetTech(att, input) {
     setTechForm({ ...techForm, [att]: input });
   }
+  console.log(techForm)
   function amISubmission() {
-    if (techForm.id === "") {
-      const config = {
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-        body: JSON.stringify(techForm),
-      };
-      fetch("/teches", config)
-        .then((r) => r.json())
-        .then((data) => console.log(data));
-      console.log("submit button");
-    } else {
+    if (techForm.id === "") 
+    // {
+    //   const config = {
+    //     headers: { "Content-Type": "application/json" },
+    //     method: "POST",
+    //     body: JSON.stringify(techForm),
+    //   };
+    //   fetch("/teches", config)
+    //     .then((r) => r.json())
+    //     .then((data) => console.log(data));
+    //   console.log("submit button");
+    // } 
+    {
+      dispatch(
+        createTech({
+          handholds: techForm.handholds,
+          hold_description: techForm.hold_description
+        })
+      )
+      console.log("SUBMIT VIA REDUX")
+    }
+    
+    
+    else {
       const config = {
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
@@ -39,8 +56,8 @@ function TechForm({techForm, setTechForm}) {
         .then((data) => console.log(data));
       console.log("edit button");
     }
-    navigate('/boltmonkey')
-    window.location.reload();
+    // navigate('/boltmonkey')
+    // window.location.reload();
   }
   return (
     <Box

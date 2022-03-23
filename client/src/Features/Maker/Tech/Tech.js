@@ -20,9 +20,9 @@ function Tech() {
   });
   useEffect(() => {
     dispatch(fetchTech());
-}, [dispatch]);
+  }, [dispatch]);
 
-console.log(techSliceData)
+  console.log(techSliceData);
 
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
