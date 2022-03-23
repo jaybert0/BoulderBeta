@@ -33,7 +33,7 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
   const countinp = subproblem.filter(x => x.in_progress ===true).length
   const countcomp = subproblem.filter(x => x.completed ===true).length
 
- console.log(formProblem)
+ console.log(problem.end_date)
   useEffect(() => {
     setFavAdd(countfav)
     setinProgAdd(countinp)
@@ -85,7 +85,7 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
                     difficulty: difficulty,
                     grip_color: grip_color,
                     tech_id: problem.tech["id"],
-                    loc_id: problem.location["id"],
+                    location_id: problem.location["id"],
                     end_date: end_date,
                     problem_description: problem_description,
                     // maker_id: 1,

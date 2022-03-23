@@ -45,7 +45,7 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
   function handleSetProblem(att, input) {
     setFormProblem({ ...formProblem, [att]: input });
   }
-  console.log(formProblem)
+  console.log(formProblem.loc_id)
   function amISubmission() {
     if (formProblem.id === "") {
       const config = {
@@ -63,7 +63,6 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
       //     },
       //     // body: JSON.stringify(libraryForm),
       //   });
-      console.log(formProblem);
       console.log("submit button");
     } else {
       const config = {
@@ -78,7 +77,7 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
     }
     // window.location.reload();
   }
-
+console.log(formProblem)
   return (
     <Box
       maxWidth
@@ -140,10 +139,10 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
               id="location-required"
               label="Location *"
               onChange={(e) => handleSetProblem("location_id", e.target.value)}
-              value={formProblem.loc_id}
+              value={formProblem.location_id}
             >
               {locs.map((loc) => (
-                <MenuItem key={loc} value={formProblem.loc_id}>
+                <MenuItem key={loc} value={loc}>
                   {loc}
                 </MenuItem>
               ))}
