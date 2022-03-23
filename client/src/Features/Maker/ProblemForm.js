@@ -45,7 +45,6 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
   function handleSetProblem(att, input) {
     setFormProblem({ ...formProblem, [att]: input });
   }
-  console.log(formProblem.loc_id)
   function amISubmission() {
     if (formProblem.id === "") {
       const config = {
@@ -56,13 +55,6 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
       fetch(CLIMBFORMPROBLEMSUBMITTER, config)
         .then((r) => r.json())
         .then((data) => console.log(data));
-      // fetch("/climbproblems", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // body: JSON.stringify(libraryForm),
-      //   });
       console.log("submit button");
     } else {
       const config = {
@@ -77,7 +69,7 @@ function ProblemForm({ problem, climbproblem, formProblem, setFormProblem }) {
     }
     // window.location.reload();
   }
-console.log(formProblem)
+
   return (
     <Box
       maxWidth

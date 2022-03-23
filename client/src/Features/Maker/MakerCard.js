@@ -13,15 +13,8 @@ import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import ProblemForm from './ProblemForm'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// fetch("/climbproblems", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   // body: JSON.stringify(libraryForm),
-// });
+
+
   
 function MakerCard({difficulty, user, location, technique, grip_color, end_date, problem_description, id, problem, formProblem, setFormProblem, climbproblem, subproblem}) {
   const [favAdd, setFavAdd] = useState(0)
@@ -33,7 +26,7 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
   const countinp = subproblem.filter(x => x.in_progress ===true).length
   const countcomp = subproblem.filter(x => x.completed ===true).length
 
- console.log(problem.end_date)
+//  console.log(problem.end_date)
   useEffect(() => {
     setFavAdd(countfav)
     setinProgAdd(countinp)
@@ -49,8 +42,8 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
     .then((data) => console.log(data))
     window.location.reload()
   }
-  console.log(technique)
-  console.log(problem.location["id"])
+  // console.log(technique)
+  // console.log(problem.location["id"])
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardContent>
@@ -63,19 +56,14 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
             Grip Color: {grip_color}<br />
             Grip Hold Highlight: {technique}<br />
             End Date: {end_date}<br />
-            {/* Favorites: console.log({climbproblems.favorite})<br />
-            In-Progress: console.log({climbproblems.in_progress})<br />
-            Completed: console.log({climbproblems.completed})<br /> */}
             Favorites: {favAdd}<br />
             In-Progress: {inprogAdd}<br />
-            {/* Completed: {compAdd}<br /> */}
             Rating: {rating}<br />
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="delete" onClick={() => deleteCard()}>
-            {/* <DeleteIcon /> */}
-            <DeleteIcon onClick={() => deleteCard()}/>
+            <DeleteIcon />
           </IconButton>
           <IconButton sx={{zIndex: 0}} aria-label="edit" 
           onClick= {() => {

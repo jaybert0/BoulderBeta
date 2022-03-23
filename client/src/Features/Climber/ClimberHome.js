@@ -15,22 +15,18 @@ function ClimberHome({
     // setSearch, 
     problem, getProblems, climbproblem, getClimbproblems, user
 }){
-    // console.log(problem[0].difficulty)
-    // console.log(problem[0])
-    // console.log(climbproblem)
+    
 
- console.log(problem)
+    // const delay = ms => new Promise(res => setTimeout(res, ms))
+    // const [technique, setTechnique] = useState('');
 
-    const delay = ms => new Promise(res => setTimeout(res, ms))
-    const [technique, setTechnique] = useState('');
-
-    const handleChange = async (e) => {
-        // setTechnique(e.target.value);
-        // getProblems();
-        // await delay(500);
-        // setSearch(e.target.value)
-        // console.log(e.target.value)
-    };
+    // const handleChange = async (e) => {
+    //     setTechnique(e.target.value);
+    //     getProblems();
+    //     await delay(500);
+    //     setSearch(e.target.value)
+    //     console.log(e.target.value)
+    // };
     return(
         
         <div>

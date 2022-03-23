@@ -2,8 +2,6 @@ import * as React from 'react';
 import { useState, useEffect } from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -13,8 +11,6 @@ import ReactStars from 'react-stars';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
 import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
 import PendingIcon from '@mui/icons-material/Pending';
 import '../../Styles/ProblemCard.css'
@@ -22,7 +18,6 @@ import '../../Styles/ProblemCard.css'
   function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, climbproblem, problem, user}) {
     const [routeRating, setRouteRatingState] = useState("")
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
-    const CPF = `/climbproblems/${id}`
     const cppost = {
       user_id: user.id,
       problem_id: id,
@@ -44,14 +39,13 @@ import '../../Styles/ProblemCard.css'
     }
     
   },[])
-  console.log(cppost)
+
     function setRouteRating(e){
       setRouteRatingState(e)
       handleSetProblem("rating", e)
     }
     const cp = climbproblem
-    // console.log(cp[0])
-    // {climbproblem[0] ? climbproblem[0].favorite : }
+  
   function handleSetProblem(att, input) {
     setSubmitter({...submitter, [att]: input});
   };
@@ -122,10 +116,10 @@ import '../../Styles/ProblemCard.css'
     // })
     
  
-// console.log(climbproblem[0].id)
+
 console.log(problem)
 console.log(problem.climbproblems)
-// (problem.climbproblems[0] ? "Yes" : 'Does not exist')
+
   function postFeedback(e){
     // e.preventDefault();
     fetch(`/climbproblems/${id}`, {
@@ -135,7 +129,6 @@ console.log(problem.climbproblems)
     })
     .then(r => r.json())
     .then((data) => console.log(data))
-    // console.log(submitter)
   };
 
     return (
@@ -179,14 +172,9 @@ console.log(problem.climbproblems)
       value={submitter.feedback}
       onChange={(e) => {
         handleSetProblem("feedback", e.target.value)
-        // setClimberFeedback(e)
-        // handleSubmissionChange(e)
-        // console.log(submitter)
-        // handleSetProblem("climber_feedback", e.target.value)
-        // postFeedback()
+     
       }}
-      // value={feedback}  
-      // onChange={(e) => submitFeedback(e.target.value)}
+   
       id="filled-basic" 
       label="Please add comments about the route" 
       variant="filled" />
@@ -202,7 +190,7 @@ console.log(problem.climbproblems)
         name="route rating" 
         count={5}
         value={
-          // (climbproblem[0] ? climbproblem[0].rating : 0)
+
           submitter.rating
         }
         onChange={(e) => handleSetProblem("rating", e)}
