@@ -15,7 +15,7 @@ function ClimberHome({
     // setSearch, 
     problem, getProblems, climbproblem, getClimbproblems, user
 }){
-    
+    console.log(problem)
 
     // const delay = ms => new Promise(res => setTimeout(res, ms))
     // const [technique, setTechnique] = useState('');

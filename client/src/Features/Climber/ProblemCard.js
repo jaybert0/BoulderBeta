@@ -130,6 +130,7 @@ console.log(problem.climbproblems)
     .then(r => r.json())
     .then((data) => console.log(data))
   };
+  console.log(problem)
 
     return (
       <Box class="box" sx={{ 
