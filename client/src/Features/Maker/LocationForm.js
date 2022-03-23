@@ -39,7 +39,7 @@ function amISubmission() {
         .then((data) => console.log(data));
       console.log("edit button");
     }
-    // window.location.reload();
+    window.location.reload();
   }
 return(
     <Box
