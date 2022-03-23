@@ -1,0 +1,11 @@
+#map {
+    position:sticky;
+    top: 0;
+    z-index: 1;
+}
+#mapbox {
+    background-color: #1C61AC
+}
+#wallmap {
+    height: 300px
+}

@@ -3,16 +3,24 @@ import './App.css';
 import { Alert } from '@mui/material';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Container from '@mui/material/Container';
-import Login from './components/Login'
+import Login from './Features/Authorization/Login'
 import NavBar from './components/NavBar'
-import Technique from './components/Technique'
+import Tech from './Features/Maker/Tech'
+import TechInfo from './components/TechInfo'
 import Home from './components/Home'
+import MakerHome from './Features/Maker/MakerHome'
+import ClimberHome from './Features/Climber/ClimberHome'
+import Location from './Features/Maker/Location'
 
 
 
 function App() {
 
   const [user, setUser] = useState(null);
+  const [problem, setProblem] = useState([]);
+  const [climbproblem, setClimbproblem] = useState([]);
+  const [maker, setMaker] = useState([])
+
 
   const navigate = useNavigate()
 
@@ -37,7 +45,31 @@ function App() {
     navigate("/");
 }
 
-const [techData, setTechData] = useState([])
+useEffect(() => {
+  fetch('/climbproblems')
+  .then((r) => r.json())
+  // .then((data) => console.log(data))
+  .then((data) => setClimbproblem(data))
+}, []);
+
+
+useEffect(() => {
+  fetch('/problems')
+  .then((r) => r.json())
+  // .then((data) => console.log(data))
+  .then((data) => setProblem(data))
+}, []);
+
+
+  // useEffect(() => {
+  //   fetch('/makerproblem')
+  //   .then((r) => r.json())
+  //   // .then((data) => console.log(data))
+  //   .then((data) => setMaker(data))
+  // }, []);
+  // console.log("Maker:")
+  // console.log(maker)
+// const [techData, setTechData] = useState([])
 // Wikitext
 // useEffect(() => {
 //     fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=wikitext&section=9&sectionpreview=1&formatversion=2&origin=*")
@@ -47,13 +79,13 @@ const [techData, setTechData] = useState([])
 //   }, []);
 
 // Regular text for wiki fetch
-  useEffect(() => {
-    fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=text&section=9&sectionpreview=1&formatversion=2&origin=*")
-      .then((r) => r.json())
-      .then((data)=>setTechData(data))
-      // .then((data) => setBGData(data));
-  }, []);
-
+  
+// useEffect(() => {
+//   fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=text&section=9&sectionpreview=1&formatversion=2&origin=*")
+//     .then((r) => r.json())
+//     .then((data)=>setTechData(data))
+//     // .then((data) => setBGData(data));
+// }, []);
 
 if (!user) return (
   <>
@@ -67,9 +99,19 @@ if (!user) return (
     <div className="App">
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       
-      <img src="https://media0.giphy.com/media/638KU8suvbVGo/giphy.gif?cid=ecf05e47jh7y1s5ni4utwk0xqe3mfcj1umdb694qwioagiio&rid=giphy.gif&ct=g" alt="logo" />
       <Routes>
-      <Route path="/tech" element={<Technique techData={techData} />}></Route>
+      <Route path="/boltmonkey" 
+      element={<MakerHome problem={problem} climbproblem={climbproblem} user={user}/>} 
+      ></Route>
+      <Route path="/tech" element={<Tech 
+      />}></Route>
+      <Route path="/techinfo" element={<TechInfo 
+      />}></Route>
+      <Route path="/location" element={<Location 
+      />}></Route>
+      <Route path="/climber" 
+      element={<ClimberHome problem={problem} climbproblem={climbproblem} user={user}/>} 
+      ></Route>
       <Route path="/" element={<Home/>}></Route>
       </Routes>
     </div>

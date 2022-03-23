@@ -11,7 +11,7 @@ class ClimbproblemsController < ApplicationController
     
       def update
         climbproblem = Climbproblem.find(params[:id])
-        Climbproblem.update!(climbproblem_params)
+        climbproblem.update!(climbproblem_params)
         render json: climbproblem, status: :ok
       end
     
@@ -28,6 +28,6 @@ class ClimbproblemsController < ApplicationController
     
       private
         def climbproblem_params
-            params.permit(:user_id, :problem_id, :favorite, :in_progress, :feedback, :rating)
+            params.permit(:user_id, :problem_id, :favorite, :in_progress, :feedback, :rating, :id)
         end
 end

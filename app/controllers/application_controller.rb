@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-
+# comment back in below for auth
   before_action :authorize
   
   def current_user

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#logout"
 
   post "/reset", to: "passwords#reset"
+
+  get '/makerproblem', to: 'problems#makerproblem'
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
