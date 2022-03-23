@@ -10,6 +10,11 @@ import { styled } from "@mui/material/styles";
 
 function Tech() {
     const [techData, setTechData] = useState([])
+    const [techForm, setTechForm] = useState({
+      id: "",
+      handholds: "",
+      hold_description: "",
+  })
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
         padding: theme.spacing(2),
@@ -25,7 +30,7 @@ function Tech() {
   return (
     <div>
       <TechForm
-        sx={{ position: "sticky", top: 0 }}
+        sx={{ position: "sticky", top: 0 }} techForm={techForm} setTechForm={setTechForm}
       />
       <Box sx={{ justifyContent: "flex-start" }}>
         <br />
