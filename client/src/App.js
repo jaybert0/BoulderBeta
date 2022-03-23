@@ -5,12 +5,12 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Container from '@mui/material/Container';
 import Login from './Features/Authorization/Login'
 import NavBar from './components/NavBar'
-import Tech from './Features/Maker/Tech'
+import Tech from './Features/Maker/Tech/Tech'
 import TechInfo from './components/TechInfo'
 import Home from './components/Home'
 import MakerHome from './Features/Maker/MakerHome'
 import ClimberHome from './Features/Climber/ClimberHome'
-import Location from './Features/Maker/Location'
+import Location from './Features/Maker/Location/Location'
 
 
 

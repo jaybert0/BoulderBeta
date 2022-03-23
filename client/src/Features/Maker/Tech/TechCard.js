@@ -13,8 +13,8 @@ import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import ProblemForm from './ProblemForm'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 function TechCard({id, handholds, description, techForm, setTechForm, tech}) {
     function deleteCard(){
         console.log(id)
