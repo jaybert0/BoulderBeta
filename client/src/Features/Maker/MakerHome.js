@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 function MakerHome({problem, climbproblem, user}){
-    const probData = useSelector(state => state.problem.entities);
+    const probData = useSelector(state => state.problems.entities);
     const dispatch = useDispatch();
 
     useEffect(() => {
