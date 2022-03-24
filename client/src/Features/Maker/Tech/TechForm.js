@@ -6,19 +6,23 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router';
-import {createTech, updateTech} from '../../Reducer/techesSlice'
-import { useDispatch } from "react-redux";
-import { fetchTech } from "../../Reducer/techesSlice";
+import {createTech, updateTech, fetchTech} from '../../Reducer/techesSlice'
+import { useDispatch, useSelector } from "react-redux";
+
 
 
 function TechForm({techForm, setTechForm}) {
   const techSliceData = useSelector((state) => state.teches.entities);
-
+// console.log(techSliceData);
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const initholds = techSliceData.map((prob) => prob);
+  const holds = [...new Set(initholds)];
   // console.log("techForm:");
   // console.log(techForm);
   function handleSetTech(att, input) {
@@ -99,6 +103,25 @@ function TechForm({techForm, setTechForm}) {
             label="Handhold Highlight"
             variant="filled"
           />
+          {/* <FormControl required sx={{ m: 1, minWidth: 150, maxWidth: "20%" }}>
+            <InputLabel id="grip-hold-highlight">
+              Grip Hold Highlight
+            </InputLabel>
+            <Select
+              labelId="grip-hold-highlight-required-label"
+              id="grip-hold-highlight-required"
+              label="Grip Hold Highlight"
+              value={techForm.handholds}
+              onChange={(e) => handleSetTech("handholds", e.target.value)}
+            >
+              {holds.map((hold) => (
+                <MenuItem key={hold.id} value={hold.id}>
+                  {hold.handholds}
+                </MenuItem>
+              ))}
+            </Select>
+            <FormHelperText>Required</FormHelperText>
+          </FormControl> */}
           <TextField
             sx={{ maxWidth: "80%" }}
             required
