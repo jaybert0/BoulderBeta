@@ -45,17 +45,28 @@ function TechForm({techForm, setTechForm}) {
     }
     
     
-    else {
-      const config = {
-        headers: { "Content-Type": "application/json" },
-        method: "PATCH",
-        body: JSON.stringify(techForm),
-      };
-      fetch(`/teches/${techForm.id}`, config)
-        .then((r) => r.json())
-        .then((data) => console.log(data));
-      console.log("edit button");
+    else 
+    // {
+    //   const config = {
+    //     headers: { "Content-Type": "application/json" },
+    //     method: "PATCH",
+    //     body: JSON.stringify(techForm),
+    //   };
+    //   fetch(`/teches/${techForm.id}`, config)
+    //     .then((r) => r.json())
+    //     .then((data) => console.log(data));
+    //   console.log("edit button");
+    // }
+    {
+      dispatch(
+        updateTech({
+          id: techForm.id,
+          handholds: techForm.handholds,
+          hold_description: techForm.hold_description
+        })
+      );
     }
+
     // navigate('/boltmonkey')
     // window.location.reload();
   }
