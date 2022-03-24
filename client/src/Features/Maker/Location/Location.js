@@ -18,6 +18,7 @@ function Location() {
 
     useEffect(() => {
       dispatch(fetchLocation());
+      setLocationData(locSliceData)
   }, [dispatch]);
   console.log(locSliceData)
     const [locationForm, setLocationForm] = useState({
@@ -31,11 +32,11 @@ function Location() {
         textAlign: 'center',
         color: theme.palette.text.secondary,
       }));
-  useEffect(() => {
-    fetch("/locations")
-      .then((r) => r.json())
-      .then((data) => setLocationData(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/locations")
+  //     .then((r) => r.json())
+  //     .then((data) => setLocationData(data));
+  // }, []);
 
   return (
     <div>
@@ -50,7 +51,7 @@ function Location() {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {locationData.map((loc) => (
+          {locSliceData.map((loc) => (
             <Grid
               item
               xs={2}

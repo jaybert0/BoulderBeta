@@ -23,13 +23,8 @@ function TechCard({id, handholds, description, techForm, setTechForm, tech}) {
   const dispatch = useDispatch()
 
     function deleteCard(techId){
-        // console.log(id)
-        // const config = {method: "DELETE"}
-        // fetch(`teches/${id}`, config)
-        // .then((r) => r.json())
-        // .then((data) => console.log(data))
-        // window.location.reload()
         dispatch(deleteTech(techId))
+        window.location.reload()
 
       }
     return (

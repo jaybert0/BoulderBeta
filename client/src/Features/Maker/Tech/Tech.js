@@ -20,6 +20,7 @@ function Tech() {
   });
   useEffect(() => {
     dispatch(fetchTech());
+    setTechData(techSliceData)
   }, [dispatch]);
 
   console.log(techSliceData);
@@ -30,11 +31,11 @@ function Tech() {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
-  useEffect(() => {
-    fetch("/teches")
-      .then((r) => r.json())
-      .then((data) => setTechData(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/teches")
+  //     .then((r) => r.json())
+  //     .then((data) => setTechData(data));
+  // }, []);
 
   return (
     <div>
@@ -51,7 +52,7 @@ function Tech() {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {techData.map((tech) => (
+          {techSliceData.map((tech) => (
             <Grid item xs={2} sm={4} md={4} key={tech.id} sx={{ boxShadow: 3 }}>
               <Item>
                 <TechCard
