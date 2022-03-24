@@ -9,16 +9,23 @@ import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { useDispatch } from "react-redux";
+import {deleteLocation} from '../../Reducer/locationsSlice'
 
 function LocationCard({id, location, description, locationForm, setLocationForm, loc}) {
-    function deleteCard(){
-        console.log(id)
-        const config = {method: "DELETE"}
-        fetch(`locations/${id}`, config)
-        .then((r) => r.json())
-        .then((data) => console.log(data))
-        window.location.reload()
+
+  const dispatch = useDispatch()
+
+    function deleteCard(locId){
+        // console.log(id)
+        // const config = {method: "DELETE"}
+        // fetch(`locations/${id}`, config)
+        // .then((r) => r.json())
+        // .then((data) => console.log(data))
+        // window.location.reload()
+        dispatch(deleteLocation(locId))
       }
+      console.log(id)
       // console.log(description)
     return (
         <Card sx={{ maxWidth: 345 }}>
@@ -30,7 +37,7 @@ function LocationCard({id, location, description, locationForm, setLocationForm,
               </Typography> 
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="delete" onClick={() => deleteCard()}>
+            <IconButton aria-label="delete" onClick={() => deleteCard(id)}>
               <DeleteIcon />
             </IconButton>
             <IconButton sx={{zIndex: 0}} aria-label="edit"

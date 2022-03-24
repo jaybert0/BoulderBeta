@@ -43,19 +43,30 @@ function amISubmission() {
     }
     
     
-    else {
-      const config = {
-        headers: { "Content-Type": "application/json" },
-        method: "PATCH",
-        body: JSON.stringify(locationForm),
-      };
-      fetch(`/locations/${locationForm.id}`, config)
-        .then((r) => r.json())
-        .then((data) => console.log(data));
-      console.log("edit button");
+    else 
+    // {
+    //   const config = {
+    //     headers: { "Content-Type": "application/json" },
+    //     method: "PATCH",
+    //     body: JSON.stringify(locationForm),
+    //   };
+    //   fetch(`/locations/${locationForm.id}`, config)
+    //     .then((r) => r.json())
+    //     .then((data) => console.log(data));
+    //   console.log("edit button");
+    // }
+    {
+      dispatch(
+        updateLocation({
+          id: locationForm.id,
+          location: locationForm.location,
+          loc_description: locationForm.loc_description
+        })
+      );
     }
-    navigate('/boltmonkey')
-    window.location.reload();
+
+    // navigate('/boltmonkey')
+    // window.location.reload();
   }
 return(
     <Box
