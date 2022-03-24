@@ -30,8 +30,8 @@ function LocationCard({id, location, description, locationForm, setLocationForm,
               </Typography> 
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="delete">
-              <DeleteIcon onClick={() => deleteCard()}/>
+            <IconButton aria-label="delete" onClick={() => deleteCard()}>
+              <DeleteIcon />
             </IconButton>
             <IconButton sx={{zIndex: 0}} aria-label="edit"
             onClick= {() => {

@@ -5,10 +5,13 @@ import TextField from "@mui/material/TextField";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router';
+import {createLocation, updateLocation} from '../../Reducer/locationsSlice';
+import { useDispatch } from "react-redux";
 
 
 function LocationForm({ locationForm, setLocationForm}) {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
     // console.log("locationForm:")
     // console.log(locationForm)
@@ -16,18 +19,31 @@ function handleSetLocation(att, input) {
     setLocationForm({...locationForm, [att]: input})
 }
 function amISubmission() {
-    if (locationForm.id === "") {
-      const config = {
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-        body: JSON.stringify(locationForm),
-      };
-      fetch('/locations', config)
-        .then((r) => r.json())
-        .then((data) => console.log(data));
+    if (locationForm.id === "") 
+    // {
+    //   const config = {
+    //     headers: { "Content-Type": "application/json" },
+    //     method: "POST",
+    //     body: JSON.stringify(locationForm),
+    //   };
+    //   fetch('/locations', config)
+    //     .then((r) => r.json())
+    //     .then((data) => console.log(data));
       
-      console.log("submit button");
-    } else {
+    //   console.log("submit button");
+    // } 
+    {
+      dispatch(
+        createLocation({
+          location: locationForm.location,
+          loc_description: locationForm.loc_description
+        })
+      )
+      console.log("SUBMIT VIA REDUX")
+    }
+    
+    
+    else {
       const config = {
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
