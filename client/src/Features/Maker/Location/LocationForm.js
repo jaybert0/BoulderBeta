@@ -65,8 +65,8 @@ function amISubmission() {
       );
     }
 
-    // navigate('/boltmonkey')
-    // window.location.reload();
+    navigate('/location')
+    window.location.reload();
   }
 return(
     <Box

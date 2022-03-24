@@ -11,8 +11,12 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router';
 import {createTech, updateTech} from '../../Reducer/techesSlice'
 import { useDispatch } from "react-redux";
+import { fetchTech } from "../../Reducer/techesSlice";
+
 
 function TechForm({techForm, setTechForm}) {
+  const techSliceData = useSelector((state) => state.teches.entities);
+
   const dispatch = useDispatch();
   let navigate = useNavigate();
   // console.log("techForm:");
@@ -67,8 +71,8 @@ function TechForm({techForm, setTechForm}) {
       );
     }
 
-    // navigate('/boltmonkey')
-    // window.location.reload();
+    navigate('/tech')
+    window.location.reload();
   }
   return (
     <Box
