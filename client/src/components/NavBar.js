@@ -46,14 +46,49 @@ function NavBar({user, handleLogOutClick}) {
       setValue(newValue);
     };
 
-    return (
+    if (user.admin === true) return (
         <Box sx={{ width: '100%' }}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
               <Tab label="Home" {...a11yProps(0)} 
-            //   component={Link} to='/'  
+              component={Link} to='/'  
               />
-              
+              <Tab label="Route Setter" {...a11yProps(1)} 
+              component={Link} to='/boltmonkey'  
+              />
+              <Tab label="Route Locations" {...a11yProps(2)} 
+              component={Link} to='/location'  
+              />
+              <Tab label="Techniques" {...a11yProps(3)} 
+              component={Link} to='/tech'  
+              />
+              <Tab label="Climber Home" {...a11yProps(4)} 
+              component={Link} to='/climber'  
+              />
+              {user?<Tab onClick={handleLogOutClick} label="Logout" {...a11yProps(1)} />:<Tab label="Login" {...a11yProps(3)} component={Link} to='/login' />}
+            </Tabs>
+          </Box>
+        </Box>
+      );
+      if (user.admin === false) return (
+        <Box sx={{ width: '100%' }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+              <Tab label="Home" {...a11yProps(0)} 
+              component={Link} to='/'  
+              />
+              <Tab label="Technique Info" {...a11yProps(1)} 
+              component={Link} to='/techinfo'  
+              />
+              <Tab label="Gym Info" {...a11yProps(2)} 
+              component={Link} to='/gyminfo'  
+              />
+              {/* <Tab label="Techniques" {...a11yProps(3)} 
+              component={Link} to='/tech'  
+              />
+              <Tab label="Climber Home" {...a11yProps(4)} 
+              component={Link} to='/climber'  
+              /> */}
               {user?<Tab onClick={handleLogOutClick} label="Logout" {...a11yProps(1)} />:<Tab label="Login" {...a11yProps(3)} component={Link} to='/login' />}
             </Tabs>
           </Box>
