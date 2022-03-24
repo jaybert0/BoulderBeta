@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
-import rootReducer from "./Features/Reducer/reducer";
+// import rootReducer from "./Features/Reducer/reducer";
 import store from "./Store/store"
 
 
@@ -13,9 +13,9 @@ import store from "./Store/store"
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <App />
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </Provider>
   </Router>,
   document.getElementById("root")

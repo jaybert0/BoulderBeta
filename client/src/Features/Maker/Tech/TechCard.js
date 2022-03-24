@@ -14,15 +14,18 @@ import { blue } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useDispatch } from "react-redux";
+import {deleteTech} from '../../Reducer/techesSlice'
+
 
 function TechCard({id, handholds, description, techForm, setTechForm, tech}) {
-    function deleteCard(){
-        console.log(id)
-        const config = {method: "DELETE"}
-        fetch(`teches/${id}`, config)
-        .then((r) => r.json())
-        .then((data) => console.log(data))
+
+  const dispatch = useDispatch()
+
+    function deleteCard(techId){
+        dispatch(deleteTech(techId))
         window.location.reload()
+
       }
     return (
         <Card sx={{ maxWidth: 345 }}>
@@ -34,7 +37,7 @@ function TechCard({id, handholds, description, techForm, setTechForm, tech}) {
               </Typography> 
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="delete" onClick={() => deleteCard()}>
+            <IconButton aria-label="delete" onClick={() => deleteCard(id)}>
               <DeleteIcon />
             </IconButton>
             <IconButton sx={{zIndex: 0}} aria-label="edit" 

@@ -6,10 +6,21 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+import { useDispatch, useSelector } from "react-redux";
+import {fetchLocation} from '../../Reducer/locationsSlice'
+
 
 
 function Location() {
+    const locSliceData = useSelector(state => state.locations.entities)
     const [locationData, setLocationData] = useState([])
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(fetchLocation());
+      setLocationData(locSliceData)
+  }, [dispatch]);
+  console.log(locSliceData)
     const [locationForm, setLocationForm] = useState({
         id: "",
         location: "",
@@ -21,11 +32,11 @@ function Location() {
         textAlign: 'center',
         color: theme.palette.text.secondary,
       }));
-  useEffect(() => {
-    fetch("/locations")
-      .then((r) => r.json())
-      .then((data) => setLocationData(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/locations")
+  //     .then((r) => r.json())
+  //     .then((data) => setLocationData(data));
+  // }, []);
 
   return (
     <div>
@@ -40,7 +51,7 @@ function Location() {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {locationData.map((loc) => (
+          {locSliceData.map((loc) => (
             <Grid
               item
               xs={2}

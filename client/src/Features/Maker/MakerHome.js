@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 
 function MakerHome({problem, climbproblem, user}){
-    const probData = useSelector(state => state.problem.entities);
+    const probData = useSelector(state => state.problems.entities);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function MakerHome({problem, climbproblem, user}){
         dispatch(fetchProblems());
         // console.log(fetchProblems());
     }, [dispatch]);
-    // console.log(probData)
+    console.log(probData)
 // console.log(problem)
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
