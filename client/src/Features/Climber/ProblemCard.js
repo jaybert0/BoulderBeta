@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Alert } from '@mui/material';
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -67,32 +68,22 @@ function ProblemCard({
     // console.log(fav)
   }
 
-
+console.log(problem)
+console.log(problem.climbproblems)
   const [inProg, setInProgressState] = useState(false);
   function setInProgress() {
     setInProgressState(!inProg);
     handleSetProblem("in_progress", inProg);
     // console.log(inProg)
   }
-// (problem.climbproblems[0]['user']['id'] ? (const userId = problem.climbproblems[0]['user']['id']) : (const userId = "???"))
-// const userId = problem.climbproblems[0]['user']['id'] ? problem.climbproblems[0]['user']['id'] : "NAH"
+
 const usedId = problem.climbproblems[0]?.user.id
-// console.log(problem.climbproblems[0]['user']['id'] ? problem.climbproblems[0]['user']['id'] : "no")
+
 const [submitter, setSubmitter] = useState(
-  {
-  // user_id: user.id,
-  // problem_id: problem.id,
-  // in_progress: problem.climbproblems[0]
-  //   ? problem.climbproblems[0].in_progress
-  //   : false,
-  // favorite: problem.climbproblems[0]
-  //   ? problem.climbproblems[0].favorite
-  //   : false,
-  // feedback: problem.climbproblems[0] ? problem.climbproblems[0].feedback : "",
-  // rating: problem.climbproblems[0] ? problem.climbproblems[0].rating : 0,
-} 
+  {} 
 
 );
+// console.log(user)
 console.log(usedId)
 useEffect(() => {
 if (usedId === user.id ) {
@@ -120,7 +111,7 @@ if (usedId === user.id ) {
   }
   setSubmitter(initialstate)
 }},[])
-console.log(submitter)
+// console.log(submitter)
 
 
 
@@ -169,22 +160,15 @@ console.log(submitter)
   //     console.log("not the droid you are looking for")
   //   }
   // })
-
+console.log(usedId !== user.id)
   // console.log(problem)
   // console.log(problem.problem_description)
   // console.log(problem.climbproblems[0])
 // console.log(problem.climbproblems[0].id)
   function postFeedback(e) {
     // e.preventDefault();
-    if (problem.climbproblems[0] === undefined) {
-      fetch("/climbproblems", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submitter),
-      })
-        .then((r) => r.json())
-        .then((data) => console.log(data));
-    } else {
+    // if (problem.climbproblems[0] === undefined) {
+    if (usedId === user.id) {
       fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -193,8 +177,37 @@ console.log(submitter)
         .then((r) => r.json())
         .then((data) => console.log(data));
         console.log("PATCH ATTEMPT")
+
+
+      // fetch("/climbproblems", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(submitter),
+      // })
+      //   .then((r) => r.json())
+      //   .then((data) => console.log(data));
+        // <Alert className="mt-3" variant="primary" >Please Login OR Signup To Create A New Account</Alert>
+
+    } else {
+      // fetch("/climbproblems", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(submitter),
+      // })
+      //   .then((r) => r.json())
+      //   .then((data) => console.log(data));
+      console.log("POST ATTEMPT")
+
+      // fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
+      //   method: "PATCH",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(submitter),
+      // })
+      //   .then((r) => r.json())
+      //   .then((data) => console.log(data));
+        console.log("POST ATTEMPT")
     }
-    window.location.reload();
+    // window.location.reload();
 
   }
 
