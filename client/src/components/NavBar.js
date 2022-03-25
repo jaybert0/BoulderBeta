@@ -65,7 +65,7 @@ function NavBar({user, handleLogOutClick}) {
               <Tab label="Climber Home" {...a11yProps(4)} 
               component={Link} to='/climber'  
               />
-              {user?<Tab onClick={handleLogOutClick} label="Logout" {...a11yProps(1)} />:<Tab label="Login" {...a11yProps(3)} component={Link} to='/login' />}
+              {user?<Tab onClick={handleLogOutClick} label="Logout" {...a11yProps(5)} />:<Tab label="Login" {...a11yProps(6)} component={Link} to='/login' />}
             </Tabs>
           </Box>
         </Box>
@@ -89,7 +89,7 @@ function NavBar({user, handleLogOutClick}) {
               <Tab label="Climber Home" {...a11yProps(4)} 
               component={Link} to='/climber'  
               /> */}
-              {user?<Tab onClick={handleLogOutClick} label="Logout" {...a11yProps(1)} />:<Tab label="Login" {...a11yProps(3)} component={Link} to='/login' />}
+              {user?<Tab onClick={handleLogOutClick} label="Logout" {...a11yProps(3)} />:<Tab label="Login" {...a11yProps(4)} component={Link} to='/login' />}
             </Tabs>
           </Box>
         </Box>
