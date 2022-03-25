@@ -95,7 +95,7 @@ if (!user) return (
   <Login onLogin={setUser}/>
   </>
 )
-  return (
+if (user.admin === true)  return (
     <div className="App">
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       
@@ -117,7 +117,28 @@ if (!user) return (
       <Route path="/" element={<Home/>}></Route>
       </Routes>
     </div>
-  );
+  )
+  if (user.admin === false)  return (
+    <div className="App">
+      <NavBar user={user} handleLogOutClick={handleLogOutClick} />
+      
+      <Routes>
+      <Route path="/techinfo" element={<TechInfo 
+      />}></Route>
+      <Route path="/gyminfo" element={<TechInfo 
+      />}></Route>
+      <Route path="/" 
+      element={<ClimberHome 
+        problem={problem} 
+      climbproblem={climbproblem} user={user}/>} 
+      ></Route>
+      {/* <Route path="/" element={<Home/>}></Route> */}
+      </Routes>
+    </div>
+  )
+  
+  
+  ;
 }
 
 export default App;
