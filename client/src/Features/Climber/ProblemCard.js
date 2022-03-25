@@ -27,7 +27,7 @@ function ProblemCard({
   user,
 }) {
   const [routeRating, setRouteRatingState] = useState("");
-  console.log(problem);
+  // console.log(problem.climbproblems[0]['user']['id']);
   const label = {
     inputProps: { "aria-label": "Favorite/InProgress/Completed" },
   };
@@ -67,14 +67,36 @@ function ProblemCard({
     // console.log(fav)
   }
 
+
   const [inProg, setInProgressState] = useState(false);
   function setInProgress() {
     setInProgressState(!inProg);
     handleSetProblem("in_progress", inProg);
     // console.log(inProg)
   }
-console.log(user.id)
-  const [submitter, setSubmitter] = useState({
+// (problem.climbproblems[0]['user']['id'] ? (const userId = problem.climbproblems[0]['user']['id']) : (const userId = "???"))
+// const userId = problem.climbproblems[0]['user']['id'] ? problem.climbproblems[0]['user']['id'] : "NAH"
+const usedId = problem.climbproblems[0]?.user.id
+// console.log(problem.climbproblems[0]['user']['id'] ? problem.climbproblems[0]['user']['id'] : "no")
+const [submitter, setSubmitter] = useState(
+  {
+  // user_id: user.id,
+  // problem_id: problem.id,
+  // in_progress: problem.climbproblems[0]
+  //   ? problem.climbproblems[0].in_progress
+  //   : false,
+  // favorite: problem.climbproblems[0]
+  //   ? problem.climbproblems[0].favorite
+  //   : false,
+  // feedback: problem.climbproblems[0] ? problem.climbproblems[0].feedback : "",
+  // rating: problem.climbproblems[0] ? problem.climbproblems[0].rating : 0,
+} 
+
+);
+console.log(usedId)
+useEffect(() => {
+if (usedId === user.id ) {
+  const initialstate = {
     user_id: user.id,
     problem_id: problem.id,
     in_progress: problem.climbproblems[0]
@@ -85,8 +107,25 @@ console.log(user.id)
       : false,
     feedback: problem.climbproblems[0] ? problem.climbproblems[0].feedback : "",
     rating: problem.climbproblems[0] ? problem.climbproblems[0].rating : 0,
-  });
-  console.log(submitter);
+  }
+  setSubmitter(initialstate)} else {
+    // console.log("Does not exist")
+  const initialstate = {
+    user_id: user.id,
+    problem_id: problem.id,
+    in_progress: false,
+    favorite: false,
+    feedback: "",
+    rating: 0
+  }
+  setSubmitter(initialstate)
+}},[])
+console.log(submitter)
+
+
+
+
+
   // const cppost = {
   //   user_id: user.id,
   //   problem_id: problem.id,
@@ -264,6 +303,7 @@ console.log(user.id)
           </Grid>
         </React.Fragment>
       </Card>
+      
     </Box>
   );
 }
