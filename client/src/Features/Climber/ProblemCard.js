@@ -73,7 +73,7 @@ function ProblemCard({
     handleSetProblem("in_progress", inProg);
     // console.log(inProg)
   }
-
+console.log(user.id)
   const [submitter, setSubmitter] = useState({
     user_id: user.id,
     problem_id: problem.id,
@@ -155,7 +155,7 @@ function ProblemCard({
         .then((data) => console.log(data));
         console.log("PATCH ATTEMPT")
     }
-    // window.location.reload();
+    window.location.reload();
 
   }
 
