@@ -1,4 +1,7 @@
 class ProblemsController < ApplicationController
+  # comment back out when done debugging
+  skip_before_action :authorize
+
     def index
         render json: Problem.all, status: :ok
       end

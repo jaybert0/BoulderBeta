@@ -134,7 +134,7 @@ function ProblemCard({
   // console.log(problem)
   // console.log(problem.problem_description)
   // console.log(problem.climbproblems[0])
-console.log(problem)
+// console.log(problem.climbproblems[0].id)
   function postFeedback(e) {
     // e.preventDefault();
     if (problem.climbproblems[0] === undefined) {
@@ -146,15 +146,16 @@ console.log(problem)
         .then((r) => r.json())
         .then((data) => console.log(data));
     } else {
-      fetch(`/climbproblems/${id}`, {
+      fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(submitter),
       })
         .then((r) => r.json())
         .then((data) => console.log(data));
+        console.log("PATCH ATTEMPT")
     }
-    window.location.reload();
+    // window.location.reload();
 
   }
 

@@ -1,5 +1,6 @@
 class ClimbproblemsController < ApplicationController
-
+  # comment back out when done debugging
+  skip_before_action :authorize
     def index
         render json: Climbproblem.all,  status: :ok
       end
