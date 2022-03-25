@@ -17,7 +17,7 @@ import '../../Styles/ProblemCard.css'
   
   function ProblemCard({id, difficulty, location, technique, grip_color, end_date, problem_description, problem, user}) {
     const [routeRating, setRouteRatingState] = useState("")
-
+    console.log(problem)
     const label = { inputProps: { 'aria-label': 'Favorite/InProgress/Completed' } };
     const cppost = {
       user_id: user.id,
