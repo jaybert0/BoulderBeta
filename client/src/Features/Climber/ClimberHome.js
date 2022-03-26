@@ -44,7 +44,7 @@ function ClimberHome({
     return(
         
         <div>
-            <WallMap id="wallmap" />
+            {/* <WallMap id="wallmap" /> */}
             <br></br>
             {/* <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>

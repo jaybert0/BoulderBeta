@@ -76,15 +76,19 @@ console.log(problem.climbproblems)
     handleSetProblem("in_progress", inProg);
     // console.log(inProg)
   }
-
+// need to map out climbproblems and be left with user ids to map out to problemscards
 const usedId = problem.climbproblems[0]?.user.id
-
+// console.log(usedId)
+// console.log(user.id)
+const trialUserId = problem?.climbproblems
+console.log(trialUserId)
+const Usermap = trialUserId.map((cp) => cp.user.id)
+console.log(Usermap)
 const [submitter, setSubmitter] = useState(
   {} 
 
 );
 // console.log(user)
-console.log(usedId)
 useEffect(() => {
 if (usedId === user.id ) {
   const initialstate = {
@@ -160,7 +164,7 @@ if (usedId === user.id ) {
   //     console.log("not the droid you are looking for")
   //   }
   // })
-console.log(usedId !== user.id)
+// console.log(usedId !== user.id)
   // console.log(problem)
   // console.log(problem.problem_description)
   // console.log(problem.climbproblems[0])
@@ -189,13 +193,13 @@ console.log(usedId !== user.id)
         // <Alert className="mt-3" variant="primary" >Please Login OR Signup To Create A New Account</Alert>
 
     } else {
-      // fetch("/climbproblems", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(submitter),
-      // })
-      //   .then((r) => r.json())
-      //   .then((data) => console.log(data));
+      fetch("/climbproblems", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitter),
+      })
+        .then((r) => r.json())
+        .then((data) => console.log(data));
       console.log("POST ATTEMPT")
 
       // fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
@@ -205,7 +209,7 @@ console.log(usedId !== user.id)
       // })
       //   .then((r) => r.json())
       //   .then((data) => console.log(data));
-        console.log("POST ATTEMPT")
+
     }
     // window.location.reload();
 
