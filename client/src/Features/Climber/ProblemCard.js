@@ -191,33 +191,22 @@ console.log("YES")
     // e.preventDefault();
     // if (problem.climbproblems[0] === undefined) {
     if (usersearch.length !==0) {
-      // fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
-      //   method: "PATCH",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(submitter),
-      // })
-      //   .then((r) => r.json())
-      //   .then((data) => console.log(data));
+      fetch(`/climbproblems/${usersearch[0].id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitter),
+      })
+        .then((r) => r.json())
+        .then((data) => console.log(data));
         console.log("PATCH ATTEMPT")
-
-
-      // fetch("/climbproblems", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(submitter),
-      // })
-      //   .then((r) => r.json())
-      //   .then((data) => console.log(data));
-        // <Alert className="mt-3" variant="primary" >Please Login OR Signup To Create A New Account</Alert>
-
     } else {
-      // fetch("/climbproblems", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(submitter),
-      // })
-      //   .then((r) => r.json())
-      //   .then((data) => console.log(data));
+      fetch("/climbproblems", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitter),
+      })
+        .then((r) => r.json())
+        .then((data) => console.log(data));
       console.log("POST ATTEMPT")
 
       // fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
