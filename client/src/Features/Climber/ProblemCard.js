@@ -84,13 +84,16 @@ const trialUserId = problem.climbproblems
 console.log(trialUserId)
 // trialUserId.find(user)
 let usersearch = trialUserId.filter((use) => use.user.id === user.id)
-console.log(usersearch)
+console.log(usersearch.length)
 // const Usermap = trialUserId.map((cp) => cp.user.id)
 // console.log(Usermap)
 
 // if (Usermap.id === user.id) {
 //   console.log("EQUAL")
 // } else {console.log("NOPE")}
+if (usersearch !== []) {
+  console.log("YO")
+}
 
 const [submitter, setSubmitter] = useState(
   {} 
@@ -98,30 +101,37 @@ const [submitter, setSubmitter] = useState(
 );
 // console.log(user)
 useEffect(() => {
-if (usedId === user.id ) {
+if (usersearch.length !== 0) {
   const initialstate = {
     user_id: user.id,
     problem_id: problem.id,
-    in_progress: problem.climbproblems[0]
-      ? problem.climbproblems[0].in_progress
+    in_progress: usersearch[0]
+      ? usersearch[0].in_progress
       : false,
-    favorite: problem.climbproblems[0]
-      ? problem.climbproblems[0].favorite
+    favorite: usersearch[0]
+      ? usersearch[0].favorite
       : false,
-    feedback: problem.climbproblems[0] ? problem.climbproblems[0].feedback : "",
-    rating: problem.climbproblems[0] ? problem.climbproblems[0].rating : 0,
+    feedback: usersearch[0] ? usersearch[0].feedback : "",
+    rating: usersearch[0] ? usersearch[0].rating : 0,
+    // in_progress: usersearch[0].in_progress,
+    // favorite: usersearch[0].favorite,
+    // feedback: usersearch[0].feedback,
+    // rating: usersearch[0].rating,
   }
-  setSubmitter(initialstate)} else {
+  setSubmitter(initialstate)
+console.log("YES")
+} else {
     // console.log("Does not exist")
   const initialstate = {
     user_id: user.id,
     problem_id: problem.id,
     in_progress: false,
-    favorite: false,
+    feedback: false,
     feedback: "",
     rating: 0
   }
   setSubmitter(initialstate)
+  console.log("NO")
 }},[])
 // console.log(submitter)
 
@@ -180,14 +190,14 @@ if (usedId === user.id ) {
   function postFeedback(e) {
     // e.preventDefault();
     // if (problem.climbproblems[0] === undefined) {
-    if (usedId === user.id) {
-      fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submitter),
-      })
-        .then((r) => r.json())
-        .then((data) => console.log(data));
+    if (usersearch.length !==0) {
+      // fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
+      //   method: "PATCH",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(submitter),
+      // })
+      //   .then((r) => r.json())
+      //   .then((data) => console.log(data));
         console.log("PATCH ATTEMPT")
 
 
@@ -201,13 +211,13 @@ if (usedId === user.id ) {
         // <Alert className="mt-3" variant="primary" >Please Login OR Signup To Create A New Account</Alert>
 
     } else {
-      fetch("/climbproblems", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submitter),
-      })
-        .then((r) => r.json())
-        .then((data) => console.log(data));
+      // fetch("/climbproblems", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(submitter),
+      // })
+      //   .then((r) => r.json())
+      //   .then((data) => console.log(data));
       console.log("POST ATTEMPT")
 
       // fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
