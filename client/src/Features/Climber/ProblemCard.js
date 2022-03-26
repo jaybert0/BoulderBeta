@@ -80,10 +80,18 @@ console.log(problem.climbproblems)
 const usedId = problem.climbproblems[0]?.user.id
 // console.log(usedId)
 // console.log(user.id)
-const trialUserId = problem?.climbproblems
+const trialUserId = problem.climbproblems
 console.log(trialUserId)
-const Usermap = trialUserId.map((cp) => cp.user.id)
-console.log(Usermap)
+// trialUserId.find(user)
+let usersearch = trialUserId.filter((use) => use.user.id === user.id)
+console.log(usersearch)
+// const Usermap = trialUserId.map((cp) => cp.user.id)
+// console.log(Usermap)
+
+// if (Usermap.id === user.id) {
+//   console.log("EQUAL")
+// } else {console.log("NOPE")}
+
 const [submitter, setSubmitter] = useState(
   {} 
 
