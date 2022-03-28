@@ -9,6 +9,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { render } from "react-dom";
 import Slider from "@mui/material/Slider";
+import Typography from '@mui/material/Typography';
+
 
 // have to fetch for all problems and then filter. do not set up separate fetches on backend for difficulty. buttons filter to sort rather than fetch.
 
@@ -120,7 +122,7 @@ console.log(value)
       {/* <WallMap id="wallmap" /> */}
       <br></br>
       <Box sx={{ minWidth: 120 }}>
-        <FormControl fullWidth>
+        <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
             Climbing Technique
           </InputLabel>
@@ -139,7 +141,7 @@ console.log(value)
             ))}
           </Select>
         </FormControl>
-        <FormControl fullWidth>
+        <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
             Location
           </InputLabel>
@@ -158,7 +160,9 @@ console.log(value)
             ))}
           </Select>
         </FormControl>
-        <Slider
+        <Typography gutterBottom>Difficulty</Typography>
+
+        <Slider sx={{ m: 1, minWidth: 300, maxWidth:600}}
           getAriaLabel={() => "Difficulty - V"}
           value={value}
           onChange={handleChange}
@@ -169,6 +173,9 @@ console.log(value)
           max={12}
           //   valueLabelDisplay="on"
         />
+                <br></br>
+                <br></br><br></br>
+
       </Box>
       {/* <button onClick={() => setSearch("favorites")}>search favorite</button>
                 <button onClick={() => setSearch("in progress")}>search in progress</button>
