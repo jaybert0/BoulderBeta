@@ -96,17 +96,20 @@ function ClimberHome({
   const holds = [...new Set(initholds)];
   const initlocs = loc.map((loc) => loc.location);
   const locs = [...new Set(initlocs)];
-  console.log(holds);
-  console.log(locs);
-  const [value, setValue] = useState([1, 3]);
-
+//   console.log(holds);
+//   console.log(locs);
+  const [value, setValue] = useState([0, 12]);
+const [locSearch, setLocSearch] = useState("")
+const [techSearch, setTechSearch] = useState("")
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   function valuetext(value) {
     return `V${value}`;
 }
-console.log(value)
+console.log(value[0])
+console.log(value[1])
+console.log(initholds)
   // const delay = ms => new Promise(res => setTimeout(res, ms))
   // const [technique, setTechnique] = useState('');
 
@@ -117,6 +120,15 @@ console.log(value)
   //     setSearch(e.target.value)
   //     console.log(e.target.value)
   // };
+console.log(problem)
+console.log(locSearch)
+console.log(techSearch)
+
+const filterLoc = problem
+// .filter(prob => prob.location.id === locSearch)
+// .filter(prob => prob.tech.id === techSearch)
+.filter(prob => value[0] <= prob.difficulty && prob.difficulty <= value[1] && prob.tech.handholds.includes(techSearch))
+console.log(filterLoc)
   return (
     <div>
       {/* <WallMap id="wallmap" /> */}
@@ -129,19 +141,22 @@ console.log(value)
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            // value={technique}
+            value={techSearch}
             label="Climbing Technique"
-            // onChange={handleChange}
+            onChange={(e)=>setTechSearch(e.target.value)}
             defaultValue = ""
           >
             {holds.map((hold) => (
-              <MenuItem key={hold.id} value={hold.id}>
+              <MenuItem key={hold.id} value={hold.handholds}>
                 {hold.handholds}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 250 }}>
+        <Button variant="contained" onClick={(e) => setTechSearch("")}>
+                Reset Handholds
+              </Button>
+        {/* <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
             Location
           </InputLabel>
@@ -151,7 +166,7 @@ console.log(value)
             defaultValue = ""
             // value={technique}
             label="Location"
-            // onChange={handleChange}
+            onChange={(e) => setLocSearch(e.target.value)}
           >
             {locs.map((loc) => (
               <MenuItem key={loc} value={loc}>
@@ -159,7 +174,7 @@ console.log(value)
               </MenuItem>
             ))}
           </Select>
-        </FormControl>
+        </FormControl> */}
         <Typography gutterBottom>Difficulty</Typography>
 
         <Slider sx={{ m: 1, minWidth: 300, maxWidth:600}}
@@ -189,7 +204,7 @@ console.log(value)
                     setTechnique("")
                 }}>Sort Ascending Difficulty</Button> */}
 
-      {problem.map((problem) => (
+      {filterLoc.map((problem) => (
         <ProblemCard
           problem={problem}
           user={user}
