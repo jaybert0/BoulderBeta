@@ -17,35 +17,20 @@ import PendingIcon from "@mui/icons-material/Pending";
 import "../../Styles/ProblemCard.css";
 
 function ProblemCard({
-  id,
-  difficulty,
-  location,
-  technique,
-  grip_color,
-  end_date,
-  problem_description,
+  // id,
+  // difficulty,
+  // location,
+  // technique,
+  // grip_color,
+  // end_date,
+  // problem_description,
   problem,
   user,
 }) {
   const [routeRating, setRouteRatingState] = useState("");
-  // console.log(problem.climbproblems[0]['user']['id']);
   const label = {
     inputProps: { "aria-label": "Favorite/InProgress/Completed" },
   };
-
-  // useEffect(() => {
-  //   if(problem.climbproblems[0] === undefined){
-  //    fetch('/climbproblems', {
-  //      method: "POST",
-  //      headers: {"Content-Type": "application/json"},
-  //      body: JSON.stringify(cppost)
-  //    })
-  //    .then(r => r.json())
-  //    .then((data) => console.log(data))
-
-  //   }
-
-  // },[])
 
   function setRouteRating(e) {
     setRouteRatingState(e);
@@ -65,11 +50,8 @@ function ProblemCard({
   function setFavorite() {
     setFavState(!fav);
     handleSetProblem("favorite", fav);
-    // console.log(fav)
+    // console.log(inProg)
   }
-
-console.log(problem)
-console.log(problem.climbproblems)
   const [inProg, setInProgressState] = useState(false);
   function setInProgress() {
     setInProgressState(!inProg);
@@ -78,25 +60,20 @@ console.log(problem.climbproblems)
   }
 // need to map out climbproblems and be left with user ids to map out to problemscards
 const usedId = problem.climbproblems[0]?.user.id
-// console.log(usedId)
-// console.log(user.id)
-const trialUserId = problem.climbproblems
-console.log(trialUserId)
-// trialUserId.find(user)
-let usersearch = trialUserId.filter((use) => use.user.id === user.id)
-console.log(usersearch.length)
-// const Usermap = trialUserId.map((cp) => cp.user.id)
-// console.log(Usermap)
 
-// if (Usermap.id === user.id) {
-//   console.log("EQUAL")
-// } else {console.log("NOPE")}
-if (usersearch !== []) {
-  console.log("YO")
-}
+const trialUserId = problem.climbproblems
+
+let usersearch = trialUserId.filter((use) => use.user.id === user.id)
+// console.log(usersearch)
+
 
 const [submitter, setSubmitter] = useState(
-  {} 
+  {user_id: user.id,
+    problem_id: problem.id,
+    in_progress: false,
+    favorite: false,
+    feedback: "",
+    rating: 0} 
 );
 // console.log(user)
 useEffect(() => {
@@ -118,76 +95,29 @@ if (usersearch.length !== 0) {
     // rating: usersearch[0].rating,
   }
   setSubmitter(initialstate)
-console.log("YES")
+console.log("Patch")
+console.log(initialstate)
+console.log(submitter)
 } else {
-    // console.log("Does not exist")
+
   const initialstate = {
     user_id: user.id,
     problem_id: problem.id,
     in_progress: false,
-    feedback: false,
+    favorite: false,
     feedback: "",
     rating: 0
   }
   setSubmitter(initialstate)
-  console.log("NO")
+  console.log("Post")
 }},[])
-// console.log(submitter)
 
+  // console.log(fav)
+  console.log(submitter.favorite)
+  // console.log(submitter)
 
-
-
-
-  // const cppost = {
-  //   user_id: user.id,
-  //   problem_id: problem.id,
-  //   favorite: fav,
-  //   in_progress: inProg,
-  //   rating: routeRating,
-  //   feedback: climberFeedback,
-  // };
-  // console.log(cppost)
-
-  // const [canRun, setCanRun]= useState(false)
-  // climbproblem.map((climbproblem) => {
-  //   if(climbproblem.problem_id === id){
-  //     if(canRun === false){
-  //       setFavState(climbproblem.favorite)
-  //       // handleSetProblem("favorite", climbproblem.favorite)
-  //       // handleSetProblem("climber_feedback", climbproblem.climber_feedback)
-  //       // handleSetProblem("in_progress", climbproblem.in_progress)
-  //       // handleSetProblem("completed", climbproblem.completed)
-  //       // handleSetProblem("route_rating", climbproblem.route_rating)
-  //       setClimberFeedbackState(climbproblem.feedback)
-  //       setInProgressState(climbproblem.in_progress)
-  //       // setCompletedState(climbproblem.completed)
-  //       setRouteRatingState(climbproblem.rating)
-  //       setSubmitter({
-  //         in_progress: climbproblem.in_progress,
-  //         favorite: climbproblem.favorite,
-  //         // completed: climbproblem.completed,
-  //         feedback: climbproblem.feedback,
-  //         rating: climbproblem.rating})
-  //       setCanRun(true)
-  //     }else{
-  //       console.log("already mounted")
-  //     }
-  //     // console.log(climbproblem.problem_id)
-  //     // console.log(climbproblem.favorite)
-  //     // console.log(climbproblem.in_progress)
-  //     // console.log(climbproblem.completed)
-  //     // console.log(climbproblem.route_rating)
-  //   }else{
-  //     console.log("not the droid you are looking for")
-  //   }
-  // })
-// console.log(usedId !== user.id)
-  // console.log(problem)
-  // console.log(problem.problem_description)
-  // console.log(problem.climbproblems[0])
-// console.log(problem.climbproblems[0].id)
   function postFeedback(e) {
-    e.preventDefault();
+    // e.preventDefault();
     // if (problem.climbproblems[0] === undefined) {
     if (usersearch.length !==0) {
       fetch(`/climbproblems/${usersearch[0].id}`, {
@@ -217,7 +147,7 @@ console.log("YES")
       //   .then((data) => console.log(data));
 
     }
-    window.location.reload();
+    // window.location.reload();
 
   }
 
@@ -294,6 +224,7 @@ console.log("YES")
                 name="favorite"
                 onChange={setFavorite}
                 {...label}
+                // value={submitter.favorite}
                 checked={submitter.favorite}
                 // {
                 //   // (climbproblem[0] ? climbproblem[0].favorite : false)
@@ -309,8 +240,9 @@ console.log("YES")
                 name="in progress"
                 onChange={setInProgress}
                 {...label}
+                value={submitter.in_progress}
+
                 checked={
-                  // (climbproblem[0] ? climbproblem[0].in_progress : 0)
                   submitter.in_progress
                 }
                 icon={<PendingOutlinedIcon />}
