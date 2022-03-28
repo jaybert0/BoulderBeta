@@ -80,19 +80,28 @@ if (usersearch.length !== 0) {
   const initialstate = {
     user_id: user.id,
     problem_id: problem.id,
-    in_progress: usersearch[0]
-      ? usersearch[0].in_progress
-      : false,
-    favorite: usersearch[0]
-      ? usersearch[0].favorite
-      : false,
-    feedback: usersearch[0] ? usersearch[0].feedback : "",
-    rating: usersearch[0] ? usersearch[0].rating : 0,
+    in_progress: usersearch[0].in_progress,
+      
+    favorite: usersearch[0].favorite,
+    feedback: usersearch[0].feedback,
+    rating: usersearch[0].rating,
   }
+  // const initialstate = {
+  //   user_id: user.id,
+  //   problem_id: problem.id,
+  //   in_progress: usersearch[0]
+  //     ? usersearch[0].in_progress
+  //     : false,
+  //   favorite: usersearch[0]
+  //     ? usersearch[0].favorite
+  //     : false,
+  //   feedback: usersearch[0] ? usersearch[0].feedback : "",
+  //   rating: usersearch[0] ? usersearch[0].rating : 0,
+  // }
+  console.log("Patch");
+  console.log(initialstate);
   setSubmitter(initialstate)
-console.log("Patch")
-console.log(initialstate)
-console.log(submitter)
+// console.log(submitter)
 } else {
 
   const initialstate = {
@@ -106,6 +115,7 @@ console.log(submitter)
   setSubmitter(initialstate)
   console.log("Post")
 }},[])
+console.log(submitter)
 
 
 
@@ -208,7 +218,7 @@ console.log(submitter)
                 name="favorite"
                 onChange={setFavorite}
                 {...label}
-                // value={submitter.favorite}
+                value={submitter.favorite}
                 checked={submitter.favorite}
                 // {
                 //   // (climbproblem[0] ? climbproblem[0].favorite : false)

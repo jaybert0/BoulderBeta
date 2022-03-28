@@ -9,8 +9,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { render } from "react-dom";
 import Slider from "@mui/material/Slider";
-import Typography from '@mui/material/Typography';
-
+import Typography from "@mui/material/Typography";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 // have to fetch for all problems and then filter. do not set up separate fetches on backend for difficulty. buttons filter to sort rather than fetch.
 
@@ -23,10 +25,7 @@ function ClimberHome({
   user,
 }) {
   const marks = [
-    {
-      value: 0,
-      label: "V0",
-    },
+    { value: 0, label: "V0" },
     {
       value: 1,
       label: "V1",
@@ -94,22 +93,16 @@ function ClimberHome({
   }, []);
   const initholds = tech.map((prob) => prob);
   const holds = [...new Set(initholds)];
-  const initlocs = loc.map((loc) => loc.location);
-  const locs = [...new Set(initlocs)];
-//   console.log(holds);
-//   console.log(locs);
   const [value, setValue] = useState([0, 12]);
-const [locSearch, setLocSearch] = useState("")
-const [techSearch, setTechSearch] = useState("")
+  const [techSearch, setTechSearch] = useState("");
+  const [favData, setFavData] = useState(false)
+  const [inprogData, setInprogData] = useState(false)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   function valuetext(value) {
     return `V${value}`;
-}
-console.log(value[0])
-console.log(value[1])
-console.log(initholds)
+  }
   // const delay = ms => new Promise(res => setTimeout(res, ms))
   // const [technique, setTechnique] = useState('');
 
@@ -120,15 +113,23 @@ console.log(initholds)
   //     setSearch(e.target.value)
   //     console.log(e.target.value)
   // };
-console.log(problem)
-console.log(locSearch)
-console.log(techSearch)
+  console.log(problem.climbproblems);
+  console.log(techSearch);
+  const trialUserId = problem.climbproblems
+//   let usersearch = trialUserId.filter((use) => use.user.id === user.id)
 
-const filterLoc = problem
-// .filter(prob => prob.location.id === locSearch)
-// .filter(prob => prob.tech.id === techSearch)
-.filter(prob => value[0] <= prob.difficulty && prob.difficulty <= value[1] && prob.tech.handholds.includes(techSearch))
-console.log(filterLoc)
+
+  const filterLoc = problem    
+    .filter(
+      (prob) =>
+        value[0] <= prob.difficulty &&
+        prob.difficulty <= value[1] &&
+        prob.tech.handholds.includes(techSearch) 
+        // && prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === favData
+    );
+  console.log(filterLoc);
+  console.log(inprogData)
+  console.log(favData)
   return (
     <div>
       {/* <WallMap id="wallmap" /> */}
@@ -143,8 +144,8 @@ console.log(filterLoc)
             id="demo-simple-select"
             value={techSearch}
             label="Climbing Technique"
-            onChange={(e)=>setTechSearch(e.target.value)}
-            defaultValue = ""
+            onChange={(e) => setTechSearch(e.target.value)}
+            defaultValue=""
           >
             {holds.map((hold) => (
               <MenuItem key={hold.id} value={hold.handholds}>
@@ -154,8 +155,17 @@ console.log(filterLoc)
           </Select>
         </FormControl>
         <Button variant="contained" onClick={(e) => setTechSearch("")}>
-                Reset Handholds
-              </Button>
+          Reset Handholds
+        </Button>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={favData} onChange={(e) => setFavData(e.target.checked)}/>}
+            label="Favorite"
+          />
+          <FormControlLabel 
+          control={<Checkbox checked={inprogData} onChange={(e) => setInprogData(e.target.checked)}/>} 
+          label="In-Progress" />
+        </FormGroup>
         {/* <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
             Location
@@ -177,7 +187,8 @@ console.log(filterLoc)
         </FormControl> */}
         <Typography gutterBottom>Difficulty</Typography>
 
-        <Slider sx={{ m: 1, minWidth: 300, maxWidth:600}}
+        <Slider
+          sx={{ m: 1, minWidth: 300, maxWidth: 600 }}
           getAriaLabel={() => "Difficulty - V"}
           value={value}
           onChange={handleChange}
@@ -188,9 +199,9 @@ console.log(filterLoc)
           max={12}
           //   valueLabelDisplay="on"
         />
-                <br></br>
-                <br></br><br></br>
-
+        <br></br>
+        <br></br>
+        <br></br>
       </Box>
       {/* <button onClick={() => setSearch("favorites")}>search favorite</button>
                 <button onClick={() => setSearch("in progress")}>search in progress</button>
