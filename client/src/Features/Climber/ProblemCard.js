@@ -97,7 +97,6 @@ if (usersearch !== []) {
 
 const [submitter, setSubmitter] = useState(
   {} 
-
 );
 // console.log(user)
 useEffect(() => {
@@ -188,7 +187,7 @@ console.log("YES")
   // console.log(problem.climbproblems[0])
 // console.log(problem.climbproblems[0].id)
   function postFeedback(e) {
-    // e.preventDefault();
+    e.preventDefault();
     // if (problem.climbproblems[0] === undefined) {
     if (usersearch.length !==0) {
       fetch(`/climbproblems/${usersearch[0].id}`, {
@@ -218,7 +217,7 @@ console.log("YES")
       //   .then((data) => console.log(data));
 
     }
-    // window.location.reload();
+    window.location.reload();
 
   }
 
