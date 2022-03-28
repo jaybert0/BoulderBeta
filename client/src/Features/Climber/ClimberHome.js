@@ -8,6 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { render } from "react-dom";
+import Slider from "@mui/material/Slider";
 
 // have to fetch for all problems and then filter. do not set up separate fetches on backend for difficulty. buttons filter to sort rather than fetch.
 
@@ -19,6 +20,61 @@ function ClimberHome({
   getClimbproblems,
   user,
 }) {
+  const marks = [
+    {
+      value: 0,
+      label: "V0",
+    },
+    {
+      value: 1,
+      label: "V1",
+    },
+    {
+      value: 2,
+      label: "V2",
+    },
+    {
+      value: 3,
+      label: "V3",
+    },
+    {
+      value: 4,
+      label: "V4",
+    },
+    {
+      value: 5,
+      label: "V5",
+    },
+    {
+      value: 6,
+      label: "V6",
+    },
+    {
+      value: 7,
+      label: "V7",
+    },
+    {
+      value: 8,
+      label: "V8",
+    },
+    {
+      value: 9,
+      label: "V9",
+    },
+    {
+      value: 10,
+      label: "V10",
+    },
+    {
+      value: 11,
+      label: "V11",
+    },
+    {
+      value: 12,
+      label: "V12",
+    },
+  ];
+
   const [tech, setTech] = useState([]);
   const [loc, setLoc] = useState([]);
   useEffect(() => {
@@ -40,7 +96,15 @@ function ClimberHome({
   const locs = [...new Set(initlocs)];
   console.log(holds);
   console.log(locs);
+  const [value, setValue] = useState([1, 3]);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  function valuetext(value) {
+    return `V${value}`;
+}
+console.log(value)
   // const delay = ms => new Promise(res => setTimeout(res, ms))
   // const [technique, setTechnique] = useState('');
 
@@ -56,39 +120,56 @@ function ClimberHome({
       {/* <WallMap id="wallmap" /> */}
       <br></br>
       <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth>
-                    <InputLabel sx={{zIndex: -1}} id="demo-simple-select-label">Climbing Technique</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        // value={technique}
-                        label="Climbing Technique"
-                        // onChange={handleChange}
-                                    >
-                        {holds.map((hold) => (
-                        <MenuItem key={hold.id} value={hold.id}>
-                        {hold.handholds}
-                    </MenuItem>
-                    ))}
-                    </Select>
-                </FormControl>
-                <FormControl fullWidth>
-                    <InputLabel sx={{zIndex: -1}} id="demo-simple-select-label">Location</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        // value={technique}
-                        label="Location"
-                        // onChange={handleChange}
-                                    >
-                      {locs.map((loc) => (
-                <MenuItem key={loc} value={loc}>
-                  {loc}
-                </MenuItem>
-              ))}
-                    </Select>
-                </FormControl>
-            </Box>
+        <FormControl fullWidth>
+          <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
+            Climbing Technique
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            // value={technique}
+            label="Climbing Technique"
+            // onChange={handleChange}
+            defaultValue = ""
+          >
+            {holds.map((hold) => (
+              <MenuItem key={hold.id} value={hold.id}>
+                {hold.handholds}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl fullWidth>
+          <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
+            Location
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            defaultValue = ""
+            // value={technique}
+            label="Location"
+            // onChange={handleChange}
+          >
+            {locs.map((loc) => (
+              <MenuItem key={loc} value={loc}>
+                {loc}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Slider
+          getAriaLabel={() => "Difficulty - V"}
+          value={value}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          getAriaValueText={valuetext}
+          marks={marks}
+          step={null}
+          max={12}
+          //   valueLabelDisplay="on"
+        />
+      </Box>
       {/* <button onClick={() => setSearch("favorites")}>search favorite</button>
                 <button onClick={() => setSearch("in progress")}>search in progress</button>
                 <button onClick={() => setSearch("completed")}>search completed</button> */}
@@ -100,13 +181,7 @@ function ClimberHome({
                     setSearch("hard");
                     setTechnique("")
                 }}>Sort Ascending Difficulty</Button> */}
-                
-      
-      
-      
-      
-      
-      
+
       {problem.map((problem) => (
         <ProblemCard
           problem={problem}
