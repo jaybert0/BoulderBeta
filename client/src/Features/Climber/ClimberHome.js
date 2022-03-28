@@ -113,8 +113,8 @@ function ClimberHome({
   //     setSearch(e.target.value)
   //     console.log(e.target.value)
   // };
-  console.log(problem.climbproblems);
-  console.log(techSearch);
+//   console.log(problem.climbproblems);
+//   console.log(techSearch);
   const trialUserId = problem.climbproblems
 //   let usersearch = trialUserId.filter((use) => use.user.id === user.id)
 
@@ -128,8 +128,8 @@ function ClimberHome({
         // && prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === favData
     );
   console.log(filterLoc);
-  console.log(inprogData)
-  console.log(favData)
+//   console.log(inprogData)
+//   console.log(favData)
   return (
     <div>
       {/* <WallMap id="wallmap" /> */}
@@ -217,6 +217,7 @@ function ClimberHome({
 
       {filterLoc.map((problem) => (
         <ProblemCard
+        filterLoc={filterLoc}
           problem={problem}
           user={user}
           alignItems="center"

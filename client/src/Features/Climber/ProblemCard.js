@@ -26,6 +26,7 @@ function ProblemCard({
   // problem_description,
   problem,
   user,
+  filterLoc
 }) {
   const [routeRating, setRouteRatingState] = useState("");
   const label = {
@@ -114,7 +115,7 @@ if (usersearch.length !== 0) {
   }
   setSubmitter(initialstate)
   console.log("Post")
-}},[])
+}},[filterLoc])
 console.log(submitter)
 
 
