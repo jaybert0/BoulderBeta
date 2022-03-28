@@ -50,21 +50,20 @@ function ProblemCard({
   function setFavorite() {
     setFavState(!fav);
     handleSetProblem("favorite", fav);
-    // console.log(inProg)
+
   }
   const [inProg, setInProgressState] = useState(false);
   function setInProgress() {
     setInProgressState(!inProg);
     handleSetProblem("in_progress", inProg);
-    // console.log(inProg)
+
   }
 // need to map out climbproblems and be left with user ids to map out to problemscards
-const usedId = problem.climbproblems[0]?.user.id
+
 
 const trialUserId = problem.climbproblems
-
 let usersearch = trialUserId.filter((use) => use.user.id === user.id)
-// console.log(usersearch)
+
 
 
 const [submitter, setSubmitter] = useState(
@@ -75,7 +74,7 @@ const [submitter, setSubmitter] = useState(
     feedback: "",
     rating: 0} 
 );
-// console.log(user)
+
 useEffect(() => {
 if (usersearch.length !== 0) {
   const initialstate = {
@@ -89,10 +88,6 @@ if (usersearch.length !== 0) {
       : false,
     feedback: usersearch[0] ? usersearch[0].feedback : "",
     rating: usersearch[0] ? usersearch[0].rating : 0,
-    // in_progress: usersearch[0].in_progress,
-    // favorite: usersearch[0].favorite,
-    // feedback: usersearch[0].feedback,
-    // rating: usersearch[0].rating,
   }
   setSubmitter(initialstate)
 console.log("Patch")
@@ -112,13 +107,10 @@ console.log(submitter)
   console.log("Post")
 }},[])
 
-  // console.log(fav)
-  console.log(submitter.favorite)
-  // console.log(submitter)
+
 
   function postFeedback(e) {
-    // e.preventDefault();
-    // if (problem.climbproblems[0] === undefined) {
+
     if (usersearch.length !==0) {
       fetch(`/climbproblems/${usersearch[0].id}`, {
         method: "PATCH",
@@ -138,16 +130,8 @@ console.log(submitter)
         .then((data) => console.log(data));
       console.log("POST ATTEMPT")
 
-      // fetch(`/climbproblems/${problem.climbproblems[0].id}`, {
-      //   method: "PATCH",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(submitter),
-      // })
-      //   .then((r) => r.json())
-      //   .then((data) => console.log(data));
-
     }
-    // window.location.reload();
+    window.location.reload();
 
   }
 
