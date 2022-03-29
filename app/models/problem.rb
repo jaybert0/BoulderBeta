@@ -3,4 +3,10 @@ class Problem < ApplicationRecord
   has_many :users, through: :climbproblems
   belongs_to :tech
   belongs_to :location
+
+  validates :difficulty, presence: true,
+  validates :grip_color, presence: true,
+  validates :end_date, presence: true,
+  validates :problem_description, length: {minimum: 10}
+
 end
