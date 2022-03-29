@@ -85,51 +85,51 @@ function ClimberHome({
       .then((r) => r.json())
       // .then((data) => console.log(data))
       .then((data) => setTech(data));
-      fetch("/locations")
+    fetch("/locations")
       .then((r) => r.json())
       // .then((data) => console.log(data))
       .then((data) => setLoc(data));
   }, []);
 
-
   const initholds = tech.map((prob) => prob);
   const holds = [...new Set(initholds)];
   const [value, setValue] = useState([0, 12]);
   const [techSearch, setTechSearch] = useState("");
-  const [favData, setFavData] = useState(false)
-  const [inprogData, setInprogData] = useState(false)
+  const [favData, setFavData] = useState(false);
+  const [inprogData, setInprogData] = useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   function valuetext(value) {
     return `V${value}`;
   }
+  console.log(value);
 
+  console.log(favData);
 
-  console.log(favDataBin)
+  const filterLoc = problem.filter(
+    (prob) =>
+      favData
+        ? prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+            .favorite === true
+        : prob && inprogData
+        ? prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+            .in_progress === true
+        : prob &&
+          value[0] <= prob.difficulty &&
+          prob.difficulty <= value[1] &&
+          prob.tech.handholds.includes(techSearch)
 
+    // console.log
+    // (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === favDataBin ? (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === (favDataBin)) : "")
+    // && console.log(prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite)
+    // &&
 
-
-  const filterLoc = problem    
-    .filter(
-      (prob) =>
-        value[0] <= prob.difficulty &&
-        prob.difficulty <= value[1] &&
-        prob.tech.handholds.includes(techSearch) && 
-        favData? (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === true) : (prob) &&
-        inprogData? (prob.climbproblems.filter((use) => use.user.id === user.id)[0].in_progress === true) : (prob)
-
-        // console.log
-        // (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === favDataBin ? (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === (favDataBin)) : "")
-        // && console.log(prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite) 
-        // && 
-        
-        // prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite.includes(favDataBin)
-        // || prob.climbproblems.filter((use) => use.user.id === user.id)[0].in_progress === inprogData
-    );
+    // prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite.includes(favDataBin)
+    // || prob.climbproblems.filter((use) => use.user.id === user.id)[0].in_progress === inprogData
+  );
   console.log(filterLoc);
-//   console.log(favDataBin)
-  console.log(favData)
+
   return (
     <div>
       <WallMap id="wallmap" />
@@ -159,12 +159,23 @@ function ClimberHome({
         </Button>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox checked={favData} onChange={(e) => setFavData(e.target.checked)}/>}
+            control={
+              <Checkbox
+                checked={favData}
+                onChange={(e) => setFavData(e.target.checked)}
+              />
+            }
             label="Favorite"
           />
-          <FormControlLabel 
-          control={<Checkbox checked={inprogData} onChange={(e) => setInprogData(e.target.checked)}/>} 
-          label="In-Progress" />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={inprogData}
+                onChange={(e) => setInprogData(e.target.checked)}
+              />
+            }
+            label="In-Progress"
+          />
         </FormGroup>
         {/* <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
@@ -217,8 +228,8 @@ function ClimberHome({
 
       {filterLoc.map((problem) => (
         <ProblemCard
-        key={problem.id}
-        filterLoc={filterLoc}
+          key={problem.id}
+          filterLoc={filterLoc}
           problem={problem}
           user={user}
           alignItems="center"
