@@ -105,44 +105,9 @@ function ClimberHome({
     return `V${value}`;
   }
 
-//   useEffect(() => {
-//     // fetch("/locations")
-//     //   .then((r) => r.json())
-//     //   // .then((data) => console.log(data))
-//     //   .then((data) => setLoc(data));
-//     if(favData === true) {
-//         setFavDataBin(true
-//         )
-//         // console.log(favDataBin)
-  
-//     } else {
-//         setFavDataBin(undefined)
-//         // console.log(favDataBin)
-//     }
-//   }, [favData]);
-//   if(favData === true) {
-//       const favDataBin = true
-//       console.log(favDataBin)
 
-//   } else {
-//       const favDataBin = undefined
-//       console.log(favDataBin)
-//   }
   console.log(favDataBin)
-  // const delay = ms => new Promise(res => setTimeout(res, ms))
-  // const [technique, setTechnique] = useState('');
 
-  // const handleChange = async (e) => {
-  //     setTechnique(e.target.value);
-  //     getProblems();
-  //     await delay(500);
-  //     setSearch(e.target.value)
-  //     console.log(e.target.value)
-  // };
-//   console.log(problem.climbproblems);
-//   console.log(techSearch);
-//   const trialUserId = problem.climbproblems
-//   let usersearch = trialUserId.filter((use) => use.user.id === user.id)
 
 
   const filterLoc = problem    
@@ -167,7 +132,7 @@ function ClimberHome({
   console.log(favData)
   return (
     <div>
-      {/* <WallMap id="wallmap" /> */}
+      <WallMap id="wallmap" />
       <br></br>
       <Box sx={{ minWidth: 120 }}>
         <FormControl sx={{ m: 1, minWidth: 250 }}>
