@@ -75,22 +75,23 @@ function ClimberHome({
       label: "V12",
     },
   ];
+  console.log(problem);
 
   const [tech, setTech] = useState([]);
   const [loc, setLoc] = useState([]);
+  const [favDataBin, setFavDataBin] = useState("");
   useEffect(() => {
     fetch("/teches")
       .then((r) => r.json())
       // .then((data) => console.log(data))
       .then((data) => setTech(data));
-  }, []);
-
-  useEffect(() => {
-    fetch("/locations")
+      fetch("/locations")
       .then((r) => r.json())
       // .then((data) => console.log(data))
       .then((data) => setLoc(data));
   }, []);
+
+
   const initholds = tech.map((prob) => prob);
   const holds = [...new Set(initholds)];
   const [value, setValue] = useState([0, 12]);
@@ -103,6 +104,31 @@ function ClimberHome({
   function valuetext(value) {
     return `V${value}`;
   }
+
+//   useEffect(() => {
+//     // fetch("/locations")
+//     //   .then((r) => r.json())
+//     //   // .then((data) => console.log(data))
+//     //   .then((data) => setLoc(data));
+//     if(favData === true) {
+//         setFavDataBin(true
+//         )
+//         // console.log(favDataBin)
+  
+//     } else {
+//         setFavDataBin(undefined)
+//         // console.log(favDataBin)
+//     }
+//   }, [favData]);
+//   if(favData === true) {
+//       const favDataBin = true
+//       console.log(favDataBin)
+
+//   } else {
+//       const favDataBin = undefined
+//       console.log(favDataBin)
+//   }
+  console.log(favDataBin)
   // const delay = ms => new Promise(res => setTimeout(res, ms))
   // const [technique, setTechnique] = useState('');
 
@@ -115,7 +141,7 @@ function ClimberHome({
   // };
 //   console.log(problem.climbproblems);
 //   console.log(techSearch);
-  const trialUserId = problem.climbproblems
+//   const trialUserId = problem.climbproblems
 //   let usersearch = trialUserId.filter((use) => use.user.id === user.id)
 
 
@@ -124,12 +150,21 @@ function ClimberHome({
       (prob) =>
         value[0] <= prob.difficulty &&
         prob.difficulty <= value[1] &&
-        prob.tech.handholds.includes(techSearch) 
-        // && prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === favData
+        prob.tech.handholds.includes(techSearch) && 
+        favData? (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === true) : (prob) &&
+        inprogData? (prob.climbproblems.filter((use) => use.user.id === user.id)[0].in_progress === true) : (prob)
+
+        // console.log
+        // (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === favDataBin ? (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === (favDataBin)) : "")
+        // && console.log(prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite) 
+        // && 
+        
+        // prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite.includes(favDataBin)
+        // || prob.climbproblems.filter((use) => use.user.id === user.id)[0].in_progress === inprogData
     );
   console.log(filterLoc);
-//   console.log(inprogData)
-//   console.log(favData)
+//   console.log(favDataBin)
+  console.log(favData)
   return (
     <div>
       {/* <WallMap id="wallmap" /> */}
