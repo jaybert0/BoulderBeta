@@ -12,7 +12,7 @@ import MakerHome from './Features/Maker/MakerHome'
 import ClimberHome from './Features/Climber/ClimberHome'
 import Location from './Features/Maker/Location/Location'
 import About from './components/About'
-
+import SplashCard from '../src/components/SplashCard'
 
 
 function App() {
@@ -99,7 +99,7 @@ if (!user) return (
 if (user.admin === true)  return (
     <div className="App">
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
-      
+      <SplashCard />
       <Routes>
       <Route path="/boltmonkey" 
       element={<MakerHome problem={problem} climbproblem={climbproblem} user={user}/>} 
