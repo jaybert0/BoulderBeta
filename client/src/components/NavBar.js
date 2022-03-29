@@ -59,7 +59,7 @@ function NavBar({user, handleLogOutClick}) {
               <Tab label="Route Locations" {...a11yProps(2)} 
               component={Link} to='/location'  
               />
-              <Tab label="Techniques" {...a11yProps(3)} 
+              <Tab label="Handholds" {...a11yProps(3)} 
               component={Link} to='/tech'  
               />
               <Tab label="Climber Home" {...a11yProps(4)} 

@@ -11,7 +11,8 @@ import Home from './components/Home'
 import MakerHome from './Features/Maker/MakerHome'
 import ClimberHome from './Features/Climber/ClimberHome'
 import Location from './Features/Maker/Location/Location'
-
+import About from './components/About'
+import SplashCard from '../src/components/SplashCard'
 
 
 function App() {
@@ -58,34 +59,6 @@ useEffect(() => {
   // .then((data) => console.log(data))
   .then((data) => setProblem(data))
 }, []);
-// console.log(user.admin)
-
-
-  // useEffect(() => {
-  //   fetch('/makerproblem')
-  //   .then((r) => r.json())
-  //   // .then((data) => console.log(data))
-  //   .then((data) => setMaker(data))
-  // }, []);
-  // console.log("Maker:")
-  // console.log(maker)
-// const [techData, setTechData] = useState([])
-// Wikitext
-// useEffect(() => {
-//     fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=wikitext&section=9&sectionpreview=1&formatversion=2&origin=*")
-//       .then((r) => r.json())
-//       .then((data)=>setTechData(data))
-//       // .then((data) => setBGData(data));
-//   }, []);
-
-// Regular text for wiki fetch
-  
-// useEffect(() => {
-//   fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=text&section=9&sectionpreview=1&formatversion=2&origin=*")
-//     .then((r) => r.json())
-//     .then((data)=>setTechData(data))
-//     // .then((data) => setBGData(data));
-// }, []);
 
 if (!user) return (
   <>
@@ -98,7 +71,7 @@ if (!user) return (
 if (user.admin === true)  return (
     <div className="App">
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
-      
+      <SplashCard />
       <Routes>
       <Route path="/boltmonkey" 
       element={<MakerHome problem={problem} climbproblem={climbproblem} user={user}/>} 
@@ -125,14 +98,14 @@ if (user.admin === true)  return (
       <Routes>
       <Route path="/techinfo" element={<TechInfo 
       />}></Route>
-      <Route path="/gyminfo" element={<TechInfo 
+      <Route path="/gyminfo" element={<About 
       />}></Route>
       <Route path="/" 
       element={<ClimberHome 
         problem={problem} 
       climbproblem={climbproblem} user={user}/>} 
       ></Route>
-      {/* <Route path="/" element={<Home/>}></Route> */}
+      {/* <Route path="/gyminfo" element={<About />}></Route> */}
       </Routes>
     </div>
   )
