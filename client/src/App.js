@@ -59,34 +59,6 @@ useEffect(() => {
   // .then((data) => console.log(data))
   .then((data) => setProblem(data))
 }, []);
-// console.log(user.admin)
-
-
-  // useEffect(() => {
-  //   fetch('/makerproblem')
-  //   .then((r) => r.json())
-  //   // .then((data) => console.log(data))
-  //   .then((data) => setMaker(data))
-  // }, []);
-  // console.log("Maker:")
-  // console.log(maker)
-// const [techData, setTechData] = useState([])
-// Wikitext
-// useEffect(() => {
-//     fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=wikitext&section=9&sectionpreview=1&formatversion=2&origin=*")
-//       .then((r) => r.json())
-//       .then((data)=>setTechData(data))
-//       // .then((data) => setBGData(data));
-//   }, []);
-
-// Regular text for wiki fetch
-  
-// useEffect(() => {
-//   fetch("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=text&section=9&sectionpreview=1&formatversion=2&origin=*")
-//     .then((r) => r.json())
-//     .then((data)=>setTechData(data))
-//     // .then((data) => setBGData(data));
-// }, []);
 
 if (!user) return (
   <>
