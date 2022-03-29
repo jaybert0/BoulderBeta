@@ -11,6 +11,7 @@ import Home from './components/Home'
 import MakerHome from './Features/Maker/MakerHome'
 import ClimberHome from './Features/Climber/ClimberHome'
 import Location from './Features/Maker/Location/Location'
+import About from './components/About'
 
 
 
@@ -125,14 +126,14 @@ if (user.admin === true)  return (
       <Routes>
       <Route path="/techinfo" element={<TechInfo 
       />}></Route>
-      <Route path="/gyminfo" element={<TechInfo 
+      <Route path="/gyminfo" element={<About 
       />}></Route>
       <Route path="/" 
       element={<ClimberHome 
         problem={problem} 
       climbproblem={climbproblem} user={user}/>} 
       ></Route>
-      {/* <Route path="/" element={<Home/>}></Route> */}
+      {/* <Route path="/gyminfo" element={<About />}></Route> */}
       </Routes>
     </div>
   )

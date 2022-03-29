@@ -217,6 +217,7 @@ function ClimberHome({
 
       {filterLoc.map((problem) => (
         <ProblemCard
+        key={problem.id}
         filterLoc={filterLoc}
           problem={problem}
           user={user}
