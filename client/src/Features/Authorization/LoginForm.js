@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 // import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const theme = createTheme();
+// const theme = createTheme();
 
 function LoginForm({onLogin}) {
 
@@ -36,9 +36,9 @@ function LoginForm({onLogin}) {
     }
     
     return (
-        <ThemeProvider theme={theme}>
+        // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
+        {/* <CssBaseline /> */}
         <Box
           sx={{
             marginTop: 8,
@@ -77,14 +77,14 @@ function LoginForm({onLogin}) {
 
               onChange={(e) => setPassword(e.target.value)}
             />
-             <Button variant="contained" type="submit">{isLoading ? "Loading..." : "Login"}</Button>
-                {/* {errors.map(error => (
-                    // <Alert className="mt-3" severity="error" key={error}>{error}</Alert>
+             <Button color="primary" variant="contained"  type="submit">{isLoading ? "Loading..." : "Login"}</Button>
+                {/* {errors?.map(error => (
+                    <Alert className="mt-3" severity="error" key={error}>{error}</Alert>
                 ))} */}
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 
     
