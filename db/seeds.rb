@@ -85,29 +85,20 @@ Location.create(
 )
 Problem.create(
     tech_id: 1,
-location_id: 1,
-grip_color: "pink",
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
 problem_description: 'great',
 difficulty: 1,
-rating: 4
+end_date:Date.new(2022,4,27)
 )
 Problem.create(
-    tech_id: 2,
-location_id: 2,
-grip_color: "green",
-problem_description: 'meh',
-difficulty: 3,
-rating: 5
-)
-Problem.create(
-    tech_id: 3,
-location_id: 3,
-grip_color: "black",
-problem_description: 'gnarly',
+    tech_id: 1,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'great',
 difficulty: 1,
-rating: 4
+end_date:Date.new(2022,4,27)
 )
-
 # Climbproblem.create(
 #     user_id: 1,
 #     problem_id: 1,

@@ -11,9 +11,13 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "faker": "^6.6.6",
     "react-redux": "^7.2.6",
     "redex": "^0.0.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.1.1"
   }
 }
