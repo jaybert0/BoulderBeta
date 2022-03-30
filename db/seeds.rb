@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
+
 require 'date'
 
 puts "🌱 Seeding User..."
@@ -19,7 +19,7 @@ User.create(
 User.create(
     username: 'test',
     password: 'test',
-    email: 'jay',
+    email: 'test',
     admin: false,
 )
 
@@ -94,8 +94,8 @@ puts "Location seeded! 🌱"
 puts "🌱 Seeding Problem..."
 Problem.create(
     tech_id: 1,
-location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+location_id: 4,
+grip_color: "Fuchsia",
 problem_description: 'A nice warmup. Only a few moves, but get your fingers ready.',
 difficulty: 1,
 end_date:Date.new(2022,4,27)
@@ -103,7 +103,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 2,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Yellow",
 problem_description: 'The pitch is the challenge, not the mini-jugs.',
 difficulty: 4,
 end_date:Date.new(2022,4,27)
@@ -111,7 +111,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 3,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Gold",
 problem_description: 'Big grips do not mean easy',
 difficulty: 5,
 end_date:Date.new(2022,4,27)
@@ -119,7 +119,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 5,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Sky blue",
 problem_description: 'ROCK LOBSTER',
 difficulty: 7,
 end_date:Date.new(2022,4,27)
@@ -127,7 +127,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 4,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Red",
 problem_description: 'Little pockets, big trouble',
 difficulty: 2,
 end_date:Date.new(2022,4,27)
@@ -135,7 +135,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 6,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Orange",
 problem_description: "Crimping ain't easy",
 difficulty: 10,
 end_date:Date.new(2022,4,27)
@@ -143,7 +143,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 7,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Blue",
 problem_description: 'Turn it up',
 difficulty: 1,
 end_date:Date.new(2022,4,27)
@@ -151,7 +151,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 6,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Maroon",
 problem_description: 'Hope you got a manicure',
 difficulty: 5,
 end_date:Date.new(2022,4,27)
@@ -159,7 +159,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 5,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Navy",
 problem_description: 'Pinch by pinch',
 difficulty: 3,
 end_date:Date.new(2022,4,27)
@@ -167,7 +167,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 4,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Lime Green",
 problem_description: 'Cargo sized',
 difficulty: 1,
 end_date:Date.new(2022,4,27)
@@ -175,7 +175,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 3,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Violet",
 problem_description: 'Chalk up',
 difficulty: 5,
 end_date:Date.new(2022,4,27)
@@ -191,7 +191,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 1,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Indigo",
 problem_description: 'Great warmup!',
 difficulty: 0,
 end_date:Date.new(2022,4,27)
@@ -199,7 +199,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 6,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Gray",
 problem_description: "Razor's edge",
 difficulty: 10,
 end_date:Date.new(2022,4,27)
@@ -207,7 +207,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 3,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Teal",
 problem_description: 'FACEPALM',
 difficulty: 4,
 end_date:Date.new(2022,4,27)
@@ -215,7 +215,7 @@ end_date:Date.new(2022,4,27)
 Problem.create(
     tech_id: 7,
 location_id: rand(0..10),
-grip_color: Faker::Color.color_name,
+grip_color: "Green",
 problem_description: 'Turn it down',
 difficulty: 2,
 end_date:Date.new(2022,4,27)
