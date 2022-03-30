@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
@@ -29,7 +28,6 @@ function ProblemCard({
   function handleSetProblem(att, input) {
     setSubmitter({ ...submitter, [att]: input });
   }
-
 
   const [fav, setFavState] = useState(false);
   function setFavorite() {

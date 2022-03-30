@@ -9,7 +9,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
@@ -73,7 +72,6 @@ function ClimberHome({
     },
   ];
 
-
   const [tech, setTech] = useState([]);
   const [loc, setLoc] = useState([]);
 
@@ -98,35 +96,31 @@ function ClimberHome({
   function valuetext(value) {
     return `V${value}`;
   }
-  // console.log(value);
 
-  // console.log(favData);
-
-  const filterLoc = problem.filter(
-    (prob) =>
-      (favData && (prob.climbproblems.filter((use) => use.user.id === user.id)[0]
-      )) ? (prob.climbproblems.filter((use) => use.user.id === user.id)[0]
-            .favorite === true)
-        : prob 
-      && 
-      favData ? (undefined) : prob &&
-      (inprogData && (prob.climbproblems.filter((use) => use.user.id === user.id)[0]
-      )) ? (prob.climbproblems.filter((use) => use.user.id === user.id)[0]
-            .in_progress === true)
-        : prob &&
-        inprogData ? (undefined) : prob &&
-          value[0] <= prob.difficulty &&
-          prob.difficulty <= value[1] &&
-          prob.tech.handholds.includes(techSearch)
-
+  const filterLoc = problem.filter((prob) =>
+    favData && prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+      ? prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+          .favorite === true
+      : prob && favData
+      ? undefined
+      : prob &&
+        inprogData &&
+        prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+      ? prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+          .in_progress === true
+      : prob && inprogData
+      ? undefined
+      : prob &&
+        value[0] <= prob.difficulty &&
+        prob.difficulty <= value[1] &&
+        prob.tech.handholds.includes(techSearch)
   );
-  // console.log(filterLoc);
 
   return (
     <div>
       <WallMap id="wallmap" />
       <br></br>
-      <Box sx={{ minWidth: 120, backgroundColor: 'white', }}>
+      <Box sx={{ minWidth: 120, backgroundColor: "white" }}>
         <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
             Climbing Technique
@@ -149,24 +143,25 @@ function ClimberHome({
         <Button variant="contained" onClick={(e) => setTechSearch("")}>
           Reset Handholds
         </Button>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={favData}
-                onChange={(e) => setFavData(e.target.checked)}
-              />
-            }
-            label="Favorite"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={inprogData}
-                onChange={(e) => setInprogData(e.target.checked)}
-              />
-            }
-            label="In-Progress"
-          />
+
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={favData}
+              onChange={(e) => setFavData(e.target.checked)}
+            />
+          }
+          label="Favorite"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={inprogData}
+              onChange={(e) => setInprogData(e.target.checked)}
+            />
+          }
+          label="In-Progress"
+        />
         {/* </FormGroup> */}
         {/* <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">

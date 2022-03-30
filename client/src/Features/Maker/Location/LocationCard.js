@@ -23,7 +23,7 @@ function LocationCard({
     dispatch(deleteLocation(locId));
     window.location.reload();
   }
-  
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>

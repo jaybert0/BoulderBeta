@@ -3,44 +3,38 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
-import { useNavigate } from 'react-router';
-import {createTech, updateTech} from '../../Reducer/techesSlice'
+import { useNavigate } from "react-router";
+import { createTech, updateTech, fetchTech } from "../../Reducer/techesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-
-
-function TechForm({techForm, setTechForm}) {
+function TechForm({ techForm, setTechForm }) {
   const techSliceData = useSelector((state) => state.teches.entities);
   const dispatch = useDispatch();
   let navigate = useNavigate();
   function handleSetTech(att, input) {
     setTechForm({ ...techForm, [att]: input });
   }
-  console.log(techForm)
+  console.log(techForm);
   function amISubmission() {
-    if (techForm.id === "") 
-    {
+    if (techForm.id === "") {
+
       dispatch(
         createTech({
           handholds: techForm.handholds,
-          hold_description: techForm.hold_description
+          hold_description: techForm.hold_description,
         })
-      )
-    }
-    
-    
-    else 
-    {
+      );
+    } else {
       dispatch(
         updateTech({
           id: techForm.id,
           handholds: techForm.handholds,
-          hold_description: techForm.hold_description
+          hold_description: techForm.hold_description,
         })
       );
     }
 
-    navigate('/tech')
+    navigate("/tech");
     window.location.reload();
   }
   return (
@@ -90,9 +84,7 @@ function TechForm({techForm, setTechForm}) {
           <TextField
             sx={{ maxWidth: "80%" }}
             required
-            onChange={(e) =>
-              handleSetTech("hold_description", e.target.value)
-            }
+            onChange={(e) => handleSetTech("hold_description", e.target.value)}
             value={techForm.hold_description}
             id="filled-required"
             label="Description"
