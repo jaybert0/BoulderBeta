@@ -102,5 +102,4 @@ function MakerCard({
     </Card>
   );
 }
-
 export default MakerCard;
