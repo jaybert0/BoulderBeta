@@ -5,6 +5,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { white } from '@mui/material/colors';
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -48,8 +50,9 @@ function NavBar({user, handleLogOutClick}) {
 
     if (user.admin === true) return (
         <Box sx={{ width: '100%' }}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Box sx={{backgroundColor: 'primary.main', color:"white",  borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="secondary.light"
+        indicatorColor="secondary">
               <Tab label="Home" {...a11yProps(0)} 
               component={Link} to='/'  
               />
@@ -72,8 +75,9 @@ function NavBar({user, handleLogOutClick}) {
       );
       if (user.admin === false) return (
         <Box sx={{ width: '100%' }}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+         <Box sx={{backgroundColor: 'primary.main', color:"white",  borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="secondary.light"
+        indicatorColor="secondary">
               <Tab label="Home" {...a11yProps(0)} 
               component={Link} to='/'  
               />

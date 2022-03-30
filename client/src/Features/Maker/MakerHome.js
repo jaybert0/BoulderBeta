@@ -46,7 +46,7 @@ function MakerHome({problem, climbproblem, user}){
             <br/>
             <br/>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-            {problem.map(problem => (
+            {problem?.map(problem => (
                 <Grid item xs={2} sm={4} md={4} key={problem.id} sx={{ boxShadow: 3 }}>
                 <Item>
                 <MakerCard

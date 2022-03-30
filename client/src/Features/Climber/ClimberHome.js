@@ -157,7 +157,7 @@ function ClimberHome({
         <Button variant="contained" onClick={(e) => setTechSearch("")}>
           Reset Handholds
         </Button>
-        <FormGroup>
+        {/* <FormGroup> */}
           <FormControlLabel
             control={
               <Checkbox
@@ -176,7 +176,7 @@ function ClimberHome({
             }
             label="In-Progress"
           />
-        </FormGroup>
+        {/* </FormGroup> */}
         {/* <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
             Location
