@@ -4,11 +4,13 @@ import Button from "@mui/material/Button";
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import ClimberHome from "../Features/Climber/ClimberHome"
 
 
 
-function Home() {
-return(
+function Home({user, problem, climbproblem}) {
+    console.log(user)
+    if (user.admin === true) return(
     <Container>
         
             <Typography variant='h2'>Welcome back Route Setter!<br/><br/></Typography>
@@ -23,6 +25,30 @@ return(
             <Button variant="contained" component={Link} to="/tech">Handholds</Button>            
             {/* </Stack> */}
             </Box>
+            <Typography><br/><br/>
+            BO(U)LDERBETA © 2022</Typography>
+    </Container>
+)
+
+if (user.admin === false) return(
+    <Container>
+        <Box sx={{bgcolor: 'white'}}>
+            <Typography variant='h2'>Welcome back {user.username}!<br/><br/></Typography>
+            <Typography variant='h4'>What would you like to climb today?</Typography>
+            {/* <Box alignItems="center"
+        justifyContent="center"
+>
+            
+
+            <Button variant="contained" component={Link} to="/boltmonkey">Route Setter</Button> 
+            <Button sx={{m: 2}} variant="contained" component={Link} to="/location">Route Locations</Button> 
+            <Button variant="contained" component={Link} to="/tech">Handholds</Button>            
+            
+            </Box> */}
+            </Box>
+            <ClimberHome 
+        problem={problem} 
+      climbproblem={climbproblem} user={user}/>
             <Typography><br/><br/>
             BO(U)LDERBETA © 2022</Typography>
     </Container>

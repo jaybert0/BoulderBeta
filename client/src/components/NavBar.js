@@ -87,12 +87,6 @@ function NavBar({user, handleLogOutClick}) {
               <Tab label="Gym Info" {...a11yProps(2)} 
               component={Link} to='/gyminfo'  
               />
-              {/* <Tab label="Techniques" {...a11yProps(3)} 
-              component={Link} to='/tech'  
-              />
-              <Tab label="Climber Home" {...a11yProps(4)} 
-              component={Link} to='/climber'  
-              /> */}
               {user?<Tab onClick={handleLogOutClick} label="Logout" {...a11yProps(3)} />:<Tab label="Login" {...a11yProps(4)} component={Link} to='/login' />}
             </Tabs>
           </Box>
