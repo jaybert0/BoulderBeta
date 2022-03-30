@@ -3,7 +3,7 @@ import wall from "./wall.png"
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import grips from './grips.jpg'
-import { maxHeight, maxWidth, positions } from '@mui/system'
+import { maxHeight } from '@mui/system'
 import "../../Styles/WallMap.css"
 
 function WallMap () {
