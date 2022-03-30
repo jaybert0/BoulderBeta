@@ -117,7 +117,7 @@ if (usersearch.length !== 0) {
   setSubmitter(initialstate)
   console.log("Post")
 }},[filterLoc])
-// console.log(submitter)
+console.log(submitter)
 
 
 
@@ -143,7 +143,7 @@ if (usersearch.length !== 0) {
       console.log("POST ATTEMPT")
 
     }
-    window.location.reload();
+    // window.location.reload();
 
   }
   return (
