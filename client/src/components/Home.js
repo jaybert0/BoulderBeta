@@ -2,8 +2,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from "@mui/material/Button";
 import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import ClimberHome from "../Features/Climber/ClimberHome"
 
 
@@ -22,6 +21,7 @@ function Home({user, problem, climbproblem}) {
             <Button variant="contained" component={Link} to="/boltmonkey">Route Setter</Button> 
             <Button sx={{m: 2}} variant="contained" component={Link} to="/location">Route Locations</Button> 
             <Button variant="contained" component={Link} to="/tech">Handholds</Button>            
+
             </Box>
             <Typography><br/><br/>
             BO(U)LDERBETA © 2022</Typography>

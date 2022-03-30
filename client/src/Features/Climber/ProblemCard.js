@@ -69,7 +69,6 @@ if (usersearch.length !== 0) {
     feedback: usersearch[0].feedback,
     rating: usersearch[0].rating,
   }
-
   setSubmitter(initialstate)
 
 } else {

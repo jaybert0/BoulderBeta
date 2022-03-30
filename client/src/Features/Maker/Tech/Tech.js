@@ -30,11 +30,7 @@ function Tech() {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
-  // useEffect(() => {
-  //   fetch("/teches")
-  //     .then((r) => r.json())
-  //     .then((data) => setTechData(data));
-  // }, []);
+
 
   return (
     <div>

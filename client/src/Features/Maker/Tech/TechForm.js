@@ -17,6 +17,7 @@ function TechForm({ techForm, setTechForm }) {
   console.log(techForm);
   function amISubmission() {
     if (techForm.id === "") {
+
       dispatch(
         createTech({
           handholds: techForm.handholds,
