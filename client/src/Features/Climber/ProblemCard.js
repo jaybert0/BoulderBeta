@@ -101,9 +101,9 @@ if (usersearch.length !== 0) {
   //   rating: usersearch[0] ? usersearch[0].rating : 0,
   // }
   console.log("Patch");
-  // console.log(initialstate);
+
   setSubmitter(initialstate)
-// console.log(submitter)
+
 } else {
 
   const initialstate = {
@@ -115,9 +115,9 @@ if (usersearch.length !== 0) {
     rating: 0
   }
   setSubmitter(initialstate)
-  console.log("Post")
+  // console.log("Post")
 }},[filterLoc])
-console.log(submitter)
+
 
 
 
@@ -143,7 +143,7 @@ console.log(submitter)
       console.log("POST ATTEMPT")
 
     }
-    window.location.reload();
+    // window.location.reload();
 
   }
   return (

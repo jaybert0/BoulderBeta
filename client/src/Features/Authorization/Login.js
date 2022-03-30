@@ -6,7 +6,7 @@ import SignUpForm from "./SignUpForm";
 import ResetPasswordForm from './ResetPasswordForm';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import SplashCard from '../../components/SplashCard'
+
 
 function Login({ onLogin }){
     const [showResetForm, setShowResetForm] = useState(false)

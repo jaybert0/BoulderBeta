@@ -17,7 +17,6 @@ import Checkbox from "@mui/material/Checkbox";
 // have to fetch for all problems and then filter. do not set up separate fetches on backend for difficulty. buttons filter to sort rather than fetch.
 
 function ClimberHome({
-  // setSearch,
   problem,
   getProblems,
   climbproblem,
@@ -75,7 +74,7 @@ function ClimberHome({
       label: "V12",
     },
   ];
-  console.log(problem);
+
 
   const [tech, setTech] = useState([]);
   const [loc, setLoc] = useState([]);
@@ -83,11 +82,9 @@ function ClimberHome({
   useEffect(() => {
     fetch("/teches")
       .then((r) => r.json())
-      // .then((data) => console.log(data))
       .then((data) => setTech(data));
     fetch("/locations")
       .then((r) => r.json())
-      // .then((data) => console.log(data))
       .then((data) => setLoc(data));
   }, []);
 
@@ -103,9 +100,9 @@ function ClimberHome({
   function valuetext(value) {
     return `V${value}`;
   }
-  console.log(value);
+  // console.log(value);
 
-  console.log(favData);
+  // console.log(favData);
 
   const filterLoc = problem.filter(
     (prob) =>
@@ -124,15 +121,8 @@ function ClimberHome({
           prob.difficulty <= value[1] &&
           prob.tech.handholds.includes(techSearch)
 
-    // console.log
-    // (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === favDataBin ? (prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite === (favDataBin)) : "")
-    // && console.log(prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite)
-    // &&
-
-    // prob.climbproblems.filter((use) => use.user.id === user.id)[0].favorite.includes(favDataBin)
-    // || prob.climbproblems.filter((use) => use.user.id === user.id)[0].in_progress === inprogData
   );
-  console.log(filterLoc);
+  // console.log(filterLoc);
 
   return (
     <div>

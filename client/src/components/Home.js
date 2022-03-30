@@ -9,7 +9,7 @@ import ClimberHome from "../Features/Climber/ClimberHome"
 
 
 function Home({user, problem, climbproblem}) {
-    console.log(user)
+
     if (user.admin === true) return(
     <Container>
         
