@@ -19,7 +19,7 @@ return(
             {/* <Stack spacing={3} direction="row"> */}
 
             <Button variant="contained" component={Link} to="/boltmonkey">Route Setter</Button> 
-            <Button variant="contained" component={Link} to="/location">Route Locations</Button> 
+            <Button sx={{m: 2}} variant="contained" component={Link} to="/location">Route Locations</Button> 
             <Button variant="contained" component={Link} to="/tech">Handholds</Button>            
             {/* </Stack> */}
             </Box>

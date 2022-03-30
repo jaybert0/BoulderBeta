@@ -31,7 +31,7 @@ function Login({ onLogin }){
                 <br></br>
                 <Box display="flex" alignItems="center"
         justifyContent="center">Don't have an account? &nbsp;
-                    <Button variant="contained" onClick={() => setShowLogin(false)}>
+                    <Button variant="contained" sx={{m: 2}} onClick={() => setShowLogin(false) }>
                         Sign Up
                     </Button>
                     <Button onClick={() => setShowResetForm(!showResetForm)}  variant="contained"> {showResetForm?"Cancel Reset Password":"Reset Password"}</Button>

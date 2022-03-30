@@ -34,7 +34,7 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
     // setCompAdd(countcomp)
     setRating(avgRating)
   }, [])
-  
+
   function deleteCard(){
     console.log(id)
     const config = {method: "DELETE"}
@@ -50,7 +50,7 @@ function MakerCard({difficulty, user, location, technique, grip_color, end_date,
         <CardContent>
         <Typography variant="body1" color="text.primary">
             Route: {id} <br />           
-            Location: {location}
+            Location: {problem.location.location}
             </Typography> 
           <Typography variant="body2" color="text.secondary">
             Difficulty: V{difficulty}<br />
