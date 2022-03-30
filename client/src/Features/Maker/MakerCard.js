@@ -1,16 +1,10 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { blue } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -19,19 +13,17 @@ import EditIcon from '@mui/icons-material/Edit';
 function MakerCard({difficulty, user, location, technique, grip_color, end_date, problem_description, id, problem, formProblem, setFormProblem, climbproblem, subproblem}) {
   const [favAdd, setFavAdd] = useState(0)
   const [inprogAdd, setinProgAdd] = useState(0)
-  const [compAdd, setCompAdd] = useState(0)
   const [rating, setRating] = useState(0)
   
   const countfav = subproblem.filter(x => x.favorite ===true).length
   const countinp = subproblem.filter(x => x.in_progress ===true).length
-  const countcomp = subproblem.filter(x => x.completed ===true).length
+  // const countcomp = subproblem.filter(x => x.completed ===true).length
   const crating = subproblem.map(x => x.rating)
   const avgRating = crating.reduce((a,b) => a+b, 0)/crating.length
 
   useEffect(() => {
     setFavAdd(countfav)
     setinProgAdd(countinp)
-    // setCompAdd(countcomp)
     setRating(avgRating)
   }, [])
 

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Alert from '@mui/material/Alert';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-// const theme = createTheme();
+
+
 
 function LoginForm({onLogin}) {
 
@@ -36,9 +34,8 @@ function LoginForm({onLogin}) {
     }
     
     return (
-        // <ThemeProvider theme={theme}>
+
       <Container component="main" maxWidth="xs">
-        {/* <CssBaseline /> */}
         <Box
           sx={{
             marginTop: 8,
@@ -95,7 +92,7 @@ function LoginForm({onLogin}) {
           </Box>
         </Box>
       </Container>
-    // </ThemeProvider>
+
   );
 
     

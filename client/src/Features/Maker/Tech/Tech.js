@@ -12,7 +12,6 @@ import { fetchTech } from "../../Reducer/techesSlice";
 function Tech() {
   const techSliceData = useSelector((state) => state.teches.entities);
   const dispatch = useDispatch();
-  const [techData, setTechData] = useState([]);
   const [techForm, setTechForm] = useState({
     id: "",
     handholds: "",
@@ -20,7 +19,7 @@ function Tech() {
   });
   useEffect(() => {
     dispatch(fetchTech());
-    setTechData(techSliceData)
+
   }, [dispatch]);
 
   console.log(techSliceData);
@@ -31,11 +30,7 @@ function Tech() {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
-  // useEffect(() => {
-  //   fetch("/teches")
-  //     .then((r) => r.json())
-  //     .then((data) => setTechData(data));
-  // }, []);
+
 
   return (
     <div>

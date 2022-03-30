@@ -13,18 +13,17 @@ function TechInfo() {
   }
   useEffect(() => {
     fetch(
-      // "https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=text&section=9&sectionpreview=1&formatversion=2&origin=*"
 "https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Climbing_hold&prop=text&section=9&disabletoc=1&contentformat=text%2Fjavascript&templatesandboxcontentmodel=text&origin=*"    
       )
       .then((r) => r.json())
       .then((data) => setTechData(data));
-    // .then((data) => setBGData(data));
+
   }, []);
   const yourString = techData.parse;
 
   console.log(yourString);
 
-  // console.log(techData.parse.text)
+
 
   return (
     <Box sx={{ mb: 1.5, align: 'center', display: 'block',  backgroundColor: 'white', }}>

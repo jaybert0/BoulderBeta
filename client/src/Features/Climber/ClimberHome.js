@@ -7,14 +7,12 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { render } from "react-dom";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-import FormGroup from "@mui/material/FormGroup";
+
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
-// have to fetch for all problems and then filter. do not set up separate fetches on backend for difficulty. buttons filter to sort rather than fetch.
 
 function ClimberHome({
   problem,
@@ -78,7 +76,7 @@ function ClimberHome({
 
   const [tech, setTech] = useState([]);
   const [loc, setLoc] = useState([]);
-  const [favDataBin, setFavDataBin] = useState("");
+
   useEffect(() => {
     fetch("/teches")
       .then((r) => r.json())
@@ -151,7 +149,6 @@ function ClimberHome({
         <Button variant="contained" onClick={(e) => setTechSearch("")}>
           Reset Handholds
         </Button>
-        {/* <FormGroup> */}
           <FormControlLabel
             control={
               <Checkbox

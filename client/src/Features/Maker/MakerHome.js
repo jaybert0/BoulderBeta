@@ -1,7 +1,6 @@
 import ProblemForm from './ProblemForm';
 import { useEffect, useState } from 'react';
 import MakerCard from './MakerCard';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchProblems} from '../Reducer/problemsSlice'
 import Paper from '@mui/material/Paper';
@@ -15,12 +14,9 @@ function MakerHome({problem, climbproblem, user}){
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // fetchProblems()
         dispatch(fetchProblems());
-        // console.log(fetchProblems());
     }, [dispatch]);
-    console.log(probData)
-// console.log(problem)
+    
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
         padding: theme.spacing(2),
@@ -32,7 +28,6 @@ function MakerHome({problem, climbproblem, user}){
         id:"",
         difficulty: "",
         grip_color: "",
-        // technique: "",
         location_id: "",
         tech_id: "",
         end_date: "",
@@ -55,14 +50,10 @@ function MakerHome({problem, climbproblem, user}){
                 id={problem.id} 
                 problem={problem}
                 difficulty={problem.difficulty}
-                // location={problem.location.location}
                 technique={problem.technique}
                 grip_color={problem.grip_color}
                 end_date={problem.end_date}
                 problem_description={problem.problem_description}
-                // favorite={problem.climbproblems[0].favorite}
-                // in_progress={problem.climbproblems[0].in_progress}
-                // completed={problem.climbproblems[0].completed}
                 subproblem={problem.climbproblems}
                 climbproblem={climbproblem}
 
