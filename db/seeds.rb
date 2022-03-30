@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'date'
-puts "🌱 Seeding spices..."
+puts "🌱 Seeding User..."
 
 User.create(
     username: 'jay',
@@ -20,6 +20,9 @@ User.create(
     email: 'jay',
     admin: false,
 )
+
+puts "User seeded! 🌱"
+puts "🌱 Seeding Tech..."
 Tech.create(
     handholds: 'Jug',
     hold_description: "The term 'jugs', derived from the expression 'jug-handle', has dual meanings in the climbing world. One meaning is size based—jugs are traditionally large holds. Most jugs should have space for both hands to fit on the hold. The other meaning of jug refers to a hold's positivity or degree of concavity. A hold that is called a jug should be fairly easy to use, meaning it is either a very positive hold or it is a flat hold on a less than vertical wall (slab). Because they are easy to use, jugs are often found on beginner routes, warm-up problems, and steep walls. Jugs are also commonly used as resting or clipping holds on routes.")
@@ -43,6 +46,8 @@ Tech.create(
 Tech.create(
     handholds: 'Volumes',
     hold_description: "Volumes are an extremely large type of hold that any variety of holds can be attached to. The volume is attached to the wall, and it has pre-placed t-nuts in it to which other holds can be attached. Volumes were at one time made from wood, but now they are also made in a variety of materials (including fiberglass, coated wood, resin, urethane, and moulded plastic) by several climbing companies. Volumes are especially prevalent in Europe and on the World Cup circuit, where sometimes entire routes will be constructed from gigantic volumes. To imitate these textured World Cup volumes, sandpaper can be placed on homemade wooden volumes to create texture and allow climbers to make use of the volume's features.")
+    puts "Tech seeded! 🌱"
+    puts "🌱 Seeding Location..."
 Location.create(
     location: 1,
     loc_description: "In front of the bend."
@@ -83,22 +88,145 @@ Location.create(
     location: 10,
     loc_description: "Back side wood wall."
 )
+puts "Location seeded! 🌱"
+puts "🌱 Seeding Problem..."
 Problem.create(
     tech_id: 1,
 location_id: rand(0..10),
 grip_color: Faker::Color.color_name,
-problem_description: 'great',
+problem_description: 'A nice warmup. Only a few moves, but get your fingers ready.',
 difficulty: 1,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 2,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'The pitch is the challenge, not the mini-jugs.',
+difficulty: 4,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 3,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'Big grips do not mean easy',
+difficulty: 5,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 5,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'ROCK LOBSTER',
+difficulty: 7,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 4,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'Little pockets, big trouble',
+difficulty: 2,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 6,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: "Crimping ain't easy",
+difficulty: 10,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 7,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'Turn it up',
+difficulty: 1,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 6,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'Hope you got a manicure',
+difficulty: 5,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 5,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'Pinch by pinch',
+difficulty: 3,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 4,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'Cargo sized',
+difficulty: 1,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 3,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'Chalk up',
+difficulty: 5,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 2,
+location_id: rand(0..10),
+grip_color: "White",
+problem_description: 'Milk jugs',
+difficulty: 3,
 end_date:Date.new(2022,4,27)
 )
 Problem.create(
     tech_id: 1,
 location_id: rand(0..10),
 grip_color: Faker::Color.color_name,
-problem_description: 'great',
-difficulty: 1,
+problem_description: 'Great warmup!',
+difficulty: 0,
 end_date:Date.new(2022,4,27)
 )
+Problem.create(
+    tech_id: 6,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: "Razor's edge",
+difficulty: 10,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 3,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'FACEPALM',
+difficulty: 4,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 7,
+location_id: rand(0..10),
+grip_color: Faker::Color.color_name,
+problem_description: 'Turn it down',
+difficulty: 2,
+end_date:Date.new(2022,4,27)
+)
+Problem.create(
+    tech_id: 1,
+location_id: rand(0..10),
+grip_color: "Brown",
+problem_description: 'Chocolate milk',
+difficulty: 2,
+end_date:Date.new(2022,4,27)
+)
+puts "Problem seeded! 🌱"
 # Climbproblem.create(
 #     user_id: 1,
 #     problem_id: 1,
@@ -124,4 +252,4 @@ end_date:Date.new(2022,4,27)
 #     rating: 4
 # )
 
-puts "🌱 Seeded spices..."
+puts "🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱🌱"
