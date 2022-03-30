@@ -45,6 +45,7 @@ function LoginForm({onLogin}) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+
           }}
         >
           <Typography component="h1" variant="h5">
@@ -52,6 +53,7 @@ function LoginForm({onLogin}) {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+            variant="filled"
               margin="normal"
               required
               fullWidth
@@ -65,6 +67,7 @@ function LoginForm({onLogin}) {
               onChange={(e) => setEmail(e.target.value)}
               />
             <TextField
+            variant="filled"
               margin="normal"
               required
               fullWidth
@@ -77,10 +80,18 @@ function LoginForm({onLogin}) {
 
               onChange={(e) => setPassword(e.target.value)}
             />
+            <Box sx={{
+            
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+
+          }}>
              <Button color="primary" variant="contained"  type="submit">{isLoading ? "Loading..." : "Login"}</Button>
                 {/* {errors?.map(error => (
                     <Alert className="mt-3" severity="error" key={error}>{error}</Alert>
                 ))} */}
+                </Box>
           </Box>
         </Box>
       </Container>
