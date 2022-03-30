@@ -109,13 +109,17 @@ function ClimberHome({
 
   const filterLoc = problem.filter(
     (prob) =>
-      favData
-        ? prob.climbproblems.filter((use) => use.user.id === user.id)[0]
-            .favorite === true
-        : prob && inprogData
-        ? prob.climbproblems.filter((use) => use.user.id === user.id)[0]
-            .in_progress === true
+      (favData && (prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+      )) ? (prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+            .favorite === true)
+        : prob 
+      && 
+      favData ? (undefined) : prob &&
+      (inprogData && (prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+      )) ? (prob.climbproblems.filter((use) => use.user.id === user.id)[0]
+            .in_progress === true)
         : prob &&
+        inprogData ? (undefined) : prob &&
           value[0] <= prob.difficulty &&
           prob.difficulty <= value[1] &&
           prob.tech.handholds.includes(techSearch)

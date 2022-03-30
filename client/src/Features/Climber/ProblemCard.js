@@ -143,7 +143,7 @@ console.log(submitter)
       console.log("POST ATTEMPT")
 
     }
-    // window.location.reload();
+    window.location.reload();
 
   }
   return (
