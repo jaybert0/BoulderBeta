@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./boulderbetasplash.png"
+import logo from "../../components/boulderbetasplash.png"
 import Container from '@mui/material/Container';
 
 

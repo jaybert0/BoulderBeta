@@ -11,18 +11,20 @@ function Home() {
 return(
     <Container>
         
-            <Typography>Welcome back Route Setter!<br/><br/>
-            Please use the NavBar above or click on one of the following buttons.</Typography>
+            <Typography variant='h2'>Welcome back Route Setter!<br/><br/></Typography>
+            <Typography variant='h4'>Please use the NavBar above or click on one of the following buttons.</Typography>
             <Box alignItems="center"
         justifyContent="center"
 >
             {/* <Stack spacing={3} direction="row"> */}
 
-            <Button variant="contained" component={Link} to="/boltmonkey">Route Setter</Button>
-            <Button variant="contained" component={Link} to="/location">Route Locations</Button>
+            <Button variant="contained" component={Link} to="/boltmonkey">Route Setter</Button> 
+            <Button variant="contained" component={Link} to="/location">Route Locations</Button> 
             <Button variant="contained" component={Link} to="/tech">Handholds</Button>            
             {/* </Stack> */}
             </Box>
+            <Typography><br/><br/>
+            BO(U)LDERBETA © 2022</Typography>
     </Container>
 )
 

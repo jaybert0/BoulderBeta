@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Box from "@mui/material/Box";
+
 import LoginForm from './LoginForm';
 import SignUpForm from "./SignUpForm";
 import ResetPasswordForm from './ResetPasswordForm';
@@ -13,7 +15,10 @@ function Login({ onLogin }){
     return (   
 
         <Container>
+            <Box alignItems="center"
+        justifyContent="center">
             <SplashCard />
+            </Box>
         { showLogin ? (
             <>
                 <LoginForm onLogin={onLogin} />
