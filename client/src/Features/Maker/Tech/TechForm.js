@@ -6,7 +6,6 @@ import * as React from "react";
 import { useNavigate } from "react-router";
 import { createTech, updateTech, fetchTech } from "../../Reducer/techesSlice";
 import { useDispatch, useSelector } from "react-redux";
-
 function TechForm({ techForm, setTechForm }) {
   const techSliceData = useSelector((state) => state.teches.entities);
   const dispatch = useDispatch();
