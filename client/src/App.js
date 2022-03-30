@@ -87,25 +87,28 @@ if (user.admin === true)  return (
         problem={problem} 
       climbproblem={climbproblem} user={user}/>} 
       ></Route>
-      <Route path="/" element={<Home/>}></Route>
+      <Route path="/" element={<Home user={user} problem={problem} 
+      climbproblem={climbproblem}/>}></Route>
       </Routes>
     </div>
   )
   if (user.admin === false)  return (
     <div className="App">
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
-      
+      <SplashCard />
+
       <Routes>
       <Route path="/techinfo" element={<TechInfo 
       />}></Route>
       <Route path="/gyminfo" element={<About 
       />}></Route>
-      <Route path="/" 
+      <Route path="/climber" 
       element={<ClimberHome 
         problem={problem} 
       climbproblem={climbproblem} user={user}/>} 
       ></Route>
-      {/* <Route path="/gyminfo" element={<About />}></Route> */}
+       <Route path="/" element={<Home user={user} problem={problem} 
+      climbproblem={climbproblem} />}></Route>
       </Routes>
     </div>
   )

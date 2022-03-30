@@ -146,7 +146,6 @@ if (usersearch.length !== 0) {
     window.location.reload();
 
   }
-
   return (
     <Box
       class="box"

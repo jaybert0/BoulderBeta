@@ -6,7 +6,7 @@ import wall from "../Features/Climber/wall.png"
 
 function About() {
     return(
-        <Box>
+        <Box sx={{ backgroundColor: 'white',}}>
         <img src={wall} alt="Facility Map" id="wallmap"/>
         <Typography>
             Welcome to BO(U)LDER! Your bouldering home and the home to BO(U)LDERBETA!!!<br/><br/>

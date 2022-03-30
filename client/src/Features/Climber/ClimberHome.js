@@ -134,7 +134,7 @@ function ClimberHome({
     <div>
       <WallMap id="wallmap" />
       <br></br>
-      <Box sx={{ minWidth: 120 }}>
+      <Box sx={{ minWidth: 120, backgroundColor: 'white', }}>
         <FormControl sx={{ m: 1, minWidth: 250 }}>
           <InputLabel sx={{ zIndex: -1 }} id="demo-simple-select-label">
             Climbing Technique

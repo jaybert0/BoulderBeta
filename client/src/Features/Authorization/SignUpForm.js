@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React, { useState } from "react";
 import Alert from '@mui/material/Alert';
 
-const theme = createTheme();
+
 function SignUpForm({onLogin}){
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
@@ -44,9 +44,9 @@ function SignUpForm({onLogin}){
     }
 
     return (
-        <ThemeProvider theme={theme}>
+        
         <Container component="main" maxWidth="xs">
-          <CssBaseline />
+          
           <Box
             sx={{
               marginTop: 8,
@@ -64,6 +64,7 @@ function SignUpForm({onLogin}){
                   <TextField
                     required
                     fullWidth
+                    variant="filled"
                     type='email'
                     id="email"
                     label="Email Address"
@@ -75,6 +76,7 @@ function SignUpForm({onLogin}){
                 </Grid>
                 <Grid item xs={12} >
                   <TextField
+                  variant="filled"
                     type='text'
                     required
                     fullWidth
@@ -90,6 +92,7 @@ function SignUpForm({onLogin}){
                
                 <Grid item xs={12}>
                   <TextField
+                  variant="filled"
                     required
                     fullWidth
                     name="password"
@@ -103,6 +106,7 @@ function SignUpForm({onLogin}){
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
+                  variant="filled"
                     required
                     fullWidth
                     name="password"
@@ -115,14 +119,22 @@ function SignUpForm({onLogin}){
                   />
                 </Grid>
               </Grid>
+              <Box sx={{
+            marginTop: 5,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+
+          }}>
               <Button variant="contained" type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
                 {errors.map(error => (
                     <Alert severity="error" className="mt-3" key={error}>{error}</Alert>
                 ))}
+                </Box>
             </Box>
           </Box>
         </Container>
-      </ThemeProvider>
+      
     )
 }
 
