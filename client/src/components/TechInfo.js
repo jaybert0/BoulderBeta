@@ -27,7 +27,7 @@ function TechInfo() {
   // console.log(techData.parse.text)
 
   return (
-    <Box sx={{ mb: 1.5, align: 'center', display: 'block' }}>
+    <Box sx={{ mb: 1.5, align: 'center', display: 'block',  backgroundColor: 'white', }}>
       <Typography sx={{ mb: 1.5, textAlign: 'left', display: 'block' }} color="text.secondary">
         {techData.parse && (
           <div dangerouslySetInnerHTML={{ __html: yourString.text["*"] }} />

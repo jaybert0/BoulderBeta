@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "./index.css";
+import Paper from '@mui/material/Paper';
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 // import rootReducer from "./Features/Reducer/reducer";
 import store from "./Store/store"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import background from '../src/components/background.png'
 
 const theme = createTheme({
   palette: {
@@ -30,10 +32,17 @@ const theme = createTheme({
     // },
   },
 });
+const styles = {
+  paperContainer: {
+      backgroundImage: `url(${background})`
+  }
+};
 
 
 ReactDOM.render(
 <ThemeProvider theme={theme}>
+<Paper style={styles.paperContainer}>
+
   <Router>
     <Provider store={store}>
       {/* <React.StrictMode> */}
@@ -41,6 +50,7 @@ ReactDOM.render(
       {/* </React.StrictMode> */}
     </Provider>
   </Router>
+  </Paper>
 </ThemeProvider>,
   document.getElementById("root")
 );
