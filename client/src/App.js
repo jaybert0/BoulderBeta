@@ -94,7 +94,8 @@ if (user.admin === true)  return (
   if (user.admin === false)  return (
     <div className="App">
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
-      
+      <SplashCard />
+
       <Routes>
       <Route path="/techinfo" element={<TechInfo 
       />}></Route>
