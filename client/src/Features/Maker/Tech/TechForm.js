@@ -2,80 +2,38 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-
 import * as React from "react";
-import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router';
-import {createTech, updateTech, fetchTech} from '../../Reducer/techesSlice'
+import { useNavigate } from "react-router";
+import { createTech, updateTech, fetchTech } from "../../Reducer/techesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-
-
-function TechForm({techForm, setTechForm}) {
+function TechForm({ techForm, setTechForm }) {
   const techSliceData = useSelector((state) => state.teches.entities);
-// console.log(techSliceData);
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const initholds = techSliceData.map((prob) => prob);
-  const holds = [...new Set(initholds)];
-  // console.log("techForm:");
-  // console.log(techForm);
   function handleSetTech(att, input) {
     setTechForm({ ...techForm, [att]: input });
   }
-  console.log(techForm)
+  console.log(techForm);
   function amISubmission() {
-    if (techForm.id === "") 
-    // {
-    //   const config = {
-    //     headers: { "Content-Type": "application/json" },
-    //     method: "POST",
-    //     body: JSON.stringify(techForm),
-    //   };
-    //   fetch("/teches", config)
-    //     .then((r) => r.json())
-    //     .then((data) => console.log(data));
-    //   console.log("submit button");
-    // } 
-    {
+    if (techForm.id === "") {
       dispatch(
         createTech({
           handholds: techForm.handholds,
-          hold_description: techForm.hold_description
+          hold_description: techForm.hold_description,
         })
-      )
-      console.log("SUBMIT VIA REDUX")
-    }
-    
-    
-    else 
-    // {
-    //   const config = {
-    //     headers: { "Content-Type": "application/json" },
-    //     method: "PATCH",
-    //     body: JSON.stringify(techForm),
-    //   };
-    //   fetch(`/teches/${techForm.id}`, config)
-    //     .then((r) => r.json())
-    //     .then((data) => console.log(data));
-    //   console.log("edit button");
-    // }
-    {
+      );
+    } else {
       dispatch(
         updateTech({
           id: techForm.id,
           handholds: techForm.handholds,
-          hold_description: techForm.hold_description
+          hold_description: techForm.hold_description,
         })
       );
     }
 
-    navigate('/tech')
+    navigate("/tech");
     window.location.reload();
   }
   return (
@@ -125,9 +83,7 @@ function TechForm({techForm, setTechForm}) {
           <TextField
             sx={{ maxWidth: "80%" }}
             required
-            onChange={(e) =>
-              handleSetTech("hold_description", e.target.value)
-            }
+            onChange={(e) => handleSetTech("hold_description", e.target.value)}
             value={techForm.hold_description}
             id="filled-required"
             label="Description"
