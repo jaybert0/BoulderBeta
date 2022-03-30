@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-// import Alert from '@mui/material/Alert';
+import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // const theme = createTheme();
@@ -88,9 +88,9 @@ function LoginForm({onLogin}) {
 
           }}>
              <Button color="primary" variant="contained"  type="submit">{isLoading ? "Loading..." : "Login"}</Button>
-                {/* {errors?.map(error => (
+                {errors?.map(error => (
                     <Alert className="mt-3" severity="error" key={error}>{error}</Alert>
-                ))} */}
+                ))}
                 </Box>
           </Box>
         </Box>
