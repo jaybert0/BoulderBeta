@@ -1,11 +1,9 @@
 import * as React from "react";
-import { Alert } from '@mui/material';
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
@@ -18,36 +16,19 @@ import PendingIcon from "@mui/icons-material/Pending";
 import "../../Styles/ProblemCard.css";
 
 function ProblemCard({
-  // id,
-  // difficulty,
-  // location,
-  // technique,
-  // grip_color,
-  // end_date,
-  // problem_description,
   problem,
   user,
   filterLoc
 }) {
-  const [routeRating, setRouteRatingState] = useState("");
+
   const label = {
     inputProps: { "aria-label": "Favorite/InProgress/Completed" },
   };
-
-  function setRouteRating(e) {
-    setRouteRatingState(e);
-    handleSetProblem("rating", e);
-  }
 
   function handleSetProblem(att, input) {
     setSubmitter({ ...submitter, [att]: input });
   }
 
-  const [climberFeedback, setClimberFeedbackState] = useState("");
-  function setClimberFeedback(e) {
-    setClimberFeedbackState(e.target.value)
-    handleSetProblem("feedback", e.target.value);
-  }
   const [fav, setFavState] = useState(false);
   function setFavorite() {
     setFavState(!fav);
@@ -88,19 +69,6 @@ if (usersearch.length !== 0) {
     feedback: usersearch[0].feedback,
     rating: usersearch[0].rating,
   }
-  // const initialstate = {
-  //   user_id: user.id,
-  //   problem_id: problem.id,
-  //   in_progress: usersearch[0]
-  //     ? usersearch[0].in_progress
-  //     : false,
-  //   favorite: usersearch[0]
-  //     ? usersearch[0].favorite
-  //     : false,
-  //   feedback: usersearch[0] ? usersearch[0].feedback : "",
-  //   rating: usersearch[0] ? usersearch[0].rating : 0,
-  // }
-  console.log("Patch");
 
   setSubmitter(initialstate)
 
@@ -115,7 +83,6 @@ if (usersearch.length !== 0) {
     rating: 0
   }
   setSubmitter(initialstate)
-  // console.log("Post")
 }},[filterLoc])
 
 
@@ -143,7 +110,7 @@ if (usersearch.length !== 0) {
       console.log("POST ATTEMPT")
 
     }
-    // window.location.reload();
+
 
   }
   return (
