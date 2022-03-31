@@ -13,7 +13,7 @@ import ClimberHome from './Features/Climber/ClimberHome'
 import Location from './Features/Maker/Location/Location'
 import About from './components/About'
 import SplashCard from '../src/components/SplashCard'
-
+import Footer from '../src/components/Footer'
 
 
 function App() {
@@ -91,6 +91,7 @@ if (user.admin === true)  return (
       <Route path="/" element={<Home user={user} problem={problem} 
       climbproblem={climbproblem}/>}></Route>
       </Routes>
+      <Footer/>
     </div>
   )
   if (user.admin === false)  return (
@@ -111,6 +112,7 @@ if (user.admin === true)  return (
        <Route path="/" element={<Home user={user} problem={problem} 
       climbproblem={climbproblem} />}></Route>
       </Routes>
+      <Footer/>
     </div>
   )
   
