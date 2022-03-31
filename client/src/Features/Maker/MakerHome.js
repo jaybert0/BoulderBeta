@@ -1,7 +1,7 @@
 import ProblemForm from "./ProblemForm";
 import { useEffect, useState } from "react";
 import MakerCard from "./MakerCard";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProblems } from "../Reducer/problemsSlice";
 import Paper from "@mui/material/Paper";
