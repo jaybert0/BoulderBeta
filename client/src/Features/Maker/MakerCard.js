@@ -91,7 +91,7 @@ function MakerCard({
                 location_id: problem.location["id"],
                 end_date: end_date,
                 problem_description: problem_description,
-                // maker_id: 1,
+
               });
             }
           }}
