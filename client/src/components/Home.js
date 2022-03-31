@@ -23,8 +23,6 @@ function Home({user, problem, climbproblem}) {
             <Button sx={{m: 2}} variant="contained" component={Link} to="/location">Route Locations</Button> 
             <Button variant="contained" component={Link} to="/tech">Handholds</Button>            
             </Box>
-            <Typography><br/><br/>
-            BO(U)LDERBETA © 2022</Typography>
     </Container>
 )
 
@@ -37,8 +35,6 @@ if (user.admin === false) return(
             <ClimberHome 
         problem={problem} 
       climbproblem={climbproblem} user={user}/>
-            <Typography><br/><br/>
-            BO(U)LDERBETA © 2022</Typography>
     </Container>
 )
 
