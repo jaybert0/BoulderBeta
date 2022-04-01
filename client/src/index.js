@@ -6,7 +6,6 @@ import Paper from '@mui/material/Paper';
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
-// import rootReducer from "./Features/Reducer/reducer";
 import store from "./Store/store"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import background from '../src/components/background.png'
