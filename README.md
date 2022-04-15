@@ -5,3 +5,9 @@ Authenticated users at log-in utilizing React/Ruby on Rails/bcrypt
 Utilized admin attributes in Ruby on Rails and React to render specific UI for different users.
 Parsed Wikimedia API to provide climbing hold information
 Utilized Material UI to provide UI
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=pB7Vb9q7qEU
+" target="_blank"><img src="http://img.youtube.com/vi/pB7Vb9q7qEU/0.jpg" 
+alt="BO(U)LDERBETA Demo" width="240" height="180" border="10" /></a>
+
+[Deployment](https://boulderbeta.herokuapp.com/)
