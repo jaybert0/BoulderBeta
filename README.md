@@ -11,3 +11,5 @@ Utilized Material UI to provide UI
 alt="BO(U)LDERBETA Demo" width="240" height="180" border="10" /></a>
 
 [Deployment](https://boulderbeta.herokuapp.com/)
+
+jay.j.lee.1@gmail.com with any questions!
